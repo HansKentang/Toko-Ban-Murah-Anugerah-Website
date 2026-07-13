@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Koleksi Ban - Toko Ban Murah Anugerah</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,0&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="images/logo.png">
+  <link rel="stylesheet" href="css/styles.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#003c17', 'primary-container': '#18542a', 'on-primary': '#ffffff',
+            'on-primary-container': '#8ac792', 'primary-fixed': '#b2f2b9', 'primary-fixed-dim': '#97d59f',
+            secondary: '#765a00', 'secondary-container': '#fdc824', 'secondary-fixed': '#ffdf95',
+            'secondary-fixed-dim': '#f4bf18', 'on-secondary': '#ffffff', 'on-secondary-container': '#6e5400',
+            'on-secondary-fixed': '#251a00', 'on-secondary-fixed-variant': '#594400',
+            tertiary: '#323334', 'tertiary-container': '#484a4a', 'tertiary-fixed': '#e2e2e2',
+            'tertiary-fixed-dim': '#c6c6c7', 'on-tertiary': '#ffffff', 'on-tertiary-container': '#b9b9b9',
+            'on-tertiary-fixed': '#1a1c1c', 'on-tertiary-fixed-variant': '#454747',
+            background: '#fcf9f8', surface: '#fcf9f8', 'surface-dim': '#dcd9d9', 'surface-bright': '#fcf9f8',
+            'surface-container-lowest': '#ffffff', 'surface-container-low': '#f6f3f2',
+            'surface-container': '#f0eded', 'surface-container-high': '#eae7e7',
+            'surface-container-highest': '#e5e2e1', 'surface-variant': '#e5e2e1',
+            'on-surface': '#1c1b1b', 'on-surface-variant': '#414940', 'on-background': '#1c1b1b',
+            outline: '#71796f', 'outline-variant': '#c0c9bd',
+            error: '#ba1a1a', 'error-container': '#ffdad6', 'on-error': '#ffffff',
+          },
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+        }
+      }
+    }
+  </script>
+  <style>
+    /* === Brand Box === */
+    .brand-box {
+      position: relative;
+      aspect-ratio: 3 / 2;
+      background: #ffffff;
+      border: 2px solid #e5e2e1;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow: hidden;
+    }
+    .brand-box:hover {
+      border-color: #c0c9bd;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      transform: translateY(-2px);
+    }
+    .brand-box:active {
+      transform: translateY(0px) scale(0.97);
+    }
+    .brand-box img {
+      max-width: 85%;
+      max-height: 70%;
+      object-fit: contain;
+      pointer-events: none;
+      transition: transform 0.3s ease;
+    }
+    .brand-box:hover img { transform: scale(1.05); }
+
+    /* === Hint dot === */
+    .hint-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: #fdc824;
+      position: absolute; top: 12px; right: 12px;
+      animation: pulse-hint 2s ease-in-out infinite;
+    }
+    @keyframes pulse-hint {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    /* === Entrance Animation for Brand Grid === */
+    @keyframes brand-pop {
+      0% { opacity: 0; transform: translateY(24px) scale(0.92); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .brand-box { opacity: 0; transform: translateY(24px) scale(0.92); }
+    .brand-grid-visible .brand-box {
+      animation: brand-pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+    .brand-grid-visible .brand-box:nth-child(1) { animation-delay: 0.00s; }
+    .brand-grid-visible .brand-box:nth-child(2) { animation-delay: 0.06s; }
+    .brand-grid-visible .brand-box:nth-child(3) { animation-delay: 0.12s; }
+    .brand-grid-visible .brand-box:nth-child(4) { animation-delay: 0.18s; }
+    .brand-grid-visible .brand-box:nth-child(5) { animation-delay: 0.24s; }
+    .brand-grid-visible .brand-box:nth-child(6) { animation-delay: 0.30s; }
+    .brand-grid-visible .brand-box:nth-child(7) { animation-delay: 0.36s; }
+    .brand-grid-visible .brand-box:nth-child(8) { animation-delay: 0.42s; }
+    .brand-grid-visible .brand-box:nth-child(9) { animation-delay: 0.48s; }
+    .brand-grid-visible .brand-box:nth-child(10) { animation-delay: 0.54s; }
+
+    /* === View Transitions === */
+    .view-state { transition: opacity 0.3s ease, transform 0.3s ease; }
+    .view-state.hidden-view { display: none; }
+    .view-state.fade-out { opacity: 0; transform: scale(0.97); pointer-events: none; }
+    .view-state.fade-in { opacity: 1; transform: scale(1); }
+
+    /* === Back Button === */
+    .back-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 8px 16px 8px 10px; border-radius: 100px;
+      background: #f0eded; font-size: 14px; font-weight: 600;
+      color: #1c1b1b; cursor: pointer; transition: all 0.2s ease;
+      border: none;
+    }
+    .back-btn:hover { background: #e5e2e1; transform: translateX(-2px); }
+    .back-btn:active { transform: translateX(0); }
+
+    /* === Model Card === */
+    .model-card {
+      background: #ffffff;
+      border: 1px solid #e5e2e1;
+      border-radius: 14px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .model-card:hover {
+      border-color: #c0c9bd;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+      transform: translateY(-2px);
+    }
+    .model-card .img-wrap {
+      width: 100%;
+      padding: 10px 12px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .model-card .img-wrap img {
+      width: 100%;
+      max-width: 110px;
+      height: auto;
+      object-fit: contain;
+    }
+    .model-card .card-body {
+      padding: 8px 10px 12px;
+      width: 100%;
+    }
+    .model-card .model-name {
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1.2;
+      color: #1c1b1b;
+      margin-bottom: 2px;
+    }
+    .model-card .model-sizes {
+      font-size: 10px;
+      font-weight: 500;
+      color: #71796f;
+      line-height: 1.3;
+    }
+    .model-card .subcat-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: #18542a;
+      line-height: 1.2;
+      margin-bottom: 4px;
+      padding: 2px 8px;
+      background: #e5f5e9;
+      border-radius: 100px;
+      display: inline-block;
+    }
+    .model-card .model-desc {
+      font-size: 10px;
+      font-weight: 400;
+      color: #8a8a8a;
+      line-height: 1.2;
+      margin-top: 2px;
+      padding: 0 2px;
+      font-style: italic;
+    }
+
+    /* === Model Cards Entrance === */
+    .model-card {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    .model-grid-visible .model-card {
+      animation: model-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+    @keyframes model-pop {
+      0% { opacity: 0; transform: translateY(16px) scale(0.95); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* === Brand logo in detail header === */
+    .detail-brand-logo {
+      max-height: 48px;
+      max-width: 160px;
+      object-fit: contain;
+    }
+
+    /* === Size Dropdown === */
+    .size-select {
+      width: 100%;
+      padding: 3px 5px;
+      border: 1px solid #c0c9bd;
+      border-radius: 8px;
+      font-size: 10px;
+      font-weight: 500;
+      color: #1c1b1b;
+      background: #fcf9f8;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      margin: 3px 0 1px;
+      min-height: 26px;
+      line-height: 1.2;
+      appearance: auto;
+      -webkit-appearance: auto;
+    }
+    .size-select:hover {
+      border-color: #71796f;
+    }
+    .size-select:focus {
+      outline: none;
+      border-color: #003c17;
+      box-shadow: 0 0 0 2px rgba(0, 60, 23, 0.15);
+    }
+    .size-select optgroup {
+      font-size: 10px;
+      font-weight: 700;
+      color: #003c17;
+      background: #f0eded;
+    }
+    .size-select option {
+      font-size: 10px;
+      font-weight: 400;
+      color: #1c1b1b;
+      padding: 2px 4px;
+    }
+
+    /* === Accordion === */
+    .accordion-item {
+      border: 1px solid #e5e2e1;
+      border-radius: 14px;
+      overflow: hidden;
+      background: #ffffff;
+      transition: box-shadow 0.3s ease;
+    }
+    .accordion-item:hover {
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    }
+    .accordion-header {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: left;
+      gap: 12px;
+    }
+    .accordion-header:hover {
+      background: #f6f3f2;
+    }
+    .accordion-header:active {
+      transform: scale(0.995);
+    }
+    .accordion-header .title-wrap {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .accordion-header .series-name {
+      font-size: 16px;
+      font-weight: 700;
+      color: #1c1b1b;
+      letter-spacing: -0.01em;
+    }
+    .accordion-header .series-desc {
+      font-size: 12px;
+      font-weight: 400;
+      color: #71796f;
+    }
+    .accordion-header .chevron {
+      font-size: 24px;
+      color: #71796f;
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+    }
+    .accordion-header.active .chevron {
+      transform: rotate(180deg);
+    }
+    .accordion-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .accordion-body.open {
+      max-height: 6000px;
+    }
+    .accordion-content {
+      padding: 4px 16px 20px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+    @media (min-width: 500px) {
+      .accordion-content { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (min-width: 768px) {
+      .accordion-content { grid-template-columns: repeat(4, 1fr); }
+    }
+    @media (min-width: 1024px) {
+      .accordion-content { grid-template-columns: repeat(5, 1fr); }
+    }
+
+    /* === Subcategory Card === */
+    .subcat-card {
+      display: flex;
+      flex-direction: column;
+      background: #ffffff;
+      border: 1.5px solid #e5e2e1;
+      border-radius: 14px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    }
+    .subcat-card:hover {
+      border-color: #003c17;
+      box-shadow: 0 4px 16px rgba(0,60,23,0.10);
+      transform: translateY(-2px);
+    }
+    .subcat-card:active {
+      transform: translateY(0) scale(0.97);
+    }
+    .subcat-card .card-img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      background: #f6f3f2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      border-bottom: 1px solid #f0eded;
+    }
+    .subcat-card .card-img img {
+      max-width: 80%;
+      max-height: 80%;
+      object-fit: contain;
+      transition: transform 0.3s ease;
+    }
+    .subcat-card:hover .card-img img {
+      transform: scale(1.08);
+    }
+    .subcat-card .card-body {
+      padding: 8px 10px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      flex: 1;
+    }
+    .subcat-card .card-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: #1c1b1b;
+      line-height: 1.2;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .subcat-card .card-count {
+      font-size: 11px;
+      font-weight: 700;
+      color: #003c17;
+      background: #e5f5e9;
+      padding: 2px 8px;
+      border-radius: 100px;
+      align-self: flex-start;
+      white-space: nowrap;
+    }
+
+    /* === Modal === */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 80;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .modal-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .modal-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(4px);
+    }
+    .modal-panel {
+      position: relative;
+      background: #fcf9f8;
+      border-radius: 24px;
+      max-width: 720px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.2);
+      transform: scale(0.92) translateY(12px);
+      transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .modal-overlay.open .modal-panel {
+      transform: scale(1) translateY(0);
+    }
+    .modal-close-btn {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: none;
+      background: #f0eded;
+      color: #1c1b1b;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      z-index: 2;
+    }
+    .modal-close-btn:hover {
+      background: #e5e2e1;
+      transform: scale(1.1);
+    }
+    .modal-close-btn:active {
+      transform: scale(0.9);
+    }
+    .modal-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    @media (min-width: 640px) {
+      .modal-grid {
+        flex-direction: row;
+      }
+    }
+    .modal-image-col {
+      flex: 0 0 auto;
+      width: 100%;
+      background: #f0eded;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      border-radius: 24px 24px 0 0;
+      min-height: 180px;
+    }
+    @media (min-width: 640px) {
+      .modal-image-col {
+        width: 200px;
+        border-radius: 24px 0 0 24px;
+        min-height: 300px;
+      }
+    }
+    .modal-image-col img {
+      max-width: 100%;
+      max-height: 140px;
+      object-fit: contain;
+    }
+    @media (min-width: 640px) {
+      .modal-image-col img {
+        max-height: 200px;
+      }
+    }
+    .modal-info-col {
+      flex: 1;
+      padding: 20px 24px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .modal-header-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #003c17;
+      color: white;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 100px;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+    .modal-title {
+      font-size: 22px;
+      font-weight: 800;
+      color: #1c1b1b;
+      line-height: 1.2;
+    }
+    .modal-subtitle {
+      font-size: 13px;
+      font-weight: 600;
+      color: #003c17;
+    }
+    .modal-desc {
+      font-size: 12px;
+      font-weight: 400;
+      color: #71796f;
+      line-height: 1.4;
+    }
+    .modal-sizes-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: #1c1b1b;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      margin-top: 4px;
+    }
+    .modal-sizes-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 4px;
+      max-height: 200px;
+      overflow-y: auto;
+      padding-right: 4px;
+    }
+    @media (min-width: 640px) {
+      .modal-sizes-grid {
+        grid-template-columns: 1fr;
+        max-height: 220px;
+      }
+    }
+    .modal-size-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 6px 10px;
+      background: #ffffff;
+      border: 1px solid #f0eded;
+      border-radius: 8px;
+      font-size: 12px;
+      transition: all 0.2s ease;
+      gap: 8px;
+    }
+    .modal-size-row:hover {
+      border-color: #c0c9bd;
+      background: #f6f3f2;
+    }
+    .modal-size-row .size {
+      font-weight: 700;
+      color: #1c1b1b;
+      white-space: nowrap;
+    }
+    .modal-size-row .notes {
+      font-weight: 400;
+      color: #71796f;
+      text-align: right;
+      font-size: 11px;
+      flex-shrink: 1;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .modal-wa-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      background: #25D366;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      margin-top: 4px;
+    }
+    .modal-wa-btn:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+    }
+    .modal-wa-btn:active {
+      transform: translateY(0) scale(0.97);
+    }
+
+    /* === Subcategory card entrance === */
+    .subcat-card {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    .subcat-visible .subcat-card {
+      animation: subcat-card-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+    .subcat-visible .subcat-card:nth-child(1) { animation-delay: 0.00s; }
+    .subcat-visible .subcat-card:nth-child(2) { animation-delay: 0.04s; }
+    .subcat-visible .subcat-card:nth-child(3) { animation-delay: 0.08s; }
+    .subcat-visible .subcat-card:nth-child(4) { animation-delay: 0.12s; }
+    .subcat-visible .subcat-card:nth-child(5) { animation-delay: 0.16s; }
+    .subcat-visible .subcat-card:nth-child(6) { animation-delay: 0.20s; }
+    .subcat-visible .subcat-card:nth-child(7) { animation-delay: 0.24s; }
+    .subcat-visible .subcat-card:nth-child(8) { animation-delay: 0.28s; }
+    .subcat-visible .subcat-card:nth-child(9) { animation-delay: 0.32s; }
+    .subcat-visible .subcat-card:nth-child(10) { animation-delay: 0.36s; }
+    @keyframes subcat-card-pop {
+      0% { opacity: 0; transform: translateY(10px) scale(0.95); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* === Accordion entrance === */
+    .accordion-item {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    .accordion-grid-visible .accordion-item {
+      animation: accordion-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+    @keyframes accordion-pop {
+      0% { opacity: 0; transform: translateY(12px) scale(0.97); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .accordion-grid-visible .accordion-item:nth-child(1) { animation-delay: 0.00s; }
+    .accordion-grid-visible .accordion-item:nth-child(2) { animation-delay: 0.06s; }
+    .accordion-grid-visible .accordion-item:nth-child(3) { animation-delay: 0.12s; }
+    .accordion-grid-visible .accordion-item:nth-child(4) { animation-delay: 0.18s; }
+    .accordion-grid-visible .accordion-item:nth-child(5) { animation-delay: 0.24s; }
+    .accordion-grid-visible .accordion-item:nth-child(6) { animation-delay: 0.30s; }
+  </style>
+</head>
+<body>
+  <!-- ===== NAVBAR ===== -->
+  <header class="fixed top-0 left-0 w-full z-50 bg-surface border-b border-outline-variant h-20">
+    <nav class="flex justify-between items-center w-full h-full px-4 md:px-8 max-w-7xl mx-auto">
+      <div class="flex items-center gap-3">
+        <button id="drawer-toggle" class="md:hidden material-symbols-outlined text-primary hover:bg-surface-container-high transition-colors p-2 rounded-full active:scale-95" aria-label="Buka menu">menu</button>
+        <a href="index.html" class="flex items-center gap-2">
+          <img src="images/logo.png" alt="Toko Ban Murah Anugerah" class="h-10 w-10 md:h-12 md:w-12 rounded-full object-cover border-2 border-primary">
+          <span class="font-bold text-[18px] leading-[24px] font-[600] text-primary">TB Anugerah</span>
+        </a>
+      </div>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="index.html" class="text-on-surface-variant hover:text-primary pb-1 font-[600] text-[14px] leading-[20px] transition-colors">Beranda</a>
+        <a href="koleksi.html" class="text-primary border-b-2 border-primary pb-1 font-[600] text-[14px] leading-[20px]">Koleksi</a>
+        <a href="layanan.html" class="text-on-surface-variant hover:text-primary pb-1 font-[600] text-[14px] leading-[20px] transition-colors">Layanan</a>
+        <a href="promo.html" class="text-on-surface-variant hover:text-primary pb-1 font-[600] text-[14px] leading-[20px] transition-colors">Promo</a>
+        <a href="lokasi.html" class="text-on-surface-variant hover:text-primary pb-1 font-[600] text-[14px] leading-[20px] transition-colors">Lokasi</a>
+        <a href="kontak.html" class="text-on-surface-variant hover:text-primary pb-1 font-[600] text-[14px] leading-[20px] transition-colors">Kontak</a>
+      </div>
+      <a href="kontak.html" class="bg-primary text-on-primary px-4 md:px-6 py-2.5 rounded-lg font-[600] text-[14px] leading-[20px] hover:opacity-90 active:scale-95 transition-all">Hubungi</a>
+    </nav>
+  </header>
+
+  <!-- ===== DRAWER ===== -->
+  <div id="drawer" class="fixed inset-0 z-[70] hidden">
+    <div id="drawer-overlay" class="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
+    <nav id="drawer-content" class="fixed inset-y-0 left-0 z-[60] flex flex-col p-6 h-full w-80 bg-surface-bright shadow-xl -translate-x-full transition-transform duration-300 ease-in-out">
+      <div class="flex items-center justify-between mb-8">
+        <span class="font-[600] text-[24px] leading-[32px] text-primary">Menu</span>
+        <button id="drawer-close" class="material-symbols-outlined text-on-surface-variant" aria-label="Tutup menu">close</button>
+      </div>
+      <div class="flex flex-col gap-2">
+        <a href="index.html" class="flex items-center gap-4 p-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg font-[600] text-[14px] leading-[20px]">Beranda</a>
+        <a href="koleksi.html" class="flex items-center gap-4 p-3 bg-primary-container text-on-primary-container rounded-lg font-[600] text-[14px] leading-[20px]">Koleksi</a>
+        <a href="layanan.html" class="flex items-center gap-4 p-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg font-[600] text-[14px] leading-[20px]">Layanan</a>
+        <a href="promo.html" class="flex items-center gap-4 p-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg font-[600] text-[14px] leading-[20px]">Promo</a>
+        <a href="lokasi.html" class="flex items-center gap-4 p-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg font-[600] text-[14px] leading-[20px]">Lokasi</a>
+        <a href="kontak.html" class="flex items-center gap-4 p-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg font-[600] text-[14px] leading-[20px]">Kontak</a>
+      </div>
+    </nav>
+  </div>
+
+  <!-- ===== HERO ===== -->
+  <section class="pt-20 relative overflow-hidden py-20 md:py-28 bg-surface-variant">
+    <img src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWnamKYSrxPxpeskbqBpC9gSyQakdxOT4VfYBKhXGL54ScpdnSAQkTTOuFww3aTh_StO0j9oV0u5n67TxgDlEzUN0_SNTdzTX5ktovFl6Jf6FGT_yXYf59XysFXrsRosC-SCN9zb=w1400-h800-k-no" alt="Toko Ban Murah Anugerah" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
+    <div class="absolute inset-0 bg-gradient-to-r from-[#003c17bf] via-[#003c1759] to-transparent"></div>
+    <div class="absolute inset-0 opacity-20 tire-pattern-overlay"></div>
+    <div class="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
+      <div class="max-w-3xl space-y-6">
+        <div class="flex items-center gap-4">
+          <img src="images/logo.png" alt="Toko Ban Murah Anugerah" class="h-16 w-16 md:h-20 md:w-20 rounded-full object-cover border-2 border-secondary-container/50 shadow-lg">
+          <div class="inline-flex items-center gap-2 bg-primary-container text-primary-fixed font-[600] text-[12px] leading-[16px] px-4 py-1.5 rounded-full uppercase tracking-wider">
+            <span class="material-symbols-outlined text-[16px]">inventory_2</span>
+            11 Merek Ternama
+          </div>
+        </div>
+        <h1 class="font-black text-[36px] md:text-[48px] lg:text-[56px] leading-[1.1] text-on-primary">
+          Koleksi Ban<br>
+          <span class="text-secondary-container">Lengkap & Berkualitas</span>
+        </h1>
+        <p class="text-[18px] leading-[28px] text-on-primary-container/80 max-w-xl">Kami menyediakan ban dari berbagai merek terkemuka dunia. Setiap produk asli bergaransi, cocok untuk segala jenis kendaraan Anda.</p>
+        <div class="flex flex-wrap gap-3 pt-2">
+          <a href="#brand-section" class="bg-secondary-container text-on-secondary-container px-8 py-4 rounded-lg font-[600] text-[14px] leading-[20px] hover:brightness-110 transition-all active:scale-95 shadow-lg flex items-center gap-2">
+            Jelajahi Merek <span class="material-symbols-outlined">arrow_downward</span>
+          </a>
+          <a href="layanan.html" class="bg-white/10 backdrop-blur-md border border-white/30 text-white py-4 px-8 rounded-lg font-[600] text-[14px] leading-[20px] text-center active:scale-[0.98] transition-transform">
+            Lihat Layanan
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BRAND SECTION ===== -->
+  <section id="brand-section" class="py-16 px-4 md:px-8 max-w-6xl mx-auto">
+    <div class="text-center mb-10 reveal" id="sectionHeading">
+      <p class="font-[600] text-[14px] leading-[20px] text-on-surface uppercase tracking-wider mb-2">Klik Merek untuk Detail</p>
+      <h2 class="font-[700] text-[32px] leading-[40px] tracking-[-0.01em] text-primary">Pilih Merek Ban</h2>
+    </div>
+
+    <!-- ===== VIEW: 3x3 GRID ===== -->
+    <div id="view-grid" class="view-state fade-in">
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4 brand-grid-visible" id="brand-box-grid">
+        <button class="brand-box" data-brand="bridgestone"><span class="hint-dot"></span><img src="images/bridgestone-logo.svg" alt="Bridgestone" loading="lazy"></button>
+        <button class="brand-box" data-brand="dunlop"><span class="hint-dot"></span><img src="images/dunlop-logo.svg" alt="Dunlop" loading="lazy"></button>
+        <button class="brand-box" data-brand="gtradial"><span class="hint-dot"></span><img src="images/gtradial-logo.svg" alt="GT Radial" loading="lazy"></button>
+        <button class="brand-box" data-brand="falken"><span class="hint-dot"></span><img src="images/falken-logo.svg" alt="Falken" loading="lazy"></button>
+        <button class="brand-box" data-brand="hankook"><span class="hint-dot"></span><img src="images/hankook-logo.svg" alt="Hankook" loading="lazy"></button>
+        <button class="brand-box" data-brand="swallow"><span class="hint-dot"></span><img src="images/swallow-logo.png" alt="Swallow" loading="lazy"></button>
+        <button class="brand-box" data-brand="michelin"><span class="hint-dot"></span><img src="images/michelin-logo.svg" alt="Michelin" loading="lazy"></button>
+        <button class="brand-box" data-brand="sailun"><span class="hint-dot"></span><img src="images/sailun-logo.png" alt="Sailun" loading="lazy"></button>
+        <button class="brand-box" data-brand="delium"><span class="hint-dot"></span><span class="inline-flex items-center justify-center bg-neutral-800 rounded-lg w-full h-full max-w-[85%] max-h-[70%]"><img src="images/delium-logo.png" alt="Delium" loading="lazy" class="max-w-full max-h-full object-contain"></span></button>
+        <button class="brand-box" data-brand="blackhawk"><span class="hint-dot"></span><span class="inline-flex items-center justify-center bg-neutral-800 rounded-lg w-full h-full max-w-[85%] max-h-[70%]"><img src="images/blackhawk-logo.png" alt="Blackhawk" loading="lazy" class="max-w-full max-h-full object-contain"></span></button>
+        <button class="brand-box" data-brand="accelera"><span class="hint-dot"></span><span class="inline-flex items-center justify-center bg-neutral-800 rounded-lg w-full h-full max-w-[85%] max-h-[70%]"><img src="images/accelera-logo.png" alt="Accelera" loading="lazy" class="max-w-full max-h-full object-contain"></span></button>
+      </div>
+    </div>
+
+    <!-- ===== VIEW: DETAIL (model grid) ===== -->
+    <div id="view-detail" class="view-state hidden-view fade-in">
+      <!-- Detail Header -->
+      <div class="flex items-center justify-between mb-6">
+        <button class="back-btn" id="backBtn">
+          <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+          Kembali
+        </button>
+        <img id="detailBrandLogo" src="" alt="" class="detail-brand-logo">
+      </div>
+
+      <!-- Accordion Container -->
+      <div id="accordionContainer" class="space-y-3">
+        <!-- Populated by JS -->
+      </div>
+
+      <!-- WhatsApp CTA -->
+      <div class="text-center mt-8">
+        <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-primary text-on-primary px-6 py-3 rounded-xl font-[600] text-[14px] leading-[20px] hover:opacity-90 transition-all active:scale-95 shadow-sm">
+          <span class="material-symbols-outlined text-[18px] fill">chat</span>
+          Tanya Ketersediaan & Harga via WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WHY OUR BRANDS ===== -->
+  <section class="bg-surface-container-low py-20 px-4 md:px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="font-[700] text-[32px] leading-[40px] tracking-[-0.01em] text-primary mb-4">Mengapa Memilih Ban Kami?</h2>
+        <div class="w-12 h-1 bg-secondary-container rounded-full mx-auto mb-4"></div>
+        <p class="text-[16px] leading-[24px] text-on-surface-variant max-w-2xl mx-auto">Setiap ban yang kami jual telah melalui seleksi ketat untuk memastikan keamanan dan kenyamanan berkendara Anda.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white p-8 rounded-2xl border border-outline-variant/30 text-center card-hover hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
+          <div class="w-16 h-16 bg-gradient-to-br from-primary to-primary-container rounded-2xl flex items-center justify-center mx-auto mb-5 shadow-sm">
+            <span class="material-symbols-outlined text-on-primary text-3xl fill">verified</span>
+          </div>
+          <h3 class="font-[600] text-[20px] leading-[28px] text-on-surface mb-3">Produk Asli Bergaransi</h3>
+          <p class="text-[14px] leading-[20px] text-on-surface-variant">Semua ban adalah produk original dengan garansi resmi pabrikan untuk ketenangan pikiran Anda.</p>
+        </div>
+        <div class="bg-white p-8 rounded-2xl border border-outline-variant/30 text-center card-hover hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
+          <div class="w-16 h-16 bg-gradient-to-br from-primary to-primary-container rounded-2xl flex items-center justify-center mx-auto mb-5 shadow-sm">
+            <span class="material-symbols-outlined text-on-primary text-3xl">diversity_3</span>
+          </div>
+          <h3 class="font-[600] text-[20px] leading-[28px] text-on-surface mb-3">Lengkap & Bervariasi</h3>
+          <p class="text-[14px] leading-[20px] text-on-surface-variant">Mulai dari ban city car hingga SUV, semua merek dan ukuran tersedia di satu tempat.</p>
+        </div>
+        <div class="bg-white p-8 rounded-2xl border border-outline-variant/30 text-center card-hover hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
+          <div class="w-16 h-16 bg-gradient-to-br from-primary to-primary-container rounded-2xl flex items-center justify-center mx-auto mb-5 shadow-sm">
+            <span class="material-symbols-outlined text-on-primary text-3xl">support_agent</span>
+          </div>
+          <h3 class="font-[600] text-[20px] leading-[28px] text-on-surface mb-3">Konsultasi Gratis</h3>
+          <p class="text-[14px] leading-[20px] text-on-surface-variant">Tim teknisi kami siap membantu Anda memilih ban yang paling sesuai dengan kebutuhan dan budget.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="bg-primary-container text-on-primary">
+    <div class="max-w-7xl mx-auto px-4 md:px-8 py-12">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-6 border-b border-white/10 pb-8 mb-8">
+        <div class="text-center md:text-left">
+          <div class="flex items-center justify-center md:justify-start gap-3 mb-2">
+            <img src="images/logo.png" alt="Toko Ban Murah Anugerah" class="h-10 w-10 rounded-full object-cover border-2 border-white/30">
+            <div class="font-[600] text-[20px] leading-[28px] font-bold">Toko Ban Murah Anugerah</div>
+          </div>
+          <p class="text-on-primary-container text-[16px] leading-[24px]">Solusi Ban Berkualitas &amp; Terpercaya</p>
+        </div>
+        <div class="flex flex-wrap gap-6 justify-center">
+          <a href="index.html" class="text-[12px] leading-[16px] font-[500] text-on-primary-container hover:text-secondary-fixed transition-colors">Beranda</a>
+          <a href="koleksi.html" class="text-[12px] leading-[16px] font-[500] text-on-primary-container hover:text-secondary-fixed transition-colors">Koleksi</a>
+          <a href="layanan.html" class="text-[12px] leading-[16px] font-[500] text-on-primary-container hover:text-secondary-fixed transition-colors">Layanan</a>
+          <a href="promo.html" class="text-[12px] leading-[16px] font-[500] text-on-primary-container hover:text-secondary-fixed transition-colors">Promo</a>
+          <a href="lokasi.html" class="text-[12px] leading-[16px] font-[500] text-on-primary-container hover:text-secondary-fixed transition-colors">Lokasi</a>
+          <a href="kontak.html" class="text-[12px] leading-[16px] font-[500] text-on-primary-container hover:text-secondary-fixed transition-colors">Kontak</a>
+        </div>
+      </div>
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-center">
+        <p class="text-on-primary-container text-[12px] leading-[16px] font-[500]">&copy; 2024 Toko Ban Murah Anugerah. All rights reserved. <a href="admin.html" class="opacity-10 hover:opacity-40 transition-opacity text-[10px]">⏺</a></p>
+        <div class="flex gap-6">
+          <span class="text-[12px] leading-[16px] font-[500] text-on-primary-container">Syarat &amp; Ketentuan</span>
+          <span class="text-[12px] leading-[16px] font-[500] text-on-primary-container">Kebijakan Privasi</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== WHATSAPP ===== -->
+  <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 z-[45] w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-xl hover:scale-110 active:scale-95 transition-all duration-300 whatsapp-float group" aria-label="Chat via WhatsApp">
+    <span class="absolute right-full mr-3 bg-white text-on-surface px-3 py-1.5 rounded-lg text-[12px] leading-[16px] font-[500] whitespace-nowrap shadow-lg border border-outline-variant opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none hidden md:block">Chat via WhatsApp</span>
+    <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.067 2.877 1.215 3.076.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+  </a>
+
+  <!-- ===== BOTTOM NAV MOBILE ===== -->
+  <nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-2 py-2 md:hidden bg-surface border-t border-outline-variant shadow-md">
+    <a href="index.html" class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 font-[500] text-[12px] leading-[16px] active:scale-90 transition-transform">
+      <span class="material-symbols-outlined">home</span> Beranda
+    </a>
+    <a href="koleksi.html" class="bottom-nav-active flex flex-col items-center justify-center px-3 py-1 font-[500] text-[12px] leading-[16px] active:scale-90 transition-transform">
+      <span class="material-symbols-outlined">inventory_2</span> Koleksi
+    </a>
+    <a href="promo.html" class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 font-[500] text-[12px] leading-[16px] active:scale-90 transition-transform">
+      <span class="material-symbols-outlined">local_offer</span> Promo
+    </a>
+    <a href="layanan.html" class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 font-[500] text-[12px] leading-[16px] active:scale-90 transition-transform">
+      <span class="material-symbols-outlined">tire_repair</span> Layanan
+    </a>
+    <a href="kontak.html" class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 font-[500] text-[12px] leading-[16px] active:scale-90 transition-transform">
+      <span class="material-symbols-outlined">person</span> Kontak
+    </a>
+  </nav>
+
+  <!-- ===== MODAL ===== -->
+  <div id="sizeModal" class="modal-overlay">
+    <div class="modal-backdrop" id="modalBackdrop"></div>
+    <div class="modal-panel">
+      <button class="modal-close-btn" id="modalCloseBtn" aria-label="Tutup">
+        <span class="material-symbols-outlined text-[18px]">close</span>
+      </button>
+      <div class="modal-grid">
+        <div class="modal-image-col">
+          <img id="modalImage" src="" alt="">
+        </div>
+        <div class="modal-info-col">
+          <div id="modalBadgeWrap"></div>
+          <div>
+            <div class="modal-title" id="modalTitle"></div>
+            <div class="modal-subtitle" id="modalSubtitle"></div>
+          </div>
+          <div class="modal-desc" id="modalDesc"></div>
+          <div>
+            <div class="modal-sizes-label">Ukuran Tersedia</div>
+            <div class="modal-sizes-grid" id="modalSizesGrid"></div>
+          </div>
+          <a id="modalWaBtn" href="https://wa.me/6281234567890?text=" target="_blank" rel="noopener noreferrer" class="modal-wa-btn">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.067 2.877 1.215 3.076.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            Tanya Harga via WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/brands-data.js"></script>
+  <script src="js/scripts.js"></script>
+  <script>
+    document.addEventListener('keydown', function(e) {
+      if (e.ctrlKey && e.shiftKey && (e.key === 'A' || e.key === 'a')) { e.preventDefault(); window.location.href = 'admin.html'; }
+    });
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Brand data is loaded from js/brands-data.js
+      // Guard: ensure brands data loaded correctly
+      if (typeof brands === 'undefined' || !brands) return;
+
+      // Normalize all brands to have subCategories format
+      Object.keys(brands).forEach(function(key) {
+        var brand = brands[key];
+        brand.models = brand.models.map(function(model) {
+          if (model.subCategories && model.subCategories.length > 0) {
+            return model;
+          }
+          var sizeList = (model.sizes || '').split('·').map(function(s) { return s.trim(); }).filter(Boolean);
+          return {
+            name: model.name,
+            desc: model.desc || '',
+            subCategories: [
+              {
+                label: 'Ukuran Tersedia',
+                entries: sizeList.map(function(size) { return { size: size, notes: '' }; })
+              }
+            ]
+          };
+        });
+      });
+
+      var viewGrid = document.getElementById('view-grid');
+      var viewDetail = document.getElementById('view-detail');
+      var brandBoxes = document.querySelectorAll('.brand-box');
+      var backBtn = document.getElementById('backBtn');
+      var heading = document.getElementById('sectionHeading');
+      var accordionContainer = document.getElementById('accordionContainer');
+      var modalOverlay = document.getElementById('sizeModal');
+      var modalBackdrop = document.getElementById('modalBackdrop');
+      var modalCloseBtn = document.getElementById('modalCloseBtn');
+      var modalImage = document.getElementById('modalImage');
+      var modalBadgeWrap = document.getElementById('modalBadgeWrap');
+      var modalTitle = document.getElementById('modalTitle');
+      var modalSubtitle = document.getElementById('modalSubtitle');
+      var modalDesc = document.getElementById('modalDesc');
+      var modalSizesGrid = document.getElementById('modalSizesGrid');
+      var modalWaBtn = document.getElementById('modalWaBtn');
+      var isTransitioning = false;
+
+      function toggleAccordion(header) {
+        var body = header.nextElementSibling;
+        if (!body) return;
+        header.classList.toggle('active');
+        body.classList.toggle('open');
+        // Trigger subcat-card entrance animation when opening
+        if (body.classList.contains('open')) {
+          var content = body.querySelector('.accordion-content');
+          if (content) content.classList.add('subcat-visible');
+        }
+      }
+
+      function openModal(brand, model, category) {
+        var imgSrc = getModelImage(brand.name, model.name, category.label);
+        var fallbackImg = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 75'%3E%3Crect width='100' height='75' fill='%23e5e2e1' rx='8'/%3E%3Ctext x='50' y='42' text-anchor='middle' font-size='10' fill='%23999'%3ETire%3C/text%3E%3C/svg%3E";
+        modalImage.src = imgSrc;
+        modalImage.setAttribute('onerror', 'this.onerror=null;this.src="' + fallbackImg + '"');
+        modalImage.alt = model.name + ' - ' + category.label;
+        modalBadgeWrap.innerHTML = '<span class="modal-header-badge">' + brand.name + '</span>';
+        modalTitle.textContent = model.name;
+        modalSubtitle.textContent = category.label;
+        modalDesc.textContent = model.desc || '';
+        modalSizesGrid.innerHTML = '';
+
+        category.entries.forEach(function(entry) {
+          var row = document.createElement('div');
+          row.className = 'modal-size-row';
+          row.innerHTML = '<span class="size">' + entry.size + '</span><span class="notes">' + (entry.notes || '') + '</span>';
+          row.addEventListener('click', function() {
+            var waMsg = encodeURIComponent('Halo, saya tertarik dengan ban ' + brand.name + ' ' + model.name + ' ukuran ' + entry.size + '. Mohon info ketersediaan dan harga.');
+            modalWaBtn.href = 'https://wa.me/6281234567890?text=' + waMsg;
+          });
+          modalSizesGrid.appendChild(row);
+        });
+
+        var waMsg = encodeURIComponent('Halo, saya tertarik dengan ban ' + brand.name + ' ' + model.name + ' (' + category.label + '). Mohon info ketersediaan dan harga.');
+        modalWaBtn.href = 'https://wa.me/6281234567890?text=' + waMsg;
+
+        modalOverlay.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal() {
+        modalOverlay.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      if (modalBackdrop) modalBackdrop.addEventListener('click', closeModal);
+      if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeModal);
+
+      function getModelImage(brandName, modelName, categoryLabel) {
+        // Real tire images mapping for brands that have actual photos
+        var imageMap = {
+          // ===== BRIDGESTONE =====
+          'Bridgestone': {
+            'POTENZA': {
+              'Standard Lineup': 'images/bridgestone-potenza-re003-tilted.webp',
+              'S007A (Import)': 'images/bridgestone-potenza-s007a.webp',
+              'Adrenalin RE003': 'images/bridgestone-potenza-re003-tilted.webp',
+              'OEM & Import Premium': 'images/bridgestone-potenza-re003-tilted.webp',
+            },
+            'TURANZA': {
+              'Standard Lineup': 'images/bridgestone-turanza-t005a.webp',
+              'Turanza 6': 'images/bst-turanza-t005.webp',
+              'OEM & Special Fitment': 'images/bst-turanza-t005.webp',
+            },
+            'ECOPIA': {
+              'EP300 & ENLITEN': 'images/bridgestone-ecopia-ep300-tilted.webp',
+              'EP150 — OEM & Passenger': 'images/bridgestone-ecopia-ep300-tilted.webp',
+              'EP150 — City & Compact': 'images/bridgestone-ecopia-ep300-tilted.webp',
+              'H/L 422 Plus': 'images/bridgestone-ecopia-ep300-tilted.webp',
+            },
+            'DUELER': {
+              'A/T 002 (All-Terrain)': 'images/bridgestone-dueler-at002.webp',
+              'A/T 697 (LVR)': 'images/bridgestone-dueler-at002.webp',
+              'M/T 674 (Mud-Terrain)': 'images/bridgestone-dueler-at002.webp',
+              'H/P SPORT AS (High Performance)': 'images/bridgestone-dueler-at002.webp',
+              'H/P SPORT (Performance SUV)': 'images/bridgestone-dueler-at002.webp',
+              'H/L 33 / 33A (Luxury SUV)': 'images/bridgestone-dueler-at002.webp',
+              'H/L 400 (Luxury SUV)': 'images/bridgestone-dueler-at002.webp',
+              'H/L 683 / 852 (Classic SUV)': 'images/bridgestone-dueler-at002.webp',
+              'H/T 470 / 684 (Highway Truck)': 'images/bridgestone-dueler-at002.webp',
+              'H/L 687 (SUV Touring)': 'images/bridgestone-dueler-at002.webp',
+              'H/L 689 (SUV Touring)': 'images/bridgestone-dueler-at002.webp',
+              'H/T 840 / A/T 693 (Off-Road)': 'images/bridgestone-dueler-at002.webp',
+            },
+            'ALENZA': {
+              'ALENZA 001': 'images/bridgestone-alenza-001.webp',
+              "ALENZA 001A & H/L 33": 'images/bridgestone-alenza-001.webp',
+              'ALENZA H/L 331': 'images/bridgestone-alenza-001.webp',
+            },
+            'TECHNO': {
+              'TECHNO SPORTS (18")': 'images/bst-techno-sports.webp',
+              'TECHNO SPORTS (17")': 'images/bst-techno-sports.webp',
+              'TECHNO SPORTS (16")': 'images/bst-techno-sports.webp',
+              'TECHNO SPORTS (15" & 14")': 'images/bst-techno-sports.webp',
+              'TECHNO 248 & 13"': 'images/bst-techno-sports.webp',
+              'R624 — Light Truck (8 PR)': 'images/bst-duravis-r624.webp',
+              'R660A — Light Truck': 'images/bst-duravis-r624.webp',
+              'B390 / BISON 623 (Passenger / Commercial)': 'images/bst-b390.webp',
+            },
+          },
+          // ===== DUNLOP =====
+          'Dunlop': {
+            'ST / PT / SUV & 4WD': { '*': 'images/tires/dunlop-st30.webp' },
+            'SP SPORT MAXX': { '*': 'images/tires/dunlop-sp-sport-maxx-050.webp' },
+            'ENASAVE & ECO': { '*': 'images/tires/dunlop-ec300-plus.webp' },
+            'MANS Performance': { '*': 'images/tires/dunlop-lm705.webp' },
+            'DIREZZA Premium Performance': { '*': 'images/tires/dunlop-direzza-dz102.webp' },
+            'Touring Passenger & All-Terrain': { '*': 'images/tires/dunlop-at5.webp' },
+          },
+          // ===== GT RADIAL =====
+          'GT Radial': {
+            'SAVERO & KOMODO': {
+              'SAVERO A/T PRO': 'images/gtradial-savero-atpro.webp',
+              'SAVERO SUV': 'images/gtradial-savero-suv.webp',
+              'SAVERO M/T PRO': 'images/gtradial-savero-mtpro.webp',
+              'SAVERO M/T': 'images/gtradial-savero-mt.webp',
+              'KOMODO EXTREME': 'images/gtradial-komodo-extreme.webp',
+            },
+            'CHAMPIRO': {
+              'CHAMPIRO HPY': 'images/gtradial-champiro-hpy.webp',
+              'CHAMPIRO GTX PRO2': 'images/gtradial-champiro-gtxpro.webp',
+              'CHAMPIRO GTX PRO': 'images/gtradial-champiro-gtxpro.webp',
+              'CHAMPIRO SX2': 'images/gtradial-champiro-sx2.webp',
+              'CHAMPIRO SX-R': 'images/gtradial-champiro-sxr.webp',
+              'CHAMPIRO ECOTEC': 'images/gtradial-champiro-ecotec.webp',
+              'CHAMPIRO ECO': 'images/gtradial-champiro-ecotec.webp',
+              'CHAMPIRO LUXE': 'images/gtradial-champiro-luxe.webp',
+            },
+            'MAXMILER': {
+              'MAXMILER PRO': 'images/gtradial-maxmiler-pro.webp',
+            },
+          },
+          // ===== MICHELIN =====
+          'Michelin': {
+            'PRIMACY 5': { '*': 'images/tires/michelin-primacy-5.webp' },
+            'PRIMACY 4': { '*': 'images/tires/michelin-primacy-4.webp' },
+            'PILOT SPORT 5': { '*': 'images/tires/michelin-pilot-sport-5.webp' },
+            'PILOT SPORT 4 SUV': { '*': 'images/tires/michelin-pilot-sport-4-suv.webp' },
+            'PILOT SPORT 4/4S': { '*': 'images/tires/michelin-pilot-sport-4-suv.webp' },
+            'LATITUDE SPORT 3': { '*': 'images/tires/michelin-latitude-sport-3.webp' },
+          },
+          // ===== SAILUN =====
+          'Sailun': {
+            'ELITE 2': { '*': 'images/sailun-elite2.webp' },
+            'ATREZO ZSR2': { '*': 'images/sailun-atrezzo-zsr2.webp' },
+            'ATREZO R01 SPORT': { '*': 'images/sailun-atrezzo-r01-sport.webp' },
+            'COMMERCIO PRO': { '*': 'images/sailun-commercio-pro.webp' },
+            'ATREZO SUV T-CON': { '*': 'images/sailun-atrezzo-suv-tcon.png' },
+            'TERAMAX A/T M': { '*': 'images/sailun-terramax-atm.webp' },
+            'TERAMAX M/T': { '*': 'images/sailun-terramax-mt.webp' },
+          },
+          // ===== ACCELERA =====
+          'Accelera': {
+            'PHI': { '*': 'images/accelera-phi.webp' },
+            'Iota': { '*': 'images/accelera-iota-evt.webp' },
+            '651 SPORT': { '*': 'images/accelera-651-sport.webp' },
+            '351 SPORT GD': { '*': 'images/accelera-351-sport-gd.webp' },
+            'ECO PLUSH': { '*': 'images/accelera-eco-plush.webp' },
+            'Omikron': { '*': 'images/accelera-omikron-at.webp' },
+            'Epsilon': { '*': 'images/accelera-epsilon.webp' },
+            'M/T & OFF-ROAD': { '*': 'images/accelera-mt01.webp' },
+            'ALPHA & SIGMA': { '*': 'images/accelera-alpha.webp' },
+            'RALLY': { '*': 'images/accelera-ra162.webp' },
+          },
+          // ===== HANKOOK =====
+          'Hankook': {
+            'Ventus Prime4': { '*': 'images/hankook-ventus-prime4.webp' },
+            'Kinergy 4S2': { '*': 'images/hankook-kinergy-4s2.webp' },
+            'Kinergy PT': { '*': 'images/hankook-kinergy-pt.webp' },
+            'Dynapro HP2': { '*': 'images/hankook-dynapro-hp2.webp' },
+          },
+          // ===== BLACKHAWK =====
+          'Blackhawk': {
+            'AGILITY SUV': { '*': 'images/blackhawk-agility-suv-tread.webp' },
+            'Street Performance': { '*': 'images/blackhawk-agility-suv-tread.webp' },
+          },
+          // ===== DELIUM =====
+          'Delium': {
+            'EVO TECHNO': { '*': 'images/delium-evo-techno.webp' },
+            'EVO RAZE': { '*': 'images/delium-evo-raze.webp' },
+            'POWER SAVER': { '*': 'images/delium-power-saver.webp' },
+            'TERRA CRUISER A/T': { '*': 'images/delium-terra-cruiser.webp' },
+          },
+          // ===== SWALLOW =====
+          'Swallow': {
+            'HS 231': { '*': 'images/swallow-hs-231.webp' },
+            'HS 237': { '*': 'images/swallow-hs-237.webp' },
+            'HS 229': { '*': 'images/swallow-hs-229.webp' },
+          },
+        };
+
+        // Check for a specific image match
+        var brandMap = imageMap[brandName];
+        if (brandMap) {
+          var modelMap = brandMap[modelName];
+          if (modelMap) {
+            // If model has wildcard '*' key, use it for any category
+            if (modelMap['*']) return modelMap['*'];
+            // Check for specific category match
+            var specific = modelMap[categoryLabel];
+            if (specific) return specific;
+            // Fallback: use first available image for this model
+            var keys = Object.keys(modelMap);
+            if (keys.length > 0) return modelMap[keys[0]];
+          }
+        }
+
+        // Fallback to generic SVG placeholder
+        var imgName = modelName.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+$/, '') + '.svg';
+        return 'images/tires/' + imgName;
+      }
+
+      function showGrid() {
+        if (isTransitioning) return;
+        isTransitioning = true;
+        viewDetail.classList.remove('fade-in');
+        viewDetail.classList.add('fade-out');
+        setTimeout(function() {
+          viewDetail.classList.add('hidden-view');
+          viewDetail.classList.remove('fade-out');
+          viewGrid.classList.remove('hidden-view', 'fade-out');
+          void viewGrid.offsetWidth;
+          viewGrid.classList.add('fade-in');
+          var brandGrid = document.getElementById('brand-box-grid');
+          if (brandGrid) brandGrid.classList.add('brand-grid-visible');
+          if (heading) heading.style.opacity = '1';
+          setTimeout(function() { isTransitioning = false; }, 350);
+        }, 300);
+      }
+
+      function showDetail(brandKey) {
+        if (isTransitioning) return;
+        var data = brands[brandKey];
+        if (!data) return;
+        isTransitioning = true;
+
+        document.getElementById('detailBrandLogo').src = data.logo;
+        document.getElementById('detailBrandLogo').alt = data.name;
+
+        accordionContainer.innerHTML = '';
+        accordionContainer.classList.remove('accordion-grid-visible');
+
+        data.models.forEach(function(model, idx) {
+          if (!model.subCategories || model.subCategories.length === 0) return;
+
+          var item = document.createElement('div');
+          item.className = 'accordion-item';
+          item.style.animationDelay = (idx * 0.06) + 's';
+
+          var header = document.createElement('button');
+          header.className = 'accordion-header';
+          header.innerHTML = '<div class="title-wrap"><span class="series-name">' + model.name + '</span><span class="series-desc">' + (model.desc || '') + '</span></div><span class="material-symbols-outlined chevron">expand_more</span>';
+          header.addEventListener('click', function() { toggleAccordion(header); });
+
+          var body = document.createElement('div');
+          body.className = 'accordion-body';
+          var content = document.createElement('div');
+          content.className = 'accordion-content';
+
+          model.subCategories.forEach(function(cat) {
+            if (!cat.entries || cat.entries.length === 0) return;
+            var card = document.createElement('div');
+            card.className = 'subcat-card';
+
+            var imgSrc = getModelImage(data.name, model.name, cat.label);
+
+            var fallbackImg = "data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 75%27%3E%3Crect width=%27100%27 height=%2775%27 fill=%27%23e5e2e1%27 rx=%278%27/%3E%3Ctext x=%2750%27 y=%2742%27 text-anchor=%27middle%27 font-size=%2710%27 fill=%27%23999%27%3ETire%3C/text%3E%3C/svg%3E";
+            var img = document.createElement('img');
+            img.src = imgSrc;
+            img.alt = cat.label;
+            img.loading = 'lazy';
+            img.onerror = function() { this.onerror = null; this.src = fallbackImg; };
+            var imgWrap = document.createElement('div');
+            imgWrap.className = 'card-img';
+            imgWrap.appendChild(img);
+            card.appendChild(imgWrap);
+            var bodyDiv = document.createElement('div');
+            bodyDiv.className = 'card-body';
+            bodyDiv.innerHTML =
+                '<div class="card-label">' + cat.label + '</div>' +
+                '<div class="card-count">' + cat.entries.length + ' ukuran</div>';
+            card.appendChild(bodyDiv);
+
+            card.addEventListener('click', function() {
+              openModal(data, model, cat);
+            });
+            content.appendChild(card);
+          });
+
+          body.appendChild(content);
+          item.appendChild(header);
+          item.appendChild(body);
+          accordionContainer.appendChild(item);
+        });
+
+        if (heading) heading.style.opacity = '0';
+        viewGrid.classList.remove('fade-in');
+        viewGrid.classList.add('fade-out');
+        setTimeout(function() {
+          viewGrid.classList.add('hidden-view');
+          viewDetail.classList.remove('hidden-view', 'fade-out');
+          void viewDetail.offsetWidth;
+          viewDetail.classList.add('fade-in');            setTimeout(function() {
+              accordionContainer.classList.add('accordion-grid-visible');
+              // Open first accordion automatically so subcategories are visible
+              var firstHeader = accordionContainer.querySelector('.accordion-header');
+              if (firstHeader) toggleAccordion(firstHeader);
+          }, 100);
+          setTimeout(function() { isTransitioning = false; }, 350);
+        }, 300);
+      }
+
+      brandBoxes.forEach(function(box) {
+        box.addEventListener('click', function() {
+          closeModal();
+          showDetail(this.getAttribute('data-brand'));
+        });
+      });
+      if (backBtn) backBtn.addEventListener('click', function() { closeModal(); showGrid(); });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          if (modalOverlay.classList.contains('open')) {
+            closeModal();
+          } else if (!viewDetail.classList.contains('hidden-view')) {
+            showGrid();
+          }
+        }
+      });
+
+      // Grid entrance
+      var brandGrid = document.getElementById('brand-box-grid');
+      if (brandGrid) {
+        var obs = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              brandGrid.classList.add('brand-grid-visible');
+              obs.unobserve(brandGrid);
+            }
+          });
+        }, { threshold: 0.15 });
+        obs.observe(brandGrid);
+      }
+    });
+  </script>
+</body>
+</html>

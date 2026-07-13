@@ -1,0 +1,29 @@
+# --- Dependencies ---
+node_modules/
+
+# --- Build output ---
+dist/
+
+# --- Design references (not source code) ---
+extracted_design/
+
+# --- Notes & scratch files ---
+*.txt
+sailun_homepage.png
+
+# --- Large assets (use compressed .webp versions) ---
+images/sailun-atrezzo-zsr2.png
+
+# --- Archives ---
+*.zip
+
+# --- OS files ---
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- IDE ---
+.vscode/
+.idea/
+*.swp
+*.swo

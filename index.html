@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Toko Ban Murah Anugerah | Performa Tangguh, Harga Terjangkau</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,0&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="images/logo.png">
+  <link rel="stylesheet" href="css/styles.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#003c17',
+            'primary-container': '#18542a',
+            'on-primary': '#ffffff',
+            'on-primary-container': '#8ac792',
+            'primary-fixed': '#b2f2b9',
+            'primary-fixed-dim': '#97d59f',
+            secondary: '#765a00',
+            'secondary-container': '#fdc824',
+            'secondary-fixed': '#ffdf95',
+            'secondary-fixed-dim': '#f4bf18',
+            'on-secondary': '#ffffff',
+            'on-secondary-container': '#6e5400',
+            'on-secondary-fixed': '#251a00',
+            'on-secondary-fixed-variant': '#594400',
+            tertiary: '#323334',
+            'tertiary-container': '#484a4a',
+            'tertiary-fixed': '#e2e2e2',
+            'tertiary-fixed-dim': '#c6c6c7',
+            'on-tertiary': '#ffffff',
+            'on-tertiary-container': '#b9b9b9',
+            'on-tertiary-fixed': '#1a1c1c',
+            'on-tertiary-fixed-variant': '#454747',
+            background: '#fcf9f8',
+            surface: '#fcf9f8',
+            'surface-dim': '#dcd9d9',
+            'surface-bright': '#fcf9f8',
+            'surface-container-lowest': '#ffffff',
+            'surface-container-low': '#f6f3f2',
+            'surface-container': '#f0eded',
+            'surface-container-high': '#eae7e7',
+            'surface-container-highest': '#e5e2e1',
+            'surface-variant': '#e5e2e1',
+            'on-surface': '#1c1b1b',
+            'on-surface-variant': '#414940',
+            'on-background': '#1c1b1b',
+            outline: '#71796f',
+            'outline-variant': '#c0c9bd',
+            error: '#ba1a1a',
+            'error-container': '#ffdad6',
+            'on-error': '#ffffff',
+            'on-error-container': '#93000a',
+          },
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+        }
+      }
+    }
+  </script>
+</head>
+<body class="pb-16 md:pb-0">
+  <!-- ===== NAVBAR ===== -->
+  <header class="fixed top-0 left-0 w-full z-50 bg-surface border-b border-outline-variant h-20">
+    <nav class="flex justify-between items-center w-full h-full px-4 md:px-8 max-w-7xl mx-auto">
+      <div class="flex items-center gap-3">
+        <button id="drawer-toggle" class="md:hidden material-symbols-outlined text-primary hover:bg-surface-container-high transition-colors p-2 rounded-full active:scale-95" aria-label="Buka menu navigasi">menu</button>
+        <a href="index.html" class="flex items-center gap-2">
+          <img src="images/logo.png" alt="Toko Ban Murah Anugerah" class="h-10 w-10 md:h-12 md:w-12 rounded-full object-cover border-2 border-primary">
+          <span class="hidden sm:inline font-bold text-[18px] leading-[24px] font-[600] text-primary">TB Anugerah</span>
+          <span class="sm:hidden font-bold text-[18px] leading-[24px] font-[600] text-primary">TB Anugerah</span>
+        </a>
+      </div>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="index.html" class="text-primary border-b-2 border-primary pb-1 font-[600] text-[14px] leading-[20px]">Beranda</a>
+        <a href="koleksi.html" class="text-on-surface-variant hover:text-primary pb-1 font-[600] text-[14px] leading-[20px] transition-colors">Koleksi</a>
+        <a href="layanan.html" class="text-on-surface-variant hover:text-primary pb-1 font-[600] text-[14px] leading-[20px] transition-colors">Layanan</a>
+        <a href="promo.html" class="text-on-surface-variant hover:text-primary pb-1 font-[600] text-[14px] leading-[20px] transition-colors">Promo</a>
+        <a href="lokasi.html" class="text-on-surface-variant hover:text-primary pb-1 font-[600] text-[14px] leading-[20px] transition-colors">Lokasi</a>
+        <a href="kontak.html" class="text-on-surface-variant hover:text-primary pb-1 font-[600] text-[14px] leading-[20px] transition-colors">Kontak</a>
+      </div>
+      <a href="kontak.html" class="bg-primary text-on-primary px-4 md:px-6 py-2.5 rounded-lg font-[600] text-[14px] leading-[20px] hover:opacity-90 active:scale-95 transition-all">Hubungi</a>
+    </nav>
+  </header>
+
+  <!-- ===== MOBILE DRAWER ===== -->
+  <div id="drawer" class="fixed inset-0 z-[70] hidden">
+    <div id="drawer-overlay" class="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
+    <nav id="drawer-content" class="fixed inset-y-0 left-0 z-[60] flex flex-col p-6 h-full w-80 bg-surface-bright shadow-xl -translate-x-full transition-transform duration-300 ease-in-out">
+      <div class="flex items-center justify-between mb-8">
+        <span class="font-[600] text-[24px] leading-[32px] text-primary">Menu</span>
+        <button id="drawer-close" class="material-symbols-outlined text-on-surface-variant" aria-label="Tutup menu navigasi">close</button>
+      </div>
+      <div class="flex flex-col gap-2">
+        <a href="index.html" class="flex items-center gap-4 p-3 bg-primary-container text-on-primary-container rounded-lg font-[600] text-[14px] leading-[20px] active:translate-x-1 transition-transform">Beranda</a>
+        <a href="koleksi.html" class="flex items-center gap-4 p-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg font-[600] text-[14px] leading-[20px] active:translate-x-1 transition-transform">Koleksi</a>
+        <a href="layanan.html" class="flex items-center gap-4 p-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg font-[600] text-[14px] leading-[20px] active:translate-x-1 transition-transform">Layanan</a>
+        <a href="promo.html" class="flex items-center gap-4 p-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg font-[600] text-[14px] leading-[20px] active:translate-x-1 transition-transform">Promo</a>
+        <a href="lokasi.html" class="flex items-center gap-4 p-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg font-[600] text-[14px] leading-[20px] active:translate-x-1 transition-transform">Lokasi</a>
+        <a href="kontak.html" class="flex items-center gap-4 p-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg font-[600] text-[14px] leading-[20px] active:translate-x-1 transition-transform">Kontak</a>
+      </div>
+    </nav>
+  </div>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero-section relative min-h-[750px] md:min-h-[900px] flex flex-col justify-center px-4 md:px-8 pb-20 md:pb-28 pt-12 md:pt-20 overflow-hidden">
+    <!-- Layer 1: Background Image dengan Parallax -->
+    <div class="absolute inset-0 overflow-hidden">
+      <img src="images/hero-shop.webp" alt="Toko Ban Murah Anugerah" class="hero-parallax-img absolute w-full h-[115%] object-cover" style="top: -7.5%;">
+    </div>
+
+    <!-- Layer 2: Radial Gradient Overlay (kiri ke kanan) -->
+    <div class="hero-overlay-left absolute inset-0 z-[1]"></div>
+
+    <!-- Layer 3: Tire Pattern Texture Overlay -->
+    <div class="absolute inset-0 z-[2] opacity-25 tire-pattern-overlay"></div>
+
+    <!-- Layer 4: Bottom Fade Gradient -->
+    <div class="hero-overlay-bottom absolute bottom-0 left-0 w-full h-48 z-[3]"></div>
+
+      <!-- Content -->
+    <div class="relative z-10 max-w-7xl mx-auto w-full">
+      <!-- Subtle badge for hierarchy -->
+      <div class="hero-stagger hero-stagger-1 mb-4">
+        <span class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-primary-fixed-dim text-[11px] md:text-[12px] font-[600] tracking-[0.12em] uppercase px-3 py-1.5 rounded-full border border-white/10">
+          <span class="w-1.5 h-1.5 rounded-full bg-secondary-container"></span>
+          Toko Ban Terpercaya Sejak 1998
+        </span>
+      </div>
+      <div class="mb-5 hero-stagger hero-stagger-2">
+        <h1 class="font-black text-[38px] md:text-[56px] lg:text-[72px] leading-[1.05] tracking-[-0.03em] text-on-primary">
+          <span class="block">Performa Tangguh,</span>
+          <span class="text-secondary-container block">Harga Terjangkau</span>
+        </h1>
+      </div>
+      <p class="text-on-primary/80 text-[17px] md:text-[19px] leading-[28px] md:leading-[32px] max-w-xl hero-stagger hero-stagger-3 font-[400]">Solusi ban terbaik untuk kendaraan Anda dengan layanan profesional, mekanik ramah, dan harga yang transparan tanpa biaya tersembunyi.</p>
+      <div class="flex flex-col sm:flex-row gap-3 mt-8 hero-stagger hero-stagger-4">
+        <a href="layanan.html" class="inline-flex items-center justify-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-white py-4 px-8 rounded-xl font-[600] text-[14px] leading-[20px] hover:bg-white/20 active:scale-[0.97] transition-all duration-200">
+          <span>Lihat Layanan</span>
+          <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SEARCH FILTER - Floating Card ===== -->
+  <div class="-mt-14 md:-mt-20 relative z-30 px-4 md:px-8 max-w-7xl mx-auto">
+    <div class="bg-white rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.12)] border border-outline-variant p-5 md:p-7">
+      <div class="flex items-center gap-2 mb-4">
+        <span class="material-symbols-outlined text-primary text-xl">search</span>
+        <p class="font-[600] text-[14px] leading-[20px] text-on-surface">Cari Cepat Ukuran Ban</p>
+      </div>
+      <div class="flex gap-2 md:gap-3 overflow-x-auto hide-scrollbar pb-1">
+        <select class="bg-surface-container-low border border-outline-variant rounded-xl text-[13px] leading-[16px] font-[500] focus:ring-2 focus:ring-primary outline-none min-w-[120px] p-3 cursor-pointer hover:border-primary transition-colors">
+          <option>Lebar</option>
+          <option>185</option>
+          <option>195</option>
+          <option>205</option>
+        </select>
+        <select class="bg-surface-container-low border border-outline-variant rounded-xl text-[13px] leading-[16px] font-[500] focus:ring-2 focus:ring-primary outline-none min-w-[120px] p-3 cursor-pointer hover:border-primary transition-colors">
+          <option>Aspek</option>
+          <option>55</option>
+          <option>60</option>
+          <option>65</option>
+        </select>
+        <select class="bg-surface-container-low border border-outline-variant rounded-xl text-[13px] leading-[16px] font-[500] focus:ring-2 focus:ring-primary outline-none min-w-[120px] p-3 cursor-pointer hover:border-primary transition-colors">
+          <option>Ring</option>
+          <option>14</option>
+          <option>15</option>
+          <option>16</option>
+        </select>
+        <button class="bg-primary text-on-primary px-7 py-3 rounded-xl font-[600] text-[13px] leading-[16px] whitespace-nowrap hover:opacity-90 active:scale-95 transition-all btn-press inline-flex items-center gap-1.5">
+          <span class="material-symbols-outlined text-[16px]">search</span>
+          Cari
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== MEREK BAN TERPERCAYA - INFINITE SCROLL ===== -->
+  <section class="pt-14 pb-8 overflow-hidden">
+    <div class="px-4 md:px-8 mb-5 flex items-center gap-3 max-w-7xl mx-auto">
+      <span class="material-symbols-outlined text-primary text-sm">verified</span>
+      <p class="font-[600] text-[12px] leading-[16px] text-on-surface-variant uppercase tracking-widest">Merek Ban Terpercaya</p>
+    </div>
+    <div class="marquee-container overflow-hidden" style="--marquee-duration: 35s;">
+      <div class="marquee-track">
+        <!-- Set 1 -->
+        <img src="images/bridgestone-logo.svg" alt="Bridgestone" class="marquee-logo h-8 md:h-10 object-contain">
+        <img src="images/michelin-logo.svg" alt="Michelin" class="marquee-logo h-8 md:h-10 object-contain">
+        <img src="images/dunlop-logo.svg" alt="Dunlop" class="marquee-logo h-8 md:h-10 object-contain">
+        <img src="images/hankook-logo.svg" alt="Hankook" class="marquee-logo h-8 md:h-10 object-contain">
+        <img src="images/gtradial-logo.svg" alt="GT Radial" class="marquee-logo h-8 md:h-10 object-contain">
+        <img src="images/falken-logo.svg" alt="Falken" class="marquee-logo h-8 md:h-10 object-contain">
+        <img src="images/sailun-logo.png" alt="Sailun" class="marquee-logo h-8 md:h-10 object-contain">
+        <img src="images/swallow-logo.png" alt="Swallow" class="marquee-logo h-8 md:h-10 object-contain">
+        <span class="marquee-logo-wrapper inline-flex items-center justify-center bg-neutral-800 rounded-lg h-8 md:h-10 px-3 flex-shrink-0"><img src="images/delium-logo.png" alt="Delium" class="h-full w-auto object-contain"></span>
+        <span class="marquee-logo-wrapper inline-flex items-center justify-center bg-neutral-800 rounded-lg h-8 md:h-10 px-3 flex-shrink-0"><img src="images/blackhawk-logo.png" alt="Blackhawk" class="h-full w-auto object-contain"></span>
+        <span class="marquee-logo-wrapper inline-flex items-center justify-center bg-neutral-800 rounded-lg h-8 md:h-10 px-3 flex-shrink-0"><img src="images/accelera-logo.png" alt="Accelera" class="h-full w-auto object-contain"></span>
+        <!-- Set 2 (duplicate for seamless loop) -->
+        <img src="images/bridgestone-logo.svg" alt="Bridgestone" class="marquee-logo h-8 md:h-10 object-contain">
+        <img src="images/michelin-logo.svg" alt="Michelin" class="marquee-logo h-8 md:h-10 object-contain">
+        <img src="images/dunlop-logo.svg" alt="Dunlop" class="marquee-logo h-8 md:h-10 object-contain">
+        <img src="images/hankook-logo.svg" alt="Hankook" class="marquee-logo h-8 md:h-10 object-contain">
+        <img src="images/gtradial-logo.svg" alt="GT Radial" class="marquee-logo h-8 md:h-10 object-contain">
+        <img src="images/falken-logo.svg" alt="Falken" class="marquee-logo h-8 md:h-10 object-contain">
+        <img src="images/sailun-logo.png" alt="Sailun" class="marquee-logo h-8 md:h-10 object-contain">
+        <img src="images/swallow-logo.png" alt="Swallow" class="marquee-logo h-8 md:h-10 object-contain">
+        <span class="marquee-logo-wrapper inline-flex items-center justify-center bg-neutral-800 rounded-lg h-8 md:h-10 px-3 flex-shrink-0"><img src="images/delium-logo.png" alt="Delium" class="h-full w-auto object-contain"></span>
+        <span class="marquee-logo-wrapper inline-flex items-center justify-center bg-neutral-800 rounded-lg h-8 md:h-10 px-3 flex-shrink-0"><img src="images/blackhawk-logo.png" alt="Blackhawk" class="h-full w-auto object-contain"></span>
+        <span class="marquee-logo-wrapper inline-flex items-center justify-center bg-neutral-800 rounded-lg h-8 md:h-10 px-3 flex-shrink-0"><img src="images/accelera-logo.png" alt="Accelera" class="h-full w-auto object-contain"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== LAYANAN KAMI ===== -->
+  <section class="py-20 px-4 md:px-8 max-w-7xl mx-auto">
+    <div class="mb-10">
+      <div class="flex items-center justify-between mb-2">
+        <h2 class="font-[700] text-[28px] leading-[36px] tracking-[-0.01em] text-primary">Layanan Kami</h2>
+        <a href="layanan.html" class="text-primary font-[600] text-[13px] leading-[16px] hover:underline inline-flex items-center gap-1">
+          Lihat Semua
+          <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+        </a>
+      </div>
+      <div class="w-12 h-1 bg-secondary-container rounded-full mt-3"></div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <a href="layanan.html" class="group bg-white rounded-2xl border border-outline-variant/30 p-6 card-hover transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+        <div class="w-14 h-14 bg-gradient-to-br from-primary to-primary-container rounded-2xl flex items-center justify-center shrink-0 mb-5 shadow-sm">
+          <span class="material-symbols-outlined text-on-primary text-2xl">tire_repair</span>
+        </div>
+        <p class="font-[600] text-[17px] leading-[24px] text-on-surface mb-2">Ganti Ban Baru</p>
+        <p class="text-[14px] leading-[21px] font-[400] text-on-surface-variant mb-4">Proses cepat, teknisi handal. Tersedia semua merek utama dengan harga kompetitif.</p>
+        <span class="inline-flex items-center gap-1 text-primary font-[600] text-[13px] leading-[16px] group-hover:gap-2 transition-all">
+          Selengkapnya
+          <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+        </span>
+      </a>
+      <a href="layanan.html" class="group bg-white rounded-2xl border border-outline-variant/30 p-6 card-hover transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+        <div class="w-14 h-14 bg-gradient-to-br from-primary to-primary-container rounded-2xl flex items-center justify-center shrink-0 mb-5 shadow-sm">
+          <span class="material-symbols-outlined text-on-primary text-2xl fill">balance</span>
+        </div>
+        <p class="font-[600] text-[17px] leading-[24px] text-on-surface mb-2">Balancing &amp; Nitrogen</p>
+        <p class="text-[14px] leading-[21px] font-[400] text-on-surface-variant mb-4">Optimalkan kenyamanan berkendara dengan balancing presisi dan pengisian nitrogen murni.</p>
+        <span class="inline-flex items-center gap-1 text-primary font-[600] text-[13px] leading-[16px] group-hover:gap-2 transition-all">
+          Selengkapnya
+          <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+        </span>
+      </a>
+      <a href="layanan.html" class="group bg-white rounded-2xl border border-outline-variant/30 p-6 card-hover transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+        <div class="w-14 h-14 bg-gradient-to-br from-primary to-primary-container rounded-2xl flex items-center justify-center shrink-0 mb-5 shadow-sm">
+          <span class="material-symbols-outlined text-on-primary text-2xl">build</span>
+        </div>
+        <p class="font-[600] text-[17px] leading-[24px] text-on-surface mb-2">Spooring / Alignment</p>
+        <p class="text-[14px] leading-[21px] font-[400] text-on-surface-variant mb-4">Laser alignment presisi untuk menjaga mobil tetap lurus dan mencegah keausan ban.</p>
+        <span class="inline-flex items-center gap-1 text-primary font-[600] text-[13px] leading-[16px] group-hover:gap-2 transition-all">
+          Selengkapnya
+          <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+        </span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== STATISTIK ===== -->
+  <section class="py-16 bg-primary tire-texture-bg relative overflow-hidden" id="stats-section">
+    <div class="absolute inset-0 opacity-20 grid-pattern"></div>
+    <div class="relative z-10 px-4 md:px-8 max-w-7xl mx-auto">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div class="reveal">
+          <div class="text-secondary-container font-black text-[40px] md:text-[48px] leading-none mb-1">
+            <span class="stat-counter" data-target="20" data-suffix="+">0</span>
+          </div>
+          <div class="text-primary-fixed-dim text-[14px] leading-[20px] font-[500]">Tahun Pengalaman</div>
+        </div>
+        <div class="reveal">
+          <div class="text-secondary-container font-black text-[40px] md:text-[48px] leading-none mb-1">
+            <span class="stat-counter" data-target="3">0</span>
+          </div>
+          <div class="text-primary-fixed-dim text-[14px] leading-[20px] font-[500]">Cabang di Semarang</div>
+        </div>
+        <div class="reveal">
+          <div class="text-secondary-container font-black text-[40px] md:text-[48px] leading-none mb-1">
+            <span class="stat-counter" data-target="10" data-suffix="K+">0</span>
+          </div>
+          <div class="text-primary-fixed-dim text-[14px] leading-[20px] font-[500]">Pelanggan Puas</div>
+        </div>
+        <div class="reveal">
+          <div class="text-secondary-container font-black text-[40px] md:text-[48px] leading-none mb-1">
+            <span class="stat-counter" data-target="50" data-suffix="+">0</span>
+          </div>
+          <div class="text-primary-fixed-dim text-[14px] leading-[20px] font-[500]">Merek Ban Tersedia</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CABANG TERDEKAT ===== -->
+  <section class="py-16 bg-surface-container-low">
+    <div class="px-4 md:px-8 max-w-7xl mx-auto">
+      <div class="mb-8">
+        <div class="flex items-center gap-3 mb-1">
+          <span class="material-symbols-outlined text-primary text-lg">store</span>
+          <h2 class="font-[700] text-[28px] leading-[36px] tracking-[-0.01em] text-primary">Cabang Terdekat</h2>
+        </div>
+        <p class="text-on-surface-variant text-[16px] leading-[24px] ml-10">Kunjungi bengkel kami di lokasi strategis.</p>
+      </div>
+      <div class="flex gap-5 overflow-x-auto hide-scrollbar pb-4 snap-x snap-mandatory">
+        <!-- Branch 1 -->
+        <div class="flex-shrink-0 w-[300px] bg-white rounded-2xl shadow-sm border border-outline-variant overflow-hidden hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 snap-start">
+          <div class="w-full h-36 bg-gradient-to-br from-primary/90 to-primary flex items-center justify-center relative">
+            <span class="material-symbols-outlined text-5xl text-white/30">location_on</span>
+            <div class="absolute top-3 left-3 status-badge inline-flex items-center gap-1.5 bg-white/20 backdrop-blur-sm text-white text-[11px] font-[600] px-2.5 py-1 rounded-full">
+              <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+              Buka
+            </div>
+            <div class="absolute top-3 right-3 inline-flex items-center gap-1 bg-secondary-container text-on-secondary-container text-[12px] font-[700] px-2 py-1 rounded-lg">
+              <span class="material-symbols-outlined text-[14px] fill">star</span>
+              4.9
+            </div>
+          </div>
+          <div class="p-5">
+            <h3 class="font-[600] text-[16px] leading-[22px] text-on-surface mb-1">Cabang Banyumanik</h3>
+            <div class="flex items-start gap-1.5 mb-4">
+              <span class="material-symbols-outlined text-[14px] text-outline mt-0.5">location_on</span>
+              <p class="text-[13px] leading-[18px] font-[400] text-on-surface-variant">Jl. Setiabudi No. 123, Semarang</p>
+            </div>
+            <div class="flex items-center gap-2 mb-4 text-[12px] leading-[16px] text-on-surface-variant">
+              <span class="material-symbols-outlined text-[14px]">schedule</span>
+              <span>08:00 - 17:00</span>
+            </div>
+            <a href="lokasi.html" class="inline-flex items-center justify-center gap-1.5 w-full py-3 bg-primary/5 text-primary rounded-xl font-[600] text-[13px] leading-[16px] hover:bg-primary/10 active:scale-[0.98] transition-all">
+              <span class="material-symbols-outlined text-[16px]">map</span>
+              Petunjuk Arah
+            </a>
+          </div>
+        </div>
+        <!-- Branch 2 -->
+        <div class="flex-shrink-0 w-[300px] bg-white rounded-2xl shadow-sm border border-outline-variant overflow-hidden hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 snap-start">
+          <div class="w-full h-36 bg-gradient-to-br from-primary/90 to-primary flex items-center justify-center relative">
+            <span class="material-symbols-outlined text-5xl text-white/30">location_on</span>
+            <div class="absolute top-3 left-3 status-badge inline-flex items-center gap-1.5 bg-white/20 backdrop-blur-sm text-white text-[11px] font-[600] px-2.5 py-1 rounded-full">
+              <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+              Buka
+            </div>
+            <div class="absolute top-3 right-3 inline-flex items-center gap-1 bg-secondary-container text-on-secondary-container text-[12px] font-[700] px-2 py-1 rounded-lg">
+              <span class="material-symbols-outlined text-[14px] fill">star</span>
+              4.6
+            </div>
+          </div>
+          <div class="p-5">
+            <h3 class="font-[600] text-[16px] leading-[22px] text-on-surface mb-1">Cabang Ungaran</h3>
+            <div class="flex items-start gap-1.5 mb-4">
+              <span class="material-symbols-outlined text-[14px] text-outline mt-0.5">location_on</span>
+              <p class="text-[13px] leading-[18px] font-[400] text-on-surface-variant">Jl. Gatot Subroto No. 45, Ungaran</p>
+            </div>
+            <div class="flex items-center gap-2 mb-4 text-[12px] leading-[16px] text-on-surface-variant">
+              <span class="material-symbols-outlined text-[14px]">schedule</span>
+              <span>08:00 - 17:00</span>
+            </div>
+            <a href="lokasi.html" class="inline-flex items-center justify-center gap-1.5 w-full py-3 bg-primary/5 text-primary rounded-xl font-[600] text-[13px] leading-[16px] hover:bg-primary/10 active:scale-[0.98] transition-all">
+              <span class="material-symbols-outlined text-[16px]">map</span>
+              Petunjuk Arah
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONI PELANGGAN ===== -->
+  <section class="py-20 px-4 md:px-8 max-w-7xl mx-auto">
+    <div class="flex flex-col sm:flex-row items-start sm:items-end justify-between mb-10 gap-4">
+      <div>
+        <div class="flex items-center gap-3 mb-1">
+          <span class="material-symbols-outlined text-primary text-lg">format_quote</span>
+          <h2 class="font-[700] text-[28px] leading-[36px] tracking-[-0.01em] text-primary">Apa Kata Pelanggan</h2>
+        </div>
+        <div class="w-12 h-1 bg-secondary-container rounded-full mt-3"></div>
+        <p class="text-on-surface-variant text-[16px] leading-[24px] mt-3">Testimoni nyata dari pelanggan setia kami.</p>
+      </div>
+      <div class="hidden md:flex items-center gap-1.5 bg-secondary-fixed/40 px-4 py-2 rounded-xl">
+        <span class="material-symbols-outlined text-secondary-container fill text-lg">star</span>
+        <span class="material-symbols-outlined text-secondary-container fill text-lg">star</span>
+        <span class="material-symbols-outlined text-secondary-container fill text-lg">star</span>
+        <span class="material-symbols-outlined text-secondary-container fill text-lg">star</span>
+        <span class="material-symbols-outlined text-secondary-container fill text-lg">star</span>
+        <span class="text-on-surface font-[700] text-[16px] leading-[22px] ml-1">4.9</span>
+      </div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <!-- Testimoni 1 -->
+      <div class="bg-white rounded-2xl border border-outline-variant/30 p-7 relative hover:shadow-lg hover:-translate-y-1 transition-all duration-300 reveal">
+        <!-- Decorative quote mark -->
+        <span class="absolute -top-2 -left-2 text-5xl text-primary/5 font-black leading-none select-none">"</span>
+        <div class="flex gap-0.5 text-secondary-container mb-4">
+          <span class="material-symbols-outlined text-sm fill">star</span>
+          <span class="material-symbols-outlined text-sm fill">star</span>
+          <span class="material-symbols-outlined text-sm fill">star</span>
+          <span class="material-symbols-outlined text-sm fill">star</span>
+          <span class="material-symbols-outlined text-sm fill">star</span>
+        </div>
+        <p class="text-[15px] leading-[24px] text-on-surface-variant mb-6 font-[400]">"Pelayanan sangat profesional, harga ban di Anugerah benar-benar yang termurah di kota. Mekaniknya teliti dan alatnya modern. Sangat direkomendasikan!"</p>
+        <div class="flex items-center gap-3 pt-4 border-t border-outline-variant/20">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-primary-container flex items-center justify-center text-white font-[600] text-[14px] leading-[20px] shadow-sm">HD</div>
+          <div>
+            <p class="font-[600] text-[14px] leading-[20px] text-on-surface">Bpk. H. Ahmad Darmawan</p>
+            <p class="text-[12px] leading-[16px] font-[500] text-on-surface-variant">Toyota Fortuner</p>
+          </div>
+        </div>
+      </div>
+      <!-- Testimoni 2 -->
+      <div class="bg-white rounded-2xl border border-outline-variant/30 p-7 relative hover:shadow-lg hover:-translate-y-1 transition-all duration-300 reveal">
+        <span class="absolute -top-2 -left-2 text-5xl text-primary/5 font-black leading-none select-none">"</span>
+        <div class="flex gap-0.5 text-secondary-container mb-4">
+          <span class="material-symbols-outlined text-sm fill">star</span>
+          <span class="material-symbols-outlined text-sm fill">star</span>
+          <span class="material-symbols-outlined text-sm fill">star</span>
+          <span class="material-symbols-outlined text-sm fill">star</span>
+          <span class="material-symbols-outlined text-sm fill">star</span>
+        </div>
+        <p class="text-[15px] leading-[24px] text-on-surface-variant mb-6 font-[400]">"Proses ganti ban cepat banget, cuma 30 menit udah selesai 4 ban sekaligus. Teknisi ramah dan jelasin kondisi ban lama dengan detail. Top!"</p>
+        <div class="flex items-center gap-3 pt-4 border-t border-outline-variant/20">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-primary-container flex items-center justify-center text-white font-[600] text-[14px] leading-[20px] shadow-sm">RS</div>
+          <div>
+            <p class="font-[600] text-[14px] leading-[20px] text-on-surface">Ibu. Rina Susanti</p>
+            <p class="text-[12px] leading-[16px] font-[500] text-on-surface-variant">Honda Civic</p>
+          </div>
+        </div>
+      </div>
+      <!-- Testimoni 3 -->
+      <div class="bg-white rounded-2xl border border-outline-variant/30 p-7 relative hover:shadow-lg hover:-translate-y-1 transition-all duration-300 reveal">
+        <span class="absolute -top-2 -left-2 text-5xl text-primary/5 font-black leading-none select-none">"</span>
+        <div class="flex gap-0.5 text-secondary-container mb-4">
+          <span class="material-symbols-outlined text-sm fill">star</span>
+          <span class="material-symbols-outlined text-sm fill">star</span>
+          <span class="material-symbols-outlined text-sm fill">star</span>
+          <span class="material-symbols-outlined text-sm fill">star</span>
+          <span class="material-symbols-outlined text-sm fill">star</span>
+        </div>
+        <p class="text-[15px] leading-[24px] text-on-surface-variant mb-6 font-[400]">"Service spooring & balancing di sini presisi banget! Setir jadi enteng dan mobil terasa lebih stabil di jalan tol. Recommended bangeeet!"</p>
+        <div class="flex items-center gap-3 pt-4 border-t border-outline-variant/20">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-primary-container flex items-center justify-center text-white font-[600] text-[14px] leading-[20px] shadow-sm">DP</div>
+          <div>
+            <p class="font-[600] text-[14px] leading-[20px] text-on-surface">Bpk. Dimas Pratama</p>
+            <p class="text-[12px] leading-[16px] font-[500] text-on-surface-variant">Toyota Avanza</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- ===== FAQ ===== -->
+  <section class="py-16 px-4 md:px-8 max-w-3xl mx-auto">
+    <div class="text-center mb-10">
+      <div class="inline-flex items-center gap-2 bg-primary-fixed/30 px-4 py-1.5 rounded-full text-primary text-[12px] font-[600] uppercase tracking-wider mb-4">
+        <span class="material-symbols-outlined text-[16px]">help_outline</span>
+        Info Penting
+      </div>
+      <h2 class="font-[700] text-[28px] leading-[36px] tracking-[-0.01em] text-primary">Tanya Jawab (FAQ)</h2>
+      <div class="w-12 h-1 bg-secondary-container rounded-full mx-auto mt-3"></div>
+    </div>
+    <div class="space-y-3">
+      <div class="bg-white rounded-2xl border border-outline-variant/30 overflow-hidden hover:border-outline-variant/60 transition-colors">
+        <button class="faq-toggle w-full p-5 flex justify-between items-center cursor-pointer font-[600] text-[15px] leading-[22px] text-left gap-4 group">
+          <span class="text-on-surface group-hover:text-primary transition-colors">Apakah ban yang dijual bergaransi?</span>
+          <span class="faq-chevron material-symbols-outlined text-outline group-hover:text-primary transition-all duration-300 shrink-0">expand_more</span>
+        </button>
+        <div class="faq-content overflow-hidden transition-all duration-300" style="max-height: 0;">
+          <div class="px-5 pb-5 text-on-surface-variant text-[15px] leading-[24px] border-t border-outline-variant/20 pt-4">Ya, semua ban yang kami jual memiliki garansi resmi pabrikan selama periode tertentu (biasanya 5 tahun dari tanggal produksi).</div>
+        </div>
+      </div>
+      <div class="bg-white rounded-2xl border border-outline-variant/30 overflow-hidden hover:border-outline-variant/60 transition-colors">
+        <button class="faq-toggle w-full p-5 flex justify-between items-center cursor-pointer font-[600] text-[15px] leading-[22px] text-left gap-4 group">
+          <span class="text-on-surface group-hover:text-primary transition-colors">Berapa lama proses ganti ban?</span>
+          <span class="faq-chevron material-symbols-outlined text-outline group-hover:text-primary transition-all duration-300 shrink-0">expand_more</span>
+        </button>
+        <div class="faq-content overflow-hidden transition-all duration-300" style="max-height: 0;">
+          <div class="px-5 pb-5 text-on-surface-variant text-[15px] leading-[24px] border-t border-outline-variant/20 pt-4">Untuk penggantian 4 ban sekaligus beserta balancing, biasanya memakan waktu 30-45 menit tergantung antrean.</div>
+        </div>
+      </div>
+      <div class="bg-white rounded-2xl border border-outline-variant/30 overflow-hidden hover:border-outline-variant/60 transition-colors">
+        <button class="faq-toggle w-full p-5 flex justify-between items-center cursor-pointer font-[600] text-[15px] leading-[22px] text-left gap-4 group">
+          <span class="text-on-surface group-hover:text-primary transition-colors">Apakah bisa bayar pakai kartu kredit?</span>
+          <span class="faq-chevron material-symbols-outlined text-outline group-hover:text-primary transition-all duration-300 shrink-0">expand_more</span>
+        </button>
+        <div class="faq-content overflow-hidden transition-all duration-300" style="max-height: 0;">
+          <div class="px-5 pb-5 text-on-surface-variant text-[15px] leading-[24px] border-t border-outline-variant/20 pt-4">Tentu, kami menerima pembayaran via Debit, Kartu Kredit, QRIS, dan cicilan tanpa kartu di semua cabang kami.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="bg-primary-container text-on-primary">
+    <div class="max-w-7xl mx-auto px-4 md:px-8 py-12">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-6 border-b border-white/10 pb-8 mb-8">
+        <div class="text-center md:text-left">
+          <div class="flex items-center justify-center md:justify-start gap-3 mb-2">
+            <img src="images/logo.png" alt="Toko Ban Murah Anugerah" class="h-10 w-10 rounded-full object-cover border-2 border-white/30">
+            <div class="font-[600] text-[20px] leading-[28px] font-bold">Toko Ban Murah Anugerah</div>
+          </div>
+          <p class="text-on-primary-container text-[16px] leading-[24px]">Solusi Ban Berkualitas &amp; Terpercaya</p>
+        </div>
+        <div class="flex flex-wrap gap-6 justify-center">
+          <a href="index.html" class="text-[12px] leading-[16px] font-[500] text-on-primary-container hover:text-secondary-fixed transition-colors">Beranda</a>
+          <a href="koleksi.html" class="text-[12px] leading-[16px] font-[500] text-on-primary-container hover:text-secondary-fixed transition-colors">Koleksi</a>
+          <a href="layanan.html" class="text-[12px] leading-[16px] font-[500] text-on-primary-container hover:text-secondary-fixed transition-colors">Layanan</a>
+          <a href="promo.html" class="text-[12px] leading-[16px] font-[500] text-on-primary-container hover:text-secondary-fixed transition-colors">Promo</a>
+          <a href="lokasi.html" class="text-[12px] leading-[16px] font-[500] text-on-primary-container hover:text-secondary-fixed transition-colors">Lokasi</a>
+          <a href="kontak.html" class="text-[12px] leading-[16px] font-[500] text-on-primary-container hover:text-secondary-fixed transition-colors">Kontak</a>
+        </div>
+      </div>
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-center">
+        <p class="text-on-primary-container text-[12px] leading-[16px] font-[500]">&copy; 2024 Toko Ban Murah Anugerah. All rights reserved. <a href="admin.html" class="opacity-10 hover:opacity-40 transition-opacity text-[10px]">⏺</a></p>
+        <div class="flex gap-6">
+          <span class="text-[12px] leading-[16px] font-[500] text-on-primary-container">Syarat &amp; Ketentuan</span>
+          <span class="text-[12px] leading-[16px] font-[500] text-on-primary-container">Kebijakan Privasi</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== WHATSAPP FAB ===== -->
+  <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer" class="fixed bottom-20 md:bottom-6 right-6 z-[45] w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-xl hover:scale-110 active:scale-95 transition-all duration-300 whatsapp-float group" aria-label="Chat via WhatsApp">
+    <span class="absolute right-full mr-3 bg-white text-on-surface px-3 py-1.5 rounded-lg text-[12px] leading-[16px] font-[500] whitespace-nowrap shadow-lg border border-outline-variant opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none hidden md:block">Chat via WhatsApp</span>
+    <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.067 2.877 1.215 3.076.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+  </a>
+
+  <!-- ===== BOTTOM NAV MOBILE ===== -->
+  <nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-2 py-2 md:hidden bg-surface border-t border-outline-variant shadow-md">
+    <a href="index.html" class="bottom-nav-active flex flex-col items-center justify-center px-3 py-1 font-[500] text-[12px] leading-[16px] active:scale-90 transition-transform">
+      <span class="material-symbols-outlined fill">home</span> Beranda
+    </a>
+    <a href="koleksi.html" class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 font-[500] text-[12px] leading-[16px] active:scale-90 transition-transform">
+      <span class="material-symbols-outlined">inventory_2</span> Koleksi
+    </a>
+    <a href="promo.html" class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 font-[500] text-[12px] leading-[16px] active:scale-90 transition-transform">
+      <span class="material-symbols-outlined">local_offer</span> Promo
+    </a>
+    <a href="layanan.html" class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 font-[500] text-[12px] leading-[16px] active:scale-90 transition-transform">
+      <span class="material-symbols-outlined">tire_repair</span> Layanan
+    </a>
+    <a href="kontak.html" class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 font-[500] text-[12px] leading-[16px] active:scale-90 transition-transform">
+      <span class="material-symbols-outlined">person</span> Kontak
+    </a>
+  </nav>
+
+  <script src="js/scripts.js"></script>
+  <script>
+    // === Hidden Admin Shortcut: Ctrl+Shift+A ===
+    document.addEventListener('keydown', function(e) {
+      if (e.ctrlKey && e.shiftKey && (e.key === 'A' || e.key === 'a')) {
+        e.preventDefault();
+        window.location.href = 'admin.html';
+      }
+    });
+  </script>
+</body>
+</html>

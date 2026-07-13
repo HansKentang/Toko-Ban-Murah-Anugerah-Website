@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Halaman Tidak Ditemukan</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,0&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#003c17', 'primary-container': '#18542a', 'on-primary': '#ffffff',
+            'on-primary-container': '#8ac792', 'primary-fixed': '#b2f2b9', 'primary-fixed-dim': '#97d59f',
+            secondary: '#765a00', 'secondary-container': '#fdc824', 'secondary-fixed': '#ffdf95',
+            'secondary-fixed-dim': '#f4bf18', 'on-secondary': '#ffffff', 'on-secondary-container': '#6e5400',
+            background: '#fcf9f8', surface: '#fcf9f8', 'surface-container': '#f0eded',
+            'surface-container-high': '#eae7e7', 'surface-container-highest': '#e5e2e1',
+            'surface-variant': '#e5e2e1', 'on-surface': '#1c1b1b', 'on-surface-variant': '#414940',
+            'on-background': '#1c1b1b', outline: '#71796f', 'outline-variant': '#c0c9bd',
+          },
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+        }
+      }
+    }
+  </script>
+</head>
+<body class="min-h-screen flex items-center justify-center px-4">
+  <div class="text-center max-w-md">
+    <span class="material-symbols-outlined text-7xl text-outline/40 mb-6">error_outline</span>
+    <h1 class="font-black text-[40px] leading-[48px] tracking-[-0.02em] text-primary mb-4">404</h1>
+    <p class="text-[18px] leading-[28px] text-on-surface-variant mb-8">Halaman yang Anda cari tidak ditemukan.</p>
+    <a href="index.html" class="inline-flex items-center gap-2 bg-primary text-on-primary px-8 py-4 rounded-lg font-[600] text-[14px] leading-[20px] hover:opacity-90 active:scale-95 transition-all">
+      <span class="material-symbols-outlined">home</span> Kembali ke Beranda
+    </a>
+  </div>
+</body>
+</html>

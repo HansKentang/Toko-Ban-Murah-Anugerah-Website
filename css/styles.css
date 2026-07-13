@@ -1,0 +1,324 @@
+/* ============================================
+   Toko Ban Murah Anugerah - Custom Styles
+   ============================================ */
+
+/* --- Material Symbols --- */
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+.material-symbols-outlined.fill {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+.material-symbols-outlined.w700 {
+  font-variation-settings: 'FILL' 0, 'wght' 700, 'GRAD' 0, 'opsz' 24;
+}
+
+/* --- Base --- */
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: #fcf9f8;
+  color: #1c1b1b;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- Scrollbar Hide --- */
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* --- Glass Card --- */
+.glass-card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 60, 23, 0.1);
+}
+
+/* --- Automotive Gradient --- */
+.automotive-gradient {
+  background: linear-gradient(135deg, #003c17 0%, #18542a 100%);
+}
+
+/* --- Tire Pattern Overlay --- */
+.tire-pattern-overlay {
+  background-image: radial-gradient(#ffffff11 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* --- Grid Pattern --- */
+.grid-pattern {
+  background-image: radial-gradient(circle, rgba(255,255,255,0.15) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* --- Map Container Mask --- */
+.map-container {
+  mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+}
+
+/* --- Card Hover --- */
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Tire Texture Background --- */
+.tire-texture-bg {
+  background-image: linear-gradient(rgba(0, 60, 23, 0.88), rgba(0, 60, 23, 0.7)),
+    radial-gradient(circle at 20% 50%, #0a4a2a 0%, #002a10 100%);
+  background-size: cover;
+  background-position: center;
+}
+
+/* --- Industrial Mesh --- */
+.industrial-mesh {
+  background-image: radial-gradient(#c0c9bd 0.5px, transparent 0.5px);
+  background-size: 24px 24px;
+}
+
+/* --- Animations --- */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+.animate-pulse-slow {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* --- Hero Staggered Entrance --- */
+.hero-section .hero-stagger {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.hero-section.hero-loaded .hero-stagger {
+  animation: heroFadeIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero-section.hero-loaded .hero-stagger-1 { animation-delay: 0.1s; }
+.hero-section.hero-loaded .hero-stagger-2 { animation-delay: 0.25s; }
+.hero-section.hero-loaded .hero-stagger-3 { animation-delay: 0.4s; }
+.hero-section.hero-loaded .hero-stagger-4 { animation-delay: 0.55s; }
+
+@keyframes heroFadeIn {
+  0%   { opacity: 0; transform: translateY(30px) scale(0.98); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* --- Hero Parallax Image --- */
+.hero-parallax-img {
+  will-change: transform;
+}
+
+/* --- Hero Reduced Motion --- */
+@media (prefers-reduced-motion: reduce) {
+  .hero-section .hero-stagger {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+  .hero-section.hero-loaded .hero-stagger {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  .hero-parallax-img {
+    transition: none;
+  }
+}
+
+/* --- Scroll Reveal --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- Button Micro-interactions --- */
+.btn-interact:active {
+  transform: scale(0.96);
+}
+
+/* --- Active Nav Indicator --- */
+.nav-active {
+  color: #003c17;
+  border-bottom: 2px solid #003c17;
+  padding-bottom: 4px;
+}
+
+/* --- Bottom Nav --- */
+.bottom-nav-active {
+  background-color: #fdc824;
+  color: #6e5400;
+  border-radius: 12px;
+  padding: 4px 12px;
+}
+
+/* --- Details/FAQ --- */
+details > summary {
+  list-style: none;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+details[open] .faq-chevron {
+  transform: rotate(180deg);
+}
+
+/* --- Image Placeholder --- */
+.img-placeholder {
+  background: linear-gradient(135deg, #e5e2e1 0%, #dcd9d9 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* --- Countdown Timer Separators --- */
+.timer-sep {
+  color: rgba(255,255,255,0.3);
+  font-size: 24px;
+  font-weight: 600;
+  padding-bottom: 16px;
+}
+
+/* --- Status Badge Pulse Dot --- */
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 6px;
+}
+.status-dot.open {
+  background-color: #22c55e;
+  animation: pulse 2s infinite;
+}
+.status-dot.closed {
+  background-color: #ef4444;
+}
+
+/* --- Hero Section Overlays --- */
+.hero-overlay-left {
+  background: linear-gradient(
+    to right,
+    rgba(0, 60, 23, 0.75) 0%,
+    rgba(0, 60, 23, 0.35) 50%,
+    transparent 100%
+  );
+}
+
+.hero-overlay-bottom {
+  background: linear-gradient(
+    to top,
+    rgba(0, 60, 23, 0.85) 0%,
+    rgba(0, 60, 23, 0.4) 40%,
+    transparent 100%
+  );
+}
+
+/* --- Float Animation for WhatsApp --- */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+.whatsapp-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* --- Active/Transition Helpers --- */
+.transition-base {
+  transition: all 0.2s ease;
+}
+.transition-slow {
+  transition: all 0.3s ease;
+}
+
+/* --- Tire Card Shadow --- */
+.tire-card-shadow {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+}
+
+/* --- Custom Focus Ring --- */
+.custom-focus:focus {
+  outline: none;
+  border-color: #003c17;
+  box-shadow: 0 0 0 2px rgba(0, 60, 23, 0.2);
+}
+
+/* --- Infinite Marquee / Brand Scroller --- */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  width: max-content;
+  animation: marquee var(--marquee-duration, 30s) linear infinite;
+  will-change: transform;
+}
+
+.marquee-container:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+.marquee-container {
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 4%,
+    black 96%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 4%,
+    black 96%,
+    transparent 100%
+  );
+}
+
+.marquee-logo,
+.marquee-logo-wrapper {
+  filter: grayscale(100%);
+  opacity: 0.6;
+  transition: all 0.4s ease;
+  flex-shrink: 0;
+}
+
+.marquee-logo:hover,
+.marquee-track .marquee-logo-wrapper:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: scale(1.12);
+}
+
+.marquee-track .marquee-logo-wrapper:hover {
+  background: #333;
+}
