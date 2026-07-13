@@ -193,76 +193,55 @@
     .hide-scrollbar::-webkit-scrollbar { display: none; }
     .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-    /* === Brand Accordion === */
-    .brand-accordion {
+    /* === Brand Card (drill-down level 1) === */
+    .brand-card {
       background: white;
       border-radius: 16px;
       border: 1px solid #e5e2e1;
-      overflow: hidden;
-      transition: all 0.3s ease;
-    }
-    .brand-accordion:hover {
-      border-color: #c0c9bd;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
-    }
-    .brand-accordion-header {
-      width: 100%;
+      padding: 16px;
+      cursor: pointer;
       display: flex;
       align-items: center;
       gap: 12px;
-      padding: 16px 20px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      text-align: left;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    .brand-accordion-header:hover {
-      background: #f6f3f2;
+    .brand-card:hover {
+      border-color: #003c17;
+      box-shadow: 0 4px 20px rgba(0,60,23,0.10);
+      transform: translateY(-2px);
     }
-    .brand-accordion-header:active {
-      transform: scale(0.995);
+    .brand-card:active {
+      transform: translateY(0) scale(0.97);
     }
-    .brand-accordion-header .brand-acc-logo {
-      width: 44px;
+    .brand-card .brand-logo {
+      width: 48px;
       height: 36px;
       object-fit: contain;
       flex-shrink: 0;
     }
-    .brand-accordion-header .brand-acc-info {
+    .brand-card .brand-info {
       flex: 1;
       min-width: 0;
     }
-    .brand-accordion-header .brand-acc-name {
+    .brand-card .brand-name {
       font-size: 15px;
       font-weight: 700;
       color: #1c1b1b;
     }
-    .brand-accordion-header .brand-acc-count {
+    .brand-card .brand-count {
       font-size: 11px;
       font-weight: 500;
       color: #71796f;
     }
-    .brand-accordion-header .brand-acc-chevron {
-      font-size: 24px;
-      color: #71796f;
-      transition: transform 0.3s ease;
+    .brand-card .brand-arrow {
+      font-size: 20px;
+      color: #c0c9bd;
       flex-shrink: 0;
+      transition: transform 0.2s ease;
     }
-    .brand-accordion-header.active .brand-acc-chevron {
-      transform: rotate(180deg);
-    }
-    .brand-accordion-body {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .brand-accordion-body.open {
-      max-height: 6000px;
-    }
-    .brand-acc-content {
-      padding: 4px 16px 20px;
-      border-top: 1px solid #f0eded;
+    .brand-card:hover .brand-arrow {
+      transform: translateX(3px);
+      color: #003c17;
     }
 
     /* === Model Card (in admin) === */
@@ -610,16 +589,21 @@
         </div>
       </div>
 
-      <!-- === Brand Management Accordion === -->
+      <!-- === Brand Drill-down Navigation === -->
       <div class="admin-section mb-8">
-        <div class="flex items-center justify-between mb-6">
-          <div>
-            <h3 class="font-[600] text-[18px] text-on-surface">Model Ban per Merek</h3>
-            <p class="text-[12px] text-on-surface-variant mt-0.5">Klik merek untuk lihat model ban — klik model untuk lihat ukuran</p>
+        <div class="flex items-center justify-between mb-6" id="drillHeader">
+          <div id="drillTitle">
+            <h3 class="font-[600] text-[18px] text-on-surface">Data Ban per Merek</h3>
+            <p class="text-[12px] text-on-surface-variant mt-0.5">Navigasi bertingkat: Merek &rarr; Seri &rarr; Ukuran</p>
           </div>
-          <span class="bg-primary text-on-primary text-[11px] font-[700] px-3 py-1 rounded-full" id="brandCountBadge">11 merek</span>
+          <div class="flex items-center gap-2">
+            <button id="drillBackBtn" class="hidden text-[12px] font-[600] text-primary bg-primary-fixed/30 px-3 py-1.5 rounded-lg hover:bg-primary-fixed/50 transition-all flex items-center gap-1" onclick="drillBack()">
+              <span class="material-symbols-outlined text-[14px]">arrow_back</span> Kembali
+            </button>
+            <span class="bg-primary text-on-primary text-[11px] font-[700] px-3 py-1 rounded-full" id="brandCountBadge">11 merek</span>
+          </div>
         </div>
-        <div id="brandAccordionContainer" class="space-y-3">
+        <div id="drillContainer" class="min-h-[200px]">
           <!-- Populated by JS from brands-data.js -->
         </div>
       </div>
@@ -747,7 +731,7 @@
           errorMsg.classList.add('hidden');
           passwordInput.classList.remove('error');
           saveSession();
-          populateBrandList();
+          renderBrands();
           return true;
         } else {
           errorMsg.classList.remove('hidden');
@@ -797,30 +781,30 @@
       if (checkSession()) {
         overlay.classList.add('hidden');
         adminContent.classList.add('visible');
-        populateBrandList();
+        renderBrands();
       }
 
-      // === Brand Accordion + Model Grid + Size Modal ===
+      // === Brand Accordion + Model Grid + Size Modal (drill-down uses renderBrands / drillToSeries / drillToDetail) ===
 
       // Image lookup for tire model photos
       function getModelImage(brandName, modelName) {
         var map = {
           'Bridgestone': {
             'POTENZA': 'images/bridgestone-potenza-re003-tilted.webp',
-            'TURANZA': 'images/bst-turanza-t005.webp',
+            'TURANZA': 'images/bridgestone-turanza-6.webp',
             'ECOPIA': 'images/bridgestone-ecopia-ep300-tilted.webp',
             'DUELER': 'images/bridgestone-dueler-at002.webp',
             'ALENZA': 'images/bridgestone-alenza-001.webp',
             'TECHNO': 'images/bst-techno-sports.webp',
           },
           'Dunlop': {
-            'SP Series & Specialized OEM': 'images/tires/dunlop.svg',
+            'SP Series & Specialized OEM': 'images/tires/dunlop-st30.webp',
             'ST / PT / SUV & 4WD': 'images/tires/dunlop-st30.webp',
             'SP SPORT MAXX': 'images/tires/dunlop-sp-sport-maxx-050.webp',
             'ENASAVE & ECO': 'images/tires/dunlop-ec300-plus.webp',
             'MANS Performance': 'images/tires/dunlop-lm705.webp',
             'DIREZZA Premium Performance': 'images/tires/dunlop-direzza-dz102.webp',
-            'Commercial Light Truck': 'images/tires/commercial-light-truck.svg',
+            'Commercial Light Truck': 'images/tires/dunlop-at5.webp',
             'Touring Passenger & All-Terrain': 'images/tires/dunlop-at5.webp',
           },
           'GT Radial': {
@@ -836,42 +820,33 @@
             'ZIEX CT50 A/S': 'images/falken/falken-ziex-ze310r.webp',
             'LINAM VAN01': 'images/falken/falken-linam-van01.webp',
           },
+          'Falken': {
+            'SINCERA SN832i': 'images/falken/falken-sincera-sn832i.webp',
+            'ZIEX ZE310R': 'images/falken/falken-ziex-ze310r.webp',
+            'WILDPEAK AT3WA': 'images/falken/falken-wildpeak-at3wa.webp',
+            'AZENIS FK520': 'images/falken/falken-azenis-fk520.webp',
+            'ZIEX CT50 A/S': 'images/falken/falken-ziex-ze310r.webp',
+            'LINAM VAN01': 'images/falken/falken-linam-van01.webp',
+          },
           'Hankook': {
             'Ventus Prime4': 'images/hankook-ventus-prime4.webp',
-            'Kinergy 4S2': 'images/hankook-kinergy-4s2.webp',
-            'Kinergy PT': 'images/hankook-kinergy-pt.webp',
+            'KINERGY': 'images/hankook-kinergy-4s2.webp',
             'Dynapro HP2': 'images/hankook-dynapro-hp2.webp',
           },
           'Delium': {
             'EVO TECHNO': 'images/delium-evo-techno.webp',
             'EVO RAZE': 'images/delium-evo-raze.webp',
             'POWER SAVER': 'images/delium-power-saver.webp',
-            'TERRA CRUISER A/T': 'images/delium-terra-cruiser.webp',
-            'VELOCITA DTX': 'images/delium-evo-raze.webp',
-            'TERRA MANIA': 'images/delium-terra-cruiser.webp',
+            'TERRA': 'images/delium-terra-cruiser.webp',
+            'VELOCITA DTX': 'images/delium-velocita-dtx.jpg',
           },
           'Swallow': {
-            'HS 231': 'images/swallow-hs-231.webp',
-            'HS 237': 'images/swallow-hs-237.webp',
-            'HS 229': 'images/swallow-hs-229.webp',
+            'HS': 'images/swallow-hs-231.jpg',
           },
           'Michelin': {
-            'PRIMACY 5': 'images/tires/michelin-primacy-5.webp',
-            'PRIMACY 4': 'images/tires/michelin-primacy-4.webp',
-            'PILOT SPORT 5': 'images/tires/michelin-pilot-sport-5.webp',
-            'PILOT SPORT 4 SUV': 'images/tires/michelin-pilot-sport-4-suv.webp',
-            'PILOT SPORT 4/4S': 'images/tires/michelin-pilot-sport-4-suv.webp',
-            'PRIMACY SUV+': 'images/tires/michelin-primacy-5.webp',
-            'LATITUDE SPORT 3': 'images/tires/michelin-latitude-sport-3.webp',
-            'LATITUDE SPORT': 'images/tires/michelin-latitude-sport-3.webp',
-            'LATITUDE TOUR HP': 'images/tires/michelin-primacy-5.webp',
-            'PILOT SPORT CUP 2': 'images/tires/michelin-pilot-sport-5.webp',
-            'PILOT SUPER SPORT': 'images/tires/michelin-pilot-sport-5.webp',
-            'PILOT SPORT EV': 'images/tires/michelin-pilot-sport-4-suv.webp',
-            'PILOT SPORT 3': 'images/tires/michelin-pilot-sport-5.webp',
-            'PILOT SPORT 2': 'images/tires/michelin-pilot-sport-5.webp',
-            'PRIMACY 3 (ZP)': 'images/tires/michelin-primacy-4.webp',
-            'E PRIMACY': 'images/tires/michelin-primacy-5.webp',
+            'PRIMACY': 'images/tires/michelin-primacy-5.webp',
+            'PILOT SPORT': 'images/tires/michelin-pilot-sport-5.webp',
+            'LATITUDE': 'images/tires/michelin-latitude-sport-3.webp',
             'LTX TRAIL': 'images/tires/michelin-latitude-sport-3.webp',
           },
           'Sailun': {
@@ -880,8 +855,7 @@
             'ATREZO R01 SPORT': 'images/sailun-atrezzo-r01-sport.webp',
             'COMMERCIO PRO': 'images/sailun-commercio-pro.webp',
             'ATREZO SUV T-CON': 'images/sailun-atrezzo-suv-tcon.png',
-            'TERAMAX A/T M': 'images/sailun-terramax-atm.png',
-            'TERAMAX M/T': 'images/sailun-terramax-mt.png',
+            'TERAMAX': 'images/sailun-terramax-atm.png',
           },
           'Blackhawk': {
             'Street Performance': 'images/blackhawk-agility-suv-angle.webp',
@@ -897,9 +871,9 @@
             'Omikron': 'images/accelera-omikron-at.webp',
             'Epsilon': 'images/accelera-epsilon.webp',
             'M/T & OFF-ROAD': 'images/accelera-mt01.webp',
-            'ALPHA & SIGMA': 'images/accelera-alpha.webp',
+            'ALPHA & SIGMA': 'images/accelera-alpha.jpg',
             'RALLY': 'images/accelera-ra162.webp',
-
+            'COMMERCIAL': 'images/accelera-ultra-3.webp',
           },
         };
         if (map[brandName] && map[brandName][modelName]) {
@@ -992,99 +966,190 @@
         }
       });
 
-      // === Populate Brand Accordions ===
-      function populateBrandList() {
-        var container = document.getElementById('brandAccordionContainer');
+      // === Drill-down Navigation ===
+      var drillState = { level: 0, currentBrandKey: null, currentBrand: null, currentSeries: null, currentSubcatLabel: null };
+
+      function updateDrillHeader(level) {
+        var backBtn = document.getElementById('drillBackBtn');
+        var title = document.getElementById('drillTitle');
+        if (level === 0) {
+          backBtn.classList.add('hidden');
+          title.innerHTML = '<h3 class="font-[600] text-[18px] text-on-surface">Data Ban per Merek</h3><p class="text-[12px] text-on-surface-variant mt-0.5">Navigasi bertingkat: Merek &rarr; Seri &rarr; Model &rarr; Ukuran</p>';
+        } else if (level === 1) {
+          backBtn.classList.remove('hidden');
+          title.innerHTML = '<h3 class="font-[600] text-[18px] text-on-surface">' + drillState.currentBrand.name + '</h3><p class="text-[12px] text-on-surface-variant mt-0.5">Pilih seri ban</p>';
+        } else if (level === 2) {
+          backBtn.classList.remove('hidden');
+          title.innerHTML = '<h3 class="font-[600] text-[18px] text-on-surface">' + drillState.currentSeries.name + '</h3><p class="text-[12px] text-on-surface-variant mt-0.5">' + drillState.currentBrand.name + ' &mdash; pilih varian</p>';
+        } else if (level === 3) {
+          backBtn.classList.remove('hidden');
+          title.innerHTML = '<h3 class="font-[600] text-[18px] text-on-surface">' + drillState.currentSeries.name + (drillState.currentSubcatLabel ? ' &mdash; ' + drillState.currentSubcatLabel : '') + '</h3><p class="text-[12px] text-on-surface-variant mt-0.5">' + drillState.currentBrand.name + ' &mdash; daftar ukuran</p>';
+        }
+      }
+
+      function renderBrands() {
+        drillState.level = 0;
+        var container = document.getElementById('drillContainer');
         if (!container) return;
         if (typeof brands === 'undefined' || !brands) {
           container.innerHTML = '<div class="text-center py-8 text-on-surface-variant text-[13px]">Data merek belum tersedia.</div>';
           return;
         }
-
         var brandKeys = Object.keys(brands);
         var badge = document.getElementById('brandCountBadge');
         if (badge) badge.textContent = brandKeys.length + ' merek';
-
-        var html = '';
+        var html = '<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">';
         brandKeys.forEach(function(key) {
           var brand = brands[key];
           var modelCount = brand.models ? brand.models.length : 0;
           var logoUrl = brand.logo || '';
           var isDark = key === 'delium' || key === 'blackhawk' || key === 'accelera';
-
-          html += '<div class="brand-accordion">';
-          html += '<button class="brand-accordion-header" data-brand-key="' + key + '">';
+          html += '<div class="brand-card" onclick="drillToSeries(\'' + key + '\')">';
           if (isDark) {
-            html += '<span class="flex-shrink-0 w-11 h-9 rounded-lg bg-neutral-800 flex items-center justify-center overflow-hidden"><img src="' + logoUrl + '" alt="" class="h-5 w-auto object-contain"></span>';
+            html += '<span class="w-12 h-9 rounded-lg bg-neutral-800 flex items-center justify-center overflow-hidden flex-shrink-0"><img src="' + logoUrl + '" alt="" class="h-5 w-auto object-contain"></span>';
           } else {
-            html += '<img src="' + logoUrl + '" alt="" class="brand-acc-logo">';
+            html += '<img src="' + logoUrl + '" alt="" class="brand-logo">';
           }
-          html += '<div class="brand-acc-info"><div class="brand-acc-name">' + brand.name + '</div><div class="brand-acc-count">' + modelCount + ' model ban</div></div>';
-          html += '<span class="material-symbols-outlined brand-acc-chevron">expand_more</span>';
-          html += '</button>';
-          html += '<div class="brand-accordion-body"><div class="brand-acc-content">';
-
-          // Build model grid for this brand
-          if (brand.models && brand.models.length > 0) {
-            html += '<div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-2.5">';
-            brand.models.forEach(function(model) {
-              var imgSrc = getModelImage(brand.name, model.name);
-              var sizeCount = countModelSizes(model);
-              html += '<div class="admin-model-card" data-brand="' + brand.name + '" data-model="' + model.name.replace(/"/g, '&quot;') + '">';
-              html += '<div class="amc-img"><img src="' + imgSrc + '" alt="' + model.name + '" loading="lazy" onerror="this.style.display=\'none\'"></div>';
-              html += '<div class="amc-body"><div class="amc-name">' + model.name + '</div><span class="amc-count">' + sizeCount + ' ukuran</span></div>';
-              html += '</div>';
-            });
-            html += '</div>';
-          } else {
-            html += '<div class="text-center py-4 text-on-surface-variant text-[12px]">Tidak ada data model.</div>';
-          }
-
-          html += '</div></div></div>';
+          html += '<div class="brand-info"><div class="brand-name">' + brand.name + '</div><div class="brand-count">' + modelCount + ' seri ban</div></div>';
+          html += '<span class="material-symbols-outlined brand-arrow">chevron_right</span></div>';
         });
-
+        html += '</div>';
         container.innerHTML = html;
+        updateDrillHeader(0);
+      }
 
-        // === Accordion toggle ===
-        container.querySelectorAll('.brand-accordion-header').forEach(function(header) {
-          header.addEventListener('click', function() {
-            var body = this.nextElementSibling;
-            if (!body) return;
-            this.classList.toggle('active');
-            body.classList.toggle('open');
-          });
+      function drillToSeries(brandKey) {
+        var brand = brands[brandKey];
+        if (!brand) return;
+        drillState.level = 1;
+        drillState.currentBrandKey = brandKey;
+        drillState.currentBrand = brand;
+        var container = document.getElementById('drillContainer');
+        var html = '<div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-2.5">';
+        brand.models.forEach(function(model) {
+          var imgSrc = getModelImage(brand.name, model.name);
+          var sizeCount = countModelSizes(model);
+          var escaped = model.name.replace(/&/g, '&amp;').replace(/'/g, "\\'");
+          html += '<div class="admin-model-card" onclick="drillToModel(\'' + brandKey + '\',\'' + escaped + '\')">';
+          html += '<div class="amc-img"><img src="' + imgSrc + '" alt="' + model.name + '" loading="lazy" onerror="this.style.display=\'none\'"></div>';
+          html += '<div class="amc-body"><div class="amc-name">' + model.name + '</div><span class="amc-count">' + sizeCount + ' ukuran</span></div>';
+          html += '</div>';
         });
+        html += '</div>';
+        container.innerHTML = html;
+        updateDrillHeader(1);
+      }
 
-        // === Model card click → modal ===
-        container.querySelectorAll('.admin-model-card').forEach(function(card) {
-          card.addEventListener('click', function() {
-            var brandName = this.getAttribute('data-brand');
-            var modelName = this.getAttribute('data-model');
-            // Find the full brand & model data
-            var brandData = null;
-            var modelData = null;
-            Object.keys(brands).forEach(function(k) {
-              if (brands[k].name === brandName) {
-                brandData = brands[k];
-                brands[k].models.forEach(function(m) {
-                  if (m.name === modelName) modelData = m;
-                });
-              }
-            });
-            if (brandData && modelData) {
-              openSizeModal(brandName, modelData);
+      function drillToModel(brandKey, modelName) {
+        var brand = brands[brandKey];
+        if (!brand) return;
+        var model = null;
+        brand.models.forEach(function(m) { if (m.name === modelName) model = m; });
+        if (!model) return;
+        drillState.level = 2;
+        drillState.currentBrand = brand;
+        drillState.currentBrandKey = brandKey;
+        drillState.currentSeries = model;
+        drillState.currentSubcatLabel = null;
+
+        // If model has flat sizes (no subCategories), skip to sizes directly
+        if (!model.subCategories) {
+          showSizes(brandKey, modelName, null);
+          return;
+        }
+
+        var imgSrc = getModelImage(brand.name, model.name);
+        var container = document.getElementById('drillContainer');
+        var html = '<div class="flex items-center gap-4 p-4 bg-surface-container-low rounded-xl mb-5">';
+        html += '<img src="' + imgSrc + '" alt="' + model.name + '" onerror="this.style.display=\'none\'" class="w-20 h-14 object-contain bg-white rounded-lg p-2 border border-outline-variant/40">';
+        html += '<div><span class="text-[11px] font-[700] text-primary bg-primary-fixed/30 px-2 py-0.5 rounded-full">' + brand.name + '</span>';
+        html += '<div class="font-[800] text-[18px] text-on-surface mt-1">' + model.name + '</div>';
+        html += '<div class="text-[12px] text-on-surface-variant mt-0.5">' + model.subCategories.length + ' varian</div></div></div>';
+        html += '<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">';
+        model.subCategories.forEach(function(cat) {
+          var count = cat.entries ? cat.entries.length : 0;
+          var escapedLabel = cat.label.replace(/&/g, '&amp;').replace(/'/g, "\\'");
+          var escapedModel = modelName.replace(/&/g, '&amp;').replace(/'/g, "\\'");
+          html += '<div class="bg-white border border-outline-variant/40 rounded-xl p-4 cursor-pointer hover:border-primary hover:shadow-sm transition-all active:scale-[0.97]" onclick="showSizes(\'' + brandKey + '\',\'' + escapedModel + '\',\'' + escapedLabel + '\')">';
+          html += '<div class="font-[700] text-[14px] text-on-surface">' + cat.label + '</div>';
+          html += '<div class="text-[11px] text-on-surface-variant mt-1">' + count + ' ukuran</div>';
+          html += '<span class="material-symbols-outlined text-[18px] text-outline mt-2">chevron_right</span>';
+          html += '</div>';
+        });
+        html += '</div>';
+        container.innerHTML = html;
+        updateDrillHeader(2);
+      }
+
+      function showSizes(brandKey, modelName, subcatLabel) {
+        var brand = brands[brandKey];
+        if (!brand) return;
+        var model = null;
+        brand.models.forEach(function(m) { if (m.name === modelName) model = m; });
+        if (!model) return;
+        drillState.level = 3;
+        drillState.currentBrand = brand;
+        drillState.currentBrandKey = brandKey;
+        drillState.currentSeries = model;
+        drillState.currentSubcatLabel = subcatLabel;
+        var imgSrc = getModelImage(brand.name, model.name);
+        var container = document.getElementById('drillContainer');
+        var html = '<div class="flex items-center gap-4 p-4 bg-surface-container-low rounded-xl mb-5">';
+        html += '<img src="' + imgSrc + '" alt="' + model.name + '" onerror="this.style.display=\'none\'" class="w-20 h-14 object-contain bg-white rounded-lg p-2 border border-outline-variant/40">';
+        html += '<div><span class="text-[11px] font-[700] text-primary bg-primary-fixed/30 px-2 py-0.5 rounded-full">' + brand.name + '</span>';
+        html += '<div class="font-[800] text-[18px] text-on-surface mt-1">' + model.name + (subcatLabel ? ' &mdash; ' + subcatLabel : '') + '</div>';
+        html += '</div></div>';
+        // Show sizes
+        if (subcatLabel && model.subCategories) {
+          var found = false;
+          model.subCategories.forEach(function(cat) {
+            if (cat.label === subcatLabel) {
+              found = true;
+              html += '<div class="space-y-1">';
+              (cat.entries || []).forEach(function(entry) {
+                html += '<div class="flex justify-between items-center px-4 py-2.5 bg-white border border-outline-variant/40 rounded-lg hover:border-primary/30 transition-colors">';
+                html += '<span class="font-[700] text-[13px] text-on-surface">' + entry.size + '</span>';
+                html += entry.notes ? '<span class="text-[11px] text-on-surface-variant">' + entry.notes + '</span>' : '';
+                html += '</div>';
+              });
+              html += '</div>';
             }
           });
-        });
+          if (!found) {
+            html += '<div class="text-center py-8 text-on-surface-variant text-[13px]">Tidak ada ukuran untuk varian ini.</div>';
+          }
+        } else if (model.sizes) {
+          var sizes = model.sizes.split('·').map(function(s) { return s.trim(); }).filter(Boolean);
+          html += '<div class="space-y-1">';
+          sizes.forEach(function(size) {
+            html += '<div class="px-4 py-2.5 bg-white border border-outline-variant/40 rounded-lg font-[700] text-[13px] text-on-surface">' + size + '</div>';
+          });
+          html += '</div>';
+        } else {
+          html += '<div class="text-center py-8 text-on-surface-variant text-[13px]">Tidak ada ukuran tersedia.</div>';
+        }
+        container.innerHTML = html;
+        updateDrillHeader(3);
+      }
 
-        // Open first accordion by default for quick view
-        var firstHeader = container.querySelector('.brand-accordion-header');
-        if (firstHeader) {
-          firstHeader.classList.add('active');
-          var firstBody = firstHeader.nextElementSibling;
-          if (firstBody) firstBody.classList.add('open');
+      function drillBack() {
+        if (drillState.level === 1) { renderBrands(); }
+        else if (drillState.level === 2) { drillToSeries(drillState.currentBrandKey); }
+        else if (drillState.level === 3) {
+          if (drillState.currentSeries && drillState.currentSeries.subCategories) {
+            drillToModel(drillState.currentBrandKey, drillState.currentSeries.name);
+          } else {
+            drillToSeries(drillState.currentBrandKey);
+          }
         }
       }
+
+      // Expose drill functions globally for inline onclick handlers
+      window.renderBrands = renderBrands;
+      window.drillToSeries = drillToSeries;
+      window.drillToModel = drillToModel;
+      window.showSizes = showSizes;
+      window.drillBack = drillBack;
 
       // === Change Password (disimpan di localStorage) ===
       changePassBtn.addEventListener('click', function() {

@@ -246,410 +246,156 @@
       padding: 2px 4px;
     }
 
-    /* === Accordion === */
-    .accordion-item {
-      border: 1px solid #e5e2e1;
-      border-radius: 14px;
+    /* === Series Card (drill-down level 2) === */
+    .series-card {
+      background: white;
+      border: 1.5px solid #e5e2e1;
+      border-radius: 16px;
       overflow: hidden;
-      background: #ffffff;
-      transition: box-shadow 0.3s ease;
-    }
-    .accordion-item:hover {
-      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
-    }
-    .accordion-header {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 16px 20px;
-      background: none;
-      border: none;
       cursor: pointer;
-      transition: all 0.2s ease;
-      text-align: left;
-      gap: 12px;
-    }
-    .accordion-header:hover {
-      background: #f6f3f2;
-    }
-    .accordion-header:active {
-      transform: scale(0.995);
-    }
-    .accordion-header .title-wrap {
-      display: flex;
-      align-items: baseline;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-    .accordion-header .series-name {
-      font-size: 16px;
-      font-weight: 700;
-      color: #1c1b1b;
-      letter-spacing: -0.01em;
-    }
-    .accordion-header .series-desc {
-      font-size: 12px;
-      font-weight: 400;
-      color: #71796f;
-    }
-    .accordion-header .chevron {
-      font-size: 24px;
-      color: #71796f;
-      transition: transform 0.3s ease;
-      flex-shrink: 0;
-    }
-    .accordion-header.active .chevron {
-      transform: rotate(180deg);
-    }
-    .accordion-body {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .accordion-body.open {
-      max-height: 6000px;
-    }
-    .accordion-content {
-      padding: 4px 16px 20px;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-    }
-    @media (min-width: 500px) {
-      .accordion-content { grid-template-columns: repeat(3, 1fr); }
-    }
-    @media (min-width: 768px) {
-      .accordion-content { grid-template-columns: repeat(4, 1fr); }
-    }
-    @media (min-width: 1024px) {
-      .accordion-content { grid-template-columns: repeat(5, 1fr); }
-    }
-
-    /* === Subcategory Card === */
-    .subcat-card {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       display: flex;
       flex-direction: column;
-      background: #ffffff;
-      border: 1.5px solid #e5e2e1;
-      border-radius: 14px;
-      overflow: hidden;
-      cursor: pointer;
-      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
     }
-    .subcat-card:hover {
+    .series-card:hover {
       border-color: #003c17;
-      box-shadow: 0 4px 16px rgba(0,60,23,0.10);
-      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(0,60,23,0.10);
+      transform: translateY(-3px);
     }
-    .subcat-card:active {
+    .series-card:active {
       transform: translateY(0) scale(0.97);
     }
-    .subcat-card .card-img {
+    .series-card .sc-img {
       width: 100%;
       aspect-ratio: 4 / 3;
       background: #f6f3f2;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 10px;
+      padding: 16px;
       border-bottom: 1px solid #f0eded;
     }
-    .subcat-card .card-img img {
+    .series-card .sc-img img {
       max-width: 80%;
       max-height: 80%;
       object-fit: contain;
       transition: transform 0.3s ease;
     }
-    .subcat-card:hover .card-img img {
-      transform: scale(1.08);
+    .series-card:hover .sc-img img { transform: scale(1.08); }
+    .series-card .sc-body {
+      padding: 12px 14px 14px;
     }
-    .subcat-card .card-body {
-      padding: 8px 10px 10px;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      flex: 1;
-    }
-    .subcat-card .card-label {
-      font-size: 13px;
-      font-weight: 600;
+    .series-card .sc-name {
+      font-size: 14px;
+      font-weight: 700;
       color: #1c1b1b;
       line-height: 1.2;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
     }
-    .subcat-card .card-count {
+    .series-card .sc-count {
+      font-size: 11px;
+      font-weight: 600;
+      color: #18542a;
+      background: #e5f5e9;
+      padding: 2px 8px;
+      border-radius: 100px;
+      display: inline-block;
+      margin-top: 6px;
+    }
+
+    /* === Detail Info Card === */
+    .detail-info-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 20px;
+      background: #f6f3f2;
+      border-radius: 16px;
+      margin-bottom: 20px;
+    }
+    .detail-info-card img {
+      width: 88px;
+      height: 66px;
+      object-fit: contain;
+      background: white;
+      border-radius: 10px;
+      padding: 6px;
+      border: 1px solid #e5e2e1;
+    }
+    .detail-info-card .dic-brand {
       font-size: 11px;
       font-weight: 700;
       color: #003c17;
       background: #e5f5e9;
       padding: 2px 8px;
       border-radius: 100px;
-      align-self: flex-start;
-      white-space: nowrap;
+      display: inline-block;
     }
-
-    /* === Modal === */
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      z-index: 80;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 16px;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
-    }
-    .modal-overlay.open {
-      opacity: 1;
-      pointer-events: auto;
-    }
-    .modal-backdrop {
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.45);
-      backdrop-filter: blur(4px);
-    }
-    .modal-panel {
-      position: relative;
-      background: #fcf9f8;
-      border-radius: 24px;
-      max-width: 720px;
-      width: 100%;
-      max-height: 90vh;
-      overflow-y: auto;
-      box-shadow: 0 24px 80px rgba(0,0,0,0.2);
-      transform: scale(0.92) translateY(12px);
-      transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-    .modal-overlay.open .modal-panel {
-      transform: scale(1) translateY(0);
-    }
-    .modal-close-btn {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      border: none;
-      background: #f0eded;
-      color: #1c1b1b;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.2s ease;
-      z-index: 2;
-    }
-    .modal-close-btn:hover {
-      background: #e5e2e1;
-      transform: scale(1.1);
-    }
-    .modal-close-btn:active {
-      transform: scale(0.9);
-    }
-    .modal-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-    }
-    @media (min-width: 640px) {
-      .modal-grid {
-        flex-direction: row;
-      }
-    }
-    .modal-image-col {
-      flex: 0 0 auto;
-      width: 100%;
-      background: #f0eded;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-      border-radius: 24px 24px 0 0;
-      min-height: 180px;
-    }
-    @media (min-width: 640px) {
-      .modal-image-col {
-        width: 200px;
-        border-radius: 24px 0 0 24px;
-        min-height: 300px;
-      }
-    }
-    .modal-image-col img {
-      max-width: 100%;
-      max-height: 140px;
-      object-fit: contain;
-    }
-    @media (min-width: 640px) {
-      .modal-image-col img {
-        max-height: 200px;
-      }
-    }
-    .modal-info-col {
-      flex: 1;
-      padding: 20px 24px 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .modal-header-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: #003c17;
-      color: white;
-      font-size: 11px;
-      font-weight: 700;
-      padding: 3px 10px;
-      border-radius: 100px;
-      text-transform: uppercase;
-      letter-spacing: 0.02em;
-    }
-    .modal-title {
-      font-size: 22px;
+    .detail-info-card .dic-name {
+      font-size: 18px;
       font-weight: 800;
       color: #1c1b1b;
-      line-height: 1.2;
+      margin-top: 2px;
     }
-    .modal-subtitle {
+    .detail-info-card .dic-sub {
       font-size: 13px;
-      font-weight: 600;
-      color: #003c17;
-    }
-    .modal-desc {
-      font-size: 12px;
-      font-weight: 400;
+      font-weight: 500;
       color: #71796f;
-      line-height: 1.4;
+      margin-top: 1px;
     }
-    .modal-sizes-label {
-      font-size: 12px;
-      font-weight: 700;
-      color: #1c1b1b;
-      text-transform: uppercase;
-      letter-spacing: 0.03em;
-      margin-top: 4px;
-    }
-    .modal-sizes-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 4px;
-      max-height: 200px;
-      overflow-y: auto;
-      padding-right: 4px;
-    }
-    @media (min-width: 640px) {
-      .modal-sizes-grid {
-        grid-template-columns: 1fr;
-        max-height: 220px;
-      }
-    }
-    .modal-size-row {
+
+    /* === Size Row === */
+    .size-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 6px 10px;
-      background: #ffffff;
-      border: 1px solid #f0eded;
-      border-radius: 8px;
-      font-size: 12px;
+      padding: 12px 16px;
+      background: white;
+      border: 1.5px solid #e5e2e1;
+      border-radius: 12px;
+      cursor: pointer;
       transition: all 0.2s ease;
-      gap: 8px;
+      gap: 12px;
     }
-    .modal-size-row:hover {
-      border-color: #c0c9bd;
+    .size-row:hover {
+      border-color: #003c17;
       background: #f6f3f2;
+      transform: translateX(3px);
     }
-    .modal-size-row .size {
+    .size-row:active {
+      transform: scale(0.98);
+    }
+    .size-row.selected {
+      border-color: #003c17;
+      background: #e5f5e9;
+      box-shadow: 0 0 0 2px rgba(0,60,23,0.12);
+    }
+    .size-row .sz {
+      font-size: 14px;
       font-weight: 700;
       color: #1c1b1b;
       white-space: nowrap;
     }
-    .modal-size-row .notes {
-      font-weight: 400;
+    .size-row .note {
+      font-size: 12px;
       color: #71796f;
       text-align: right;
-      font-size: 11px;
       flex-shrink: 1;
-      min-width: 0;
       overflow: hidden;
       text-overflow: ellipsis;
     }
-    .modal-wa-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      background: #25D366;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 12px;
-      font-size: 13px;
-      font-weight: 700;
-      border: none;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      text-decoration: none;
-      margin-top: 4px;
-    }
-    .modal-wa-btn:hover {
-      opacity: 0.9;
-      transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
-    }
-    .modal-wa-btn:active {
-      transform: translateY(0) scale(0.97);
-    }
 
-    /* === Subcategory card entrance === */
-    .subcat-card {
+    /* === Drill Entrance Animation === */
+    .drill-item {
       opacity: 0;
-      transform: translateY(10px);
+      transform: translateY(16px);
     }
-    .subcat-visible .subcat-card {
-      animation: subcat-card-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    #drillContainer.drill-visible .drill-item {
+      animation: drill-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
     }
-    .subcat-visible .subcat-card:nth-child(1) { animation-delay: 0.00s; }
-    .subcat-visible .subcat-card:nth-child(2) { animation-delay: 0.04s; }
-    .subcat-visible .subcat-card:nth-child(3) { animation-delay: 0.08s; }
-    .subcat-visible .subcat-card:nth-child(4) { animation-delay: 0.12s; }
-    .subcat-visible .subcat-card:nth-child(5) { animation-delay: 0.16s; }
-    .subcat-visible .subcat-card:nth-child(6) { animation-delay: 0.20s; }
-    .subcat-visible .subcat-card:nth-child(7) { animation-delay: 0.24s; }
-    .subcat-visible .subcat-card:nth-child(8) { animation-delay: 0.28s; }
-    .subcat-visible .subcat-card:nth-child(9) { animation-delay: 0.32s; }
-    .subcat-visible .subcat-card:nth-child(10) { animation-delay: 0.36s; }
-    @keyframes subcat-card-pop {
-      0% { opacity: 0; transform: translateY(10px) scale(0.95); }
+    @keyframes drill-pop {
+      0% { opacity: 0; transform: translateY(16px) scale(0.95); }
       100% { opacity: 1; transform: translateY(0) scale(1); }
     }
-
-    /* === Accordion entrance === */
-    .accordion-item {
-      opacity: 0;
-      transform: translateY(12px);
-    }
-    .accordion-grid-visible .accordion-item {
-      animation: accordion-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-    }
-    @keyframes accordion-pop {
-      0% { opacity: 0; transform: translateY(12px) scale(0.97); }
-      100% { opacity: 1; transform: translateY(0) scale(1); }
-    }
-    .accordion-grid-visible .accordion-item:nth-child(1) { animation-delay: 0.00s; }
-    .accordion-grid-visible .accordion-item:nth-child(2) { animation-delay: 0.06s; }
-    .accordion-grid-visible .accordion-item:nth-child(3) { animation-delay: 0.12s; }
-    .accordion-grid-visible .accordion-item:nth-child(4) { animation-delay: 0.18s; }
-    .accordion-grid-visible .accordion-item:nth-child(5) { animation-delay: 0.24s; }
-    .accordion-grid-visible .accordion-item:nth-child(6) { animation-delay: 0.30s; }
   </style>
 </head>
 <body>
@@ -749,27 +495,27 @@
       </div>
     </div>
 
-    <!-- ===== VIEW: DETAIL (model grid) ===== -->
+    <!-- ===== VIEW: DETAIL (drill-down navigation) ===== -->
     <div id="view-detail" class="view-state hidden-view fade-in">
-      <!-- Detail Header -->
+      <!-- Drill Header -->
       <div class="flex items-center justify-between mb-6">
-        <button class="back-btn" id="backBtn">
+        <button class="back-btn" id="detailBackBtn">
           <span class="material-symbols-outlined text-[18px]">arrow_back</span>
           Kembali
         </button>
         <img id="detailBrandLogo" src="" alt="" class="detail-brand-logo">
       </div>
 
-      <!-- Accordion Container -->
-      <div id="accordionContainer" class="space-y-3">
+      <!-- Drill Container -->
+      <div id="drillContainer">
         <!-- Populated by JS -->
       </div>
 
-      <!-- WhatsApp CTA -->
-      <div class="text-center mt-8">
-        <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-primary text-on-primary px-6 py-3 rounded-xl font-[600] text-[14px] leading-[20px] hover:opacity-90 transition-all active:scale-95 shadow-sm">
-          <span class="material-symbols-outlined text-[18px] fill">chat</span>
-          Tanya Ketersediaan & Harga via WhatsApp
+      <!-- WhatsApp CTA (shown at sizes level) -->
+      <div class="text-center mt-8 hidden" id="detailWaCta">
+        <a id="detailWaLink" href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-[#25D366] text-white px-6 py-3 rounded-xl font-[600] text-[14px] leading-[20px] hover:opacity-90 transition-all active:scale-95 shadow-sm">
+          <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.067 2.877 1.215 3.076.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          Tanya Harga via WhatsApp
         </a>
       </div>
     </div>
@@ -864,37 +610,6 @@
     </a>
   </nav>
 
-  <!-- ===== MODAL ===== -->
-  <div id="sizeModal" class="modal-overlay">
-    <div class="modal-backdrop" id="modalBackdrop"></div>
-    <div class="modal-panel">
-      <button class="modal-close-btn" id="modalCloseBtn" aria-label="Tutup">
-        <span class="material-symbols-outlined text-[18px]">close</span>
-      </button>
-      <div class="modal-grid">
-        <div class="modal-image-col">
-          <img id="modalImage" src="" alt="">
-        </div>
-        <div class="modal-info-col">
-          <div id="modalBadgeWrap"></div>
-          <div>
-            <div class="modal-title" id="modalTitle"></div>
-            <div class="modal-subtitle" id="modalSubtitle"></div>
-          </div>
-          <div class="modal-desc" id="modalDesc"></div>
-          <div>
-            <div class="modal-sizes-label">Ukuran Tersedia</div>
-            <div class="modal-sizes-grid" id="modalSizesGrid"></div>
-          </div>
-          <a id="modalWaBtn" href="https://wa.me/6281234567890?text=" target="_blank" rel="noopener noreferrer" class="modal-wa-btn">
-            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.067 2.877 1.215 3.076.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-            Tanya Harga via WhatsApp
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <script src="js/brands-data.js"></script>
   <script src="js/scripts.js"></script>
   <script>
@@ -904,103 +619,51 @@
   </script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // Brand data is loaded from js/brands-data.js
-      // Guard: ensure brands data loaded correctly
       if (typeof brands === 'undefined' || !brands) return;
 
-      // Normalize all brands to have subCategories format
+      // Normalize all brands — flat sizes → subCategories format
       Object.keys(brands).forEach(function(key) {
         var brand = brands[key];
         brand.models = brand.models.map(function(model) {
           if (model.subCategories && model.subCategories.length > 0) {
+            // Ensure flat models with a single "Semua Ukuran" group for consistency
             return model;
           }
           var sizeList = (model.sizes || '').split('·').map(function(s) { return s.trim(); }).filter(Boolean);
           return {
             name: model.name,
             desc: model.desc || '',
-            subCategories: [
-              {
-                label: 'Ukuran Tersedia',
-                entries: sizeList.map(function(size) { return { size: size, notes: '' }; })
-              }
-            ]
+            subCategories: [{
+              label: 'Semua Ukuran',
+              entries: sizeList.map(function(size) { return { size: size, notes: '' }; })
+            }]
           };
         });
       });
 
+      // === DOM refs ===
       var viewGrid = document.getElementById('view-grid');
       var viewDetail = document.getElementById('view-detail');
       var brandBoxes = document.querySelectorAll('.brand-box');
-      var backBtn = document.getElementById('backBtn');
+      var backBtn = document.getElementById('detailBackBtn');
       var heading = document.getElementById('sectionHeading');
-      var accordionContainer = document.getElementById('accordionContainer');
-      var modalOverlay = document.getElementById('sizeModal');
-      var modalBackdrop = document.getElementById('modalBackdrop');
-      var modalCloseBtn = document.getElementById('modalCloseBtn');
-      var modalImage = document.getElementById('modalImage');
-      var modalBadgeWrap = document.getElementById('modalBadgeWrap');
-      var modalTitle = document.getElementById('modalTitle');
-      var modalSubtitle = document.getElementById('modalSubtitle');
-      var modalDesc = document.getElementById('modalDesc');
-      var modalSizesGrid = document.getElementById('modalSizesGrid');
-      var modalWaBtn = document.getElementById('modalWaBtn');
+      var drillContainer = document.getElementById('drillContainer');
+      var detailBrandLogo = document.getElementById('detailBrandLogo');
+      var detailWaCta = document.getElementById('detailWaCta');
+      var detailWaLink = document.getElementById('detailWaLink');
       var isTransitioning = false;
 
-      function toggleAccordion(header) {
-        var body = header.nextElementSibling;
-        if (!body) return;
-        header.classList.toggle('active');
-        body.classList.toggle('open');
-        // Trigger subcat-card entrance animation when opening
-        if (body.classList.contains('open')) {
-          var content = body.querySelector('.accordion-content');
-          if (content) content.classList.add('subcat-visible');
-        }
+      // === Navigation state ===
+      var state = { level: 0, brandKey: null, brand: null, series: null, variantLabel: null };
+
+      // === Helper: escape for HTML attribute ===
+      function escAttr(s) {
+        return (s || '').replace(/&/g, '&amp;').replace(/'/g, "\\'");
       }
 
-      function openModal(brand, model, category) {
-        var imgSrc = getModelImage(brand.name, model.name, category.label);
-        var fallbackImg = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 75'%3E%3Crect width='100' height='75' fill='%23e5e2e1' rx='8'/%3E%3Ctext x='50' y='42' text-anchor='middle' font-size='10' fill='%23999'%3ETire%3C/text%3E%3C/svg%3E";
-        modalImage.src = imgSrc;
-        modalImage.setAttribute('onerror', 'this.onerror=null;this.src="' + fallbackImg + '"');
-        modalImage.alt = model.name + ' - ' + category.label;
-        modalBadgeWrap.innerHTML = '<span class="modal-header-badge">' + brand.name + '</span>';
-        modalTitle.textContent = model.name;
-        modalSubtitle.textContent = category.label;
-        modalDesc.textContent = model.desc || '';
-        modalSizesGrid.innerHTML = '';
-
-        category.entries.forEach(function(entry) {
-          var row = document.createElement('div');
-          row.className = 'modal-size-row';
-          row.innerHTML = '<span class="size">' + entry.size + '</span><span class="notes">' + (entry.notes || '') + '</span>';
-          row.addEventListener('click', function() {
-            var waMsg = encodeURIComponent('Halo, saya tertarik dengan ban ' + brand.name + ' ' + model.name + ' ukuran ' + entry.size + '. Mohon info ketersediaan dan harga.');
-            modalWaBtn.href = 'https://wa.me/6281234567890?text=' + waMsg;
-          });
-          modalSizesGrid.appendChild(row);
-        });
-
-        var waMsg = encodeURIComponent('Halo, saya tertarik dengan ban ' + brand.name + ' ' + model.name + ' (' + category.label + '). Mohon info ketersediaan dan harga.');
-        modalWaBtn.href = 'https://wa.me/6281234567890?text=' + waMsg;
-
-        modalOverlay.classList.add('open');
-        document.body.style.overflow = 'hidden';
-      }
-
-      function closeModal() {
-        modalOverlay.classList.remove('open');
-        document.body.style.overflow = '';
-      }
-
-      if (modalBackdrop) modalBackdrop.addEventListener('click', closeModal);
-      if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeModal);
-
+      // === Image lookup (same mapping as before) ===
       function getModelImage(brandName, modelName, categoryLabel) {
-        // Real tire images mapping for brands that have actual photos
         var imageMap = {
-          // ===== BRIDGESTONE =====
           'Bridgestone': {
             'POTENZA': {
               'Standard Lineup': 'images/bridgestone-potenza-re003-tilted.webp',
@@ -1010,8 +673,8 @@
             },
             'TURANZA': {
               'Standard Lineup': 'images/bridgestone-turanza-t005a.webp',
-              'Turanza 6': 'images/bst-turanza-t005.webp',
-              'OEM & Special Fitment': 'images/bst-turanza-t005.webp',
+              'Turanza 6': 'images/bridgestone-turanza-6.webp',
+              'OEM & Special Fitment': 'images/bridgestone-turanza-6.webp',
             },
             'ECOPIA': {
               'EP300 & ENLITEN': 'images/bridgestone-ecopia-ep300-tilted.webp',
@@ -1049,16 +712,16 @@
               'B390 / BISON 623 (Passenger / Commercial)': 'images/bst-b390.webp',
             },
           },
-          // ===== DUNLOP =====
           'Dunlop': {
+            'SP Series & Specialized OEM': { '*': 'images/tires/dunlop-st30.webp' },
             'ST / PT / SUV & 4WD': { '*': 'images/tires/dunlop-st30.webp' },
             'SP SPORT MAXX': { '*': 'images/tires/dunlop-sp-sport-maxx-050.webp' },
             'ENASAVE & ECO': { '*': 'images/tires/dunlop-ec300-plus.webp' },
             'MANS Performance': { '*': 'images/tires/dunlop-lm705.webp' },
             'DIREZZA Premium Performance': { '*': 'images/tires/dunlop-direzza-dz102.webp' },
+            'Commercial Light Truck': { '*': 'images/tires/dunlop-at5.webp' },
             'Touring Passenger & All-Terrain': { '*': 'images/tires/dunlop-at5.webp' },
           },
-          // ===== GT RADIAL =====
           'GT Radial': {
             'SAVERO & KOMODO': {
               'SAVERO A/T PRO': 'images/gtradial-savero-atpro.webp',
@@ -1076,31 +739,26 @@
               'CHAMPIRO ECOTEC': 'images/gtradial-champiro-ecotec.webp',
               'CHAMPIRO ECO': 'images/gtradial-champiro-ecotec.webp',
               'CHAMPIRO LUXE': 'images/gtradial-champiro-luxe.webp',
+              'CHAMPIRO BXT PLUS': 'images/gtradial-champiro-hpy.webp',
             },
             'MAXMILER': {
               'MAXMILER PRO': 'images/gtradial-maxmiler-pro.webp',
             },
           },
-          // ===== MICHELIN =====
           'Michelin': {
-            'PRIMACY 5': { '*': 'images/tires/michelin-primacy-5.webp' },
-            'PRIMACY 4': { '*': 'images/tires/michelin-primacy-4.webp' },
-            'PILOT SPORT 5': { '*': 'images/tires/michelin-pilot-sport-5.webp' },
-            'PILOT SPORT 4 SUV': { '*': 'images/tires/michelin-pilot-sport-4-suv.webp' },
-            'PILOT SPORT 4/4S': { '*': 'images/tires/michelin-pilot-sport-4-suv.webp' },
-            'LATITUDE SPORT 3': { '*': 'images/tires/michelin-latitude-sport-3.webp' },
+            'PRIMACY': { '*': 'images/tires/michelin-primacy-5.webp' },
+            'PILOT SPORT': { '*': 'images/tires/michelin-pilot-sport-5.webp' },
+            'LATITUDE': { '*': 'images/tires/michelin-latitude-sport-3.webp' },
+            'LTX TRAIL': { '*': 'images/tires/michelin-latitude-sport-3.webp' },
           },
-          // ===== SAILUN =====
           'Sailun': {
             'ELITE 2': { '*': 'images/sailun-elite2.webp' },
             'ATREZO ZSR2': { '*': 'images/sailun-atrezzo-zsr2.webp' },
             'ATREZO R01 SPORT': { '*': 'images/sailun-atrezzo-r01-sport.webp' },
             'COMMERCIO PRO': { '*': 'images/sailun-commercio-pro.webp' },
             'ATREZO SUV T-CON': { '*': 'images/sailun-atrezzo-suv-tcon.png' },
-            'TERAMAX A/T M': { '*': 'images/sailun-terramax-atm.webp' },
-            'TERAMAX M/T': { '*': 'images/sailun-terramax-mt.webp' },
+            'TERAMAX': { '*': 'images/sailun-terramax-atm.webp' },
           },
-          // ===== ACCELERA =====
           'Accelera': {
             'PHI': { '*': 'images/accelera-phi.webp' },
             'Iota': { '*': 'images/accelera-iota-evt.webp' },
@@ -1110,57 +768,59 @@
             'Omikron': { '*': 'images/accelera-omikron-at.webp' },
             'Epsilon': { '*': 'images/accelera-epsilon.webp' },
             'M/T & OFF-ROAD': { '*': 'images/accelera-mt01.webp' },
-            'ALPHA & SIGMA': { '*': 'images/accelera-alpha.webp' },
+            'ALPHA & SIGMA': { '*': 'images/accelera-alpha.jpg' },
             'RALLY': { '*': 'images/accelera-ra162.webp' },
+            'COMMERCIAL': { '*': 'images/accelera-ultra-3.webp' },
           },
-          // ===== HANKOOK =====
+          'Falken': {
+            'SINCERA SN832i': { '*': 'images/falken/falken-sincera-sn832i.webp' },
+            'ZIEX ZE310R': { '*': 'images/falken/falken-ziex-ze310r.webp' },
+            'WILDPEAK AT3WA': { '*': 'images/falken/falken-wildpeak-at3wa.webp' },
+            'AZENIS FK520': { '*': 'images/falken/falken-azenis-fk520.webp' },
+            'ZIEX CT50 A/S': { '*': 'images/falken/falken-ziex-ze310r.webp' },
+            'LINAM VAN01': { '*': 'images/falken/falken-linam-van01.webp' },
+          },
           'Hankook': {
             'Ventus Prime4': { '*': 'images/hankook-ventus-prime4.webp' },
-            'Kinergy 4S2': { '*': 'images/hankook-kinergy-4s2.webp' },
-            'Kinergy PT': { '*': 'images/hankook-kinergy-pt.webp' },
+            'KINERGY': { '*': 'images/hankook-kinergy-4s2.webp' },
             'Dynapro HP2': { '*': 'images/hankook-dynapro-hp2.webp' },
           },
-          // ===== BLACKHAWK =====
           'Blackhawk': {
             'AGILITY SUV': { '*': 'images/blackhawk-agility-suv-tread.webp' },
             'Street Performance': { '*': 'images/blackhawk-agility-suv-tread.webp' },
+            'Commercial': { '*': 'images/blackhawk-agility-suv-tread.webp' },
           },
-          // ===== DELIUM =====
           'Delium': {
             'EVO TECHNO': { '*': 'images/delium-evo-techno.webp' },
             'EVO RAZE': { '*': 'images/delium-evo-raze.webp' },
             'POWER SAVER': { '*': 'images/delium-power-saver.webp' },
-            'TERRA CRUISER A/T': { '*': 'images/delium-terra-cruiser.webp' },
+            'VELOCITA DTX': { '*': 'images/delium-velocita-dtx.jpg' },
+            'TERRA': { '*': 'images/delium-terra-cruiser.webp' },
           },
-          // ===== SWALLOW =====
           'Swallow': {
-            'HS 231': { '*': 'images/swallow-hs-231.webp' },
-            'HS 237': { '*': 'images/swallow-hs-237.webp' },
-            'HS 229': { '*': 'images/swallow-hs-229.webp' },
+            'HS': { '*': 'images/swallow-hs-231.jpg' },
           },
         };
-
-        // Check for a specific image match
         var brandMap = imageMap[brandName];
         if (brandMap) {
           var modelMap = brandMap[modelName];
           if (modelMap) {
-            // If model has wildcard '*' key, use it for any category
             if (modelMap['*']) return modelMap['*'];
-            // Check for specific category match
             var specific = modelMap[categoryLabel];
             if (specific) return specific;
-            // Fallback: use first available image for this model
             var keys = Object.keys(modelMap);
             if (keys.length > 0) return modelMap[keys[0]];
           }
         }
-
-        // Fallback to generic SVG placeholder
         var imgName = modelName.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+$/, '') + '.svg';
         return 'images/tires/' + imgName;
       }
 
+      function makeFallbackImg() {
+        return "data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 75%27%3E%3Crect width=%27100%27 height=%2775%27 fill=%27%23e5e2e1%27 rx=%278%27/%3E%3Ctext x=%2750%27 y=%2742%27 text-anchor=%27middle%27 font-size=%2710%27 fill=%27%23999%27%3ETire%3C/text%3E%3C/svg%3E";
+      }
+
+      // === showGrid: return to brand grid ===
       function showGrid() {
         if (isTransitioning) return;
         isTransitioning = true;
@@ -1179,70 +839,51 @@
         }, 300);
       }
 
+      // === showDetail: level 1 — Series grid ===
       function showDetail(brandKey) {
         if (isTransitioning) return;
         var data = brands[brandKey];
         if (!data) return;
         isTransitioning = true;
+        state.level = 1;
+        state.brandKey = brandKey;
+        state.brand = data;
+        state.series = null;
+        state.variantLabel = null;
 
-        document.getElementById('detailBrandLogo').src = data.logo;
-        document.getElementById('detailBrandLogo').alt = data.name;
+        detailBrandLogo.src = data.logo;
+        detailBrandLogo.alt = data.name;
+        detailWaCta.classList.add('hidden');
 
-        accordionContainer.innerHTML = '';
-        accordionContainer.classList.remove('accordion-grid-visible');
-
+        var fallback = makeFallbackImg();
+        var html = '<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3" id="seriesGrid">';
         data.models.forEach(function(model, idx) {
-          if (!model.subCategories || model.subCategories.length === 0) return;
-
-          var item = document.createElement('div');
-          item.className = 'accordion-item';
-          item.style.animationDelay = (idx * 0.06) + 's';
-
-          var header = document.createElement('button');
-          header.className = 'accordion-header';
-          header.innerHTML = '<div class="title-wrap"><span class="series-name">' + model.name + '</span><span class="series-desc">' + (model.desc || '') + '</span></div><span class="material-symbols-outlined chevron">expand_more</span>';
-          header.addEventListener('click', function() { toggleAccordion(header); });
-
-          var body = document.createElement('div');
-          body.className = 'accordion-body';
-          var content = document.createElement('div');
-          content.className = 'accordion-content';
-
-          model.subCategories.forEach(function(cat) {
-            if (!cat.entries || cat.entries.length === 0) return;
-            var card = document.createElement('div');
-            card.className = 'subcat-card';
-
-            var imgSrc = getModelImage(data.name, model.name, cat.label);
-
-            var fallbackImg = "data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 75%27%3E%3Crect width=%27100%27 height=%2775%27 fill=%27%23e5e2e1%27 rx=%278%27/%3E%3Ctext x=%2750%27 y=%2742%27 text-anchor=%27middle%27 font-size=%2710%27 fill=%27%23999%27%3ETire%3C/text%3E%3C/svg%3E";
-            var img = document.createElement('img');
-            img.src = imgSrc;
-            img.alt = cat.label;
-            img.loading = 'lazy';
-            img.onerror = function() { this.onerror = null; this.src = fallbackImg; };
-            var imgWrap = document.createElement('div');
-            imgWrap.className = 'card-img';
-            imgWrap.appendChild(img);
-            card.appendChild(imgWrap);
-            var bodyDiv = document.createElement('div');
-            bodyDiv.className = 'card-body';
-            bodyDiv.innerHTML =
-                '<div class="card-label">' + cat.label + '</div>' +
-                '<div class="card-count">' + cat.entries.length + ' ukuran</div>';
-            card.appendChild(bodyDiv);
-
-            card.addEventListener('click', function() {
-              openModal(data, model, cat);
-            });
-            content.appendChild(card);
-          });
-
-          body.appendChild(content);
-          item.appendChild(header);
-          item.appendChild(body);
-          accordionContainer.appendChild(item);
+          var firstCat = model.subCategories && model.subCategories[0] ? model.subCategories[0].label : '';
+          var imgSrc = getModelImage(data.name, model.name, firstCat);
+          var variantCount = model.subCategories ? model.subCategories.length : 1;
+          html += '<div class="series-card drill-item" data-idx="' + idx + '" style="animation-delay:' + (idx * 0.06) + 's">';
+          html += '<div class="sc-img"><img src="' + imgSrc + '" alt="' + escAttr(model.name) + '" loading="lazy" onerror="this.onerror=null;this.src=\'' + fallback + '\'"></div>';
+          html += '<div class="sc-body"><div class="sc-name">' + escAttr(model.name) + '</div><span class="sc-count">' + variantCount + ' varian</span></div>';
+          html += '</div>';
         });
+        html += '</div>';
+        drillContainer.innerHTML = html;
+
+        // Click handlers on series cards
+        var cards = drillContainer.querySelectorAll('.series-card');
+        cards.forEach(function(card) {
+          card.addEventListener('click', function() {
+            var idx = parseInt(this.getAttribute('data-idx'));
+            var model = data.models[idx];
+            if (model) drillToVariant(brandKey, model.name);
+          });
+        });
+
+        setTimeout(function() {
+          var items = drillContainer.querySelectorAll('.drill-item');
+          items.forEach(function(item) { item.style.animationDelay = (Array.prototype.indexOf.call(item.parentNode.children, item) * 0.06) + 's'; });
+          drillContainer.classList.add('drill-visible');
+        }, 50);
 
         if (heading) heading.style.opacity = '0';
         viewGrid.classList.remove('fade-in');
@@ -1251,34 +892,145 @@
           viewGrid.classList.add('hidden-view');
           viewDetail.classList.remove('hidden-view', 'fade-out');
           void viewDetail.offsetWidth;
-          viewDetail.classList.add('fade-in');            setTimeout(function() {
-              accordionContainer.classList.add('accordion-grid-visible');
-              // Open first accordion automatically so subcategories are visible
-              var firstHeader = accordionContainer.querySelector('.accordion-header');
-              if (firstHeader) toggleAccordion(firstHeader);
-          }, 100);
+          viewDetail.classList.add('fade-in');
           setTimeout(function() { isTransitioning = false; }, 350);
         }, 300);
       }
 
+      // === drillToVariant: level 2 — Variant cards ===
+      function drillToVariant(brandKey, modelName) {
+        var brand = brands[brandKey];
+        if (!brand) return;
+        var model = null;
+        brand.models.forEach(function(m) { if (m.name === modelName) model = m; });
+        if (!model) return;
+        state.level = 2;
+        state.series = model;
+        state.variantLabel = null;
+        detailWaCta.classList.add('hidden');
+
+        var fallback = makeFallbackImg();
+        var firstCat = model.subCategories && model.subCategories[0] ? model.subCategories[0].label : '';
+        var imgSrc = getModelImage(brand.name, model.name, firstCat);
+
+        var html = '<div class="detail-info-card">';
+        html += '<img src="' + imgSrc + '" alt="' + escAttr(model.name) + '" onerror="this.onerror=null;this.src=\'' + fallback + '\'">';
+        html += '<div><span class="dic-brand">' + escAttr(brand.name) + '</span><div class="dic-name">' + escAttr(model.name) + '</div></div></div>';
+        html += '<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3" id="variantGrid">';
+        model.subCategories.forEach(function(cat, idx) {
+          var count = cat.entries ? cat.entries.length : 0;
+          var catImg = getModelImage(brand.name, model.name, cat.label);
+          html += '<div class="subcat-card drill-item" data-idx="' + idx + '" style="animation-delay:' + (idx * 0.05) + 's">';
+          html += '<div class="card-img"><img src="' + catImg + '" alt="' + escAttr(cat.label) + '" loading="lazy" onerror="this.onerror=null;this.src=\'' + fallback + '\'"></div>';
+          html += '<div class="card-body"><div class="card-label">' + escAttr(cat.label) + '</div><span class="card-count">' + count + ' ukuran</span></div>';
+          html += '</div>';
+        });
+        html += '</div>';
+        drillContainer.innerHTML = html;
+
+        var cards = drillContainer.querySelectorAll('.subcat-card');
+        cards.forEach(function(card) {
+          card.addEventListener('click', function() {
+            var idx = parseInt(this.getAttribute('data-idx'));
+            var cat = model.subCategories[idx];
+            if (cat) drillToSizes(brandKey, model.name, cat.label);
+          });
+        });
+
+        setTimeout(function() {
+          var items = drillContainer.querySelectorAll('.drill-item');
+          items.forEach(function(item) { item.style.animationDelay = (parseInt(item.getAttribute('data-idx')) * 0.05) + 's'; });
+          drillContainer.classList.add('drill-visible');
+        }, 50);
+      }
+
+      // === drillToSizes: level 3 — Size list ===
+      function drillToSizes(brandKey, modelName, variantLabel) {
+        var brand = brands[brandKey];
+        if (!brand) return;
+        var model = null;
+        brand.models.forEach(function(m) { if (m.name === modelName) model = m; });
+        if (!model) return;
+        var category = null;
+        model.subCategories.forEach(function(cat) { if (cat.label === variantLabel) category = cat; });
+        if (!category) return;
+        state.level = 3;
+        state.variantLabel = variantLabel;
+
+        var fallback = makeFallbackImg();
+        var imgSrc = getModelImage(brand.name, model.name, variantLabel);
+        var html = '<div class="detail-info-card">';
+        html += '<img src="' + imgSrc + '" alt="' + escAttr(model.name) + '" onerror="this.onerror=null;this.src=\'' + fallback + '\'">';
+        html += '<div><span class="dic-brand">' + escAttr(brand.name) + '</span><div class="dic-name">' + escAttr(model.name) + '</div><div class="dic-sub">' + escAttr(variantLabel) + '</div></div></div>';
+        html += '<div class="space-y-2" id="sizesList">';
+        (category.entries || []).forEach(function(entry, idx) {
+          html += '<div class="size-row drill-item" data-idx="' + idx + '" style="animation-delay:' + (idx * 0.04) + 's">';
+          html += '<span class="sz">' + escAttr(entry.size) + '</span>';
+          html += entry.notes ? '<span class="note">' + escAttr(entry.notes) + '</span>' : '';
+          html += '</div>';
+        });
+        html += '</div>';
+        drillContainer.innerHTML = html;
+
+        // WhatsApp link
+        var waMsg = encodeURIComponent('Halo, saya tertarik dengan ban ' + brand.name + ' ' + model.name + ' (' + variantLabel + '). Mohon info ketersediaan dan harga.');
+        detailWaLink.href = 'https://wa.me/6281234567890?text=' + waMsg;
+        detailWaCta.classList.remove('hidden');
+
+        var rows = drillContainer.querySelectorAll('.size-row');
+        rows.forEach(function(row) {
+          row.addEventListener('click', function() {
+            var sizeEl = this.querySelector('.sz');
+            if (sizeEl) {
+              var waMsg = encodeURIComponent('Halo, saya tertarik dengan ban ' + brand.name + ' ' + model.name + ' ukuran ' + sizeEl.textContent + '. Mohon info ketersediaan dan harga.');
+              detailWaLink.href = 'https://wa.me/6281234567890?text=' + waMsg;
+              rows.forEach(function(r) { r.classList.remove('selected'); });
+              this.classList.add('selected');
+            }
+          });
+        });
+
+        setTimeout(function() {
+          var items = drillContainer.querySelectorAll('.drill-item');
+          items.forEach(function(item) { item.style.animationDelay = (parseInt(item.getAttribute('data-idx')) * 0.04) + 's'; });
+          drillContainer.classList.add('drill-visible');
+        }, 50);
+      }
+
+      // === Wire up brand boxes ===
       brandBoxes.forEach(function(box) {
         box.addEventListener('click', function() {
-          closeModal();
           showDetail(this.getAttribute('data-brand'));
         });
       });
-      if (backBtn) backBtn.addEventListener('click', function() { closeModal(); showGrid(); });
+
+      // === Back button handler ===
+      if (backBtn) backBtn.addEventListener('click', function() {
+        if (state.level === 1) showGrid();
+        else if (state.level === 2) {
+          // Go back to series level
+          state.level = 1;
+          state.series = null;
+          showDetail(state.brandKey);
+          // re-trigger entrance for series level
+        } else if (state.level === 3) {
+          drillToVariant(state.brandKey, state.series.name);
+        }
+      });
+
+      // === Escape key ===
       document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
-          if (modalOverlay.classList.contains('open')) {
-            closeModal();
-          } else if (!viewDetail.classList.contains('hidden-view')) {
-            showGrid();
+          if (!viewDetail.classList.contains('hidden-view') && backBtn) {
+            backBtn.click();
+          } else if (viewDetail.classList.contains('hidden-view')) {
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
           }
         }
       });
 
-      // Grid entrance
+      // === Grid entrance observer ===
       var brandGrid = document.getElementById('brand-box-grid');
       if (brandGrid) {
         var obs = new IntersectionObserver(function(entries) {

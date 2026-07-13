@@ -1320,8 +1320,28 @@
           name: 'Hankook', logo: 'images/hankook-logo.svg',
           models: [
             { name: 'Ventus Prime4', sizes: '205/55R16 · 215/55R17 · 225/45R17', desc: 'Premium sport · Handling presisi' },
-            { name: 'Kinergy 4S2', sizes: '185/55R15 · 195/65R15 · 205/60R16', desc: '4 musim · Aman di segala cuaca' },
-            { name: 'Kinergy PT', sizes: '175/65R14 · 185/65R14 · 195/60R15', desc: 'Nyaman & awet · Harga terjangkau' },
+            {
+              name: 'KINERGY',
+              desc: 'All-Season & Comfort Touring',
+              subCategories: [
+                {
+                  label: '4S2',
+                  entries: [
+                    { size: '185/55R15', notes: '' },
+                    { size: '195/65R15', notes: '' },
+                    { size: '205/60R16', notes: '' },
+                  ]
+                },
+                {
+                  label: 'PT',
+                  entries: [
+                    { size: '175/65R14', notes: '' },
+                    { size: '185/65R14', notes: '' },
+                    { size: '195/60R15', notes: '' },
+                  ]
+                },
+              ]
+            },
             { name: 'Dynapro HP2', sizes: '215/65R16 · 225/60R17 · 235/55R18', desc: 'SUV premium · Stabilitas tinggi' }
           ]
         },
@@ -1419,19 +1439,25 @@
                 },
               ]
             },
-            // ===== TERRA CRUISER A/T - All-Terrain =====
+            // ===== TERRA — All-Terrain & Mud-Terrain =====
             {
-              name: 'TERRA CRUISER A/T',
-              desc: 'All-Terrain - Off-Road & Medan Kasar',
+              name: 'TERRA',
+              desc: 'Off-Road — All-Terrain & Mud-Terrain',
               subCategories: [
                 {
-                  label: 'SUV & 4x4',
+                  label: 'CRUISER A/T',
                   entries: [
                     { size: '185/70R14', notes: '' },
                     { size: '195/70R14', notes: '' },
                     { size: '195/65R15', notes: '' },
                     { size: '205/70R15', notes: '' },
                     { size: '235/75R15', notes: '' },
+                  ]
+                },
+                {
+                  label: 'MANIA',
+                  entries: [
+                    { size: '31x10.5R15', notes: '' },
                   ]
                 },
               ]
@@ -1449,48 +1475,57 @@
                 },
               ]
             },
-            // ===== TERRA MANIA - Mud-Terrain =====
+          ]
+        },
+        swallow: {
+          name: 'Swallow', logo: 'images/swallow-logo.png',
+          models: [
             {
-              name: 'TERRA MANIA',
-              desc: 'Mud-Terrain - Off-Road Ekstrem',
+              name: 'HS',
+              desc: 'Passenger — Economical & Reliable',
               subCategories: [
                 {
-                  label: 'Mud-Terrain',
+                  label: '231',
                   entries: [
-                    { size: '31x10.5R15', notes: '' },
+                    { size: '175/65R14', notes: '' },
+                    { size: '185/65R14', notes: '' },
+                    { size: '195/60R15', notes: '' },
+                  ]
+                },
+                {
+                  label: '237',
+                  entries: [
+                    { size: '185/55R15', notes: '' },
+                    { size: '195/55R15', notes: '' },
+                    { size: '205/55R16', notes: '' },
+                  ]
+                },
+                {
+                  label: '229',
+                  entries: [
+                    { size: '155/80R13', notes: '' },
+                    { size: '175/70R13', notes: '' },
+                    { size: '165/65R14', notes: '' },
                   ]
                 },
               ]
             },
           ]
         },
-        swallow: {
-          name: 'Swallow', logo: 'images/swallow-logo.png',
-          models: [
-            { name: 'HS 231', sizes: '175/65R14 · 185/65R14 · 195/60R15', desc: 'Ekonomis & terpercaya · Irit bahan bakar' },
-            { name: 'HS 237', sizes: '185/55R15 · 195/55R15 · 205/55R16', desc: 'Nyaman di jalan · Handling responsif' },
-            { name: 'HS 229', sizes: '155/80R13 · 175/70R13 · 165/65R14', desc: 'Mobil kecil · Harga sangat terjangkau' }
-          ]
-        },
         michelin: {
           name: 'Michelin', logo: 'images/michelin-logo.svg',
-          models: [
-            // ===== PRIMACY 5 - Premium Comfort Touring =====
+            models: [
+            // ===== PRIMACY — Premium Comfort =====
             {
-              name: 'PRIMACY 5',
-              desc: 'Premium Comfort - Senyap, Nyaman & Irit',
+              name: 'PRIMACY',
+              desc: 'Premium Comfort — Nyaman, Irit & Inovatif',
               subCategories: [
                 {
-                  label: 'R16',
+                  label: '5',
                   entries: [
                     { size: '205/55R16', notes: '' },
                     { size: '205/60R16', notes: '' },
                     { size: '205/65R16', notes: '' },
-                  ]
-                },
-                {
-                  label: 'R17',
-                  entries: [
                     { size: '205/50R17', notes: '' },
                     { size: '205/55R17', notes: '' },
                     { size: '215/45R17', notes: '' },
@@ -1505,11 +1540,6 @@
                     { size: '235/50R17', notes: '' },
                     { size: '235/55R17', notes: '' },
                     { size: '245/45R17', notes: '' },
-                  ]
-                },
-                {
-                  label: 'R18',
-                  entries: [
                     { size: '215/45R18', notes: '' },
                     { size: '215/55R18', notes: '' },
                     { size: '225/45R18', notes: '' },
@@ -1517,31 +1547,14 @@
                     { size: '235/50R18', notes: '' },
                     { size: '235/55R18', notes: '' },
                     { size: '245/45R18', notes: '' },
-                  ]
-                },
-                {
-                  label: 'R19',
-                  entries: [
                     { size: '225/55R19', notes: '' },
                     { size: '235/55R19', notes: '' },
                   ]
                 },
-              ]
-            },
-            // ===== PRIMACY 4 - Premium Comfort =====
-            {
-              name: 'PRIMACY 4',
-              desc: 'Premium Comfort - Kenyamanan Maksimal',
-              subCategories: [
                 {
-                  label: 'R17',
+                  label: '4',
                   entries: [
                     { size: '215/60R17', notes: '' },
-                  ]
-                },
-                {
-                  label: 'R18',
-                  entries: [
                     { size: '225/50R18', notes: '' },
                     { size: '225/55R18', notes: '' },
                     { size: '235/55R18', notes: '' },
@@ -1549,15 +1562,57 @@
                     { size: '245/50R18', notes: 'Standard · ZP' },
                   ]
                 },
+                {
+                  label: 'SUV+',
+                  entries: [
+                    { size: '215/60R17', notes: '' },
+                    { size: '225/65R17', notes: '' },
+                    { size: '235/60R17', notes: '' },
+                    { size: '235/65R17', notes: '' },
+                    { size: '265/65R17', notes: '' },
+                    { size: '215/50R18', notes: '' },
+                    { size: '225/55R18', notes: '' },
+                    { size: '225/60R18', notes: '' },
+                    { size: '235/50R18', notes: '' },
+                    { size: '235/55R18', notes: '' },
+                    { size: '235/60R18', notes: '' },
+                    { size: '265/60R18', notes: '' },
+                    { size: '285/60R18', notes: '' },
+                    { size: '225/55R19', notes: '' },
+                    { size: '235/55R19', notes: '' },
+                    { size: '235/55R20', notes: '' },
+                    { size: '245/50R20', notes: '' },
+                  ]
+                },
+                {
+                  label: '3 (ZP)',
+                  entries: [
+                    { size: '205/55R17 ZP', notes: 'Runflat' },
+                    { size: '225/50R17 ZP', notes: 'Runflat' },
+                    { size: '225/55R17 ZP', notes: 'Runflat' },
+                    { size: '225/45R18 ZP', notes: 'Runflat' },
+                  ]
+                },
+                {
+                  label: 'E PRIMACY',
+                  entries: [
+                    { size: '235/45R18', notes: 'EV' },
+                    { size: '235/60R18', notes: 'EV' },
+                    { size: '235/50R19', notes: 'EV' },
+                    { size: '235/55R19', notes: 'EV' },
+                    { size: '245/45R20', notes: 'EV' },
+                    { size: '275/50R20', notes: 'EV' },
+                  ]
+                },
               ]
             },
-            // ===== PILOT SPORT 5 - Ultra High Performance =====
+            // ===== PILOT SPORT — High Performance =====
             {
-              name: 'PILOT SPORT 5',
-              desc: 'Ultra High Performance - Sport & Presisi',
+              name: 'PILOT SPORT',
+              desc: 'High Performance — Sport, Presisi & Inovasi',
               subCategories: [
                 {
-                  label: 'R17',
+                  label: '5',
                   entries: [
                     { size: '205/40R17', notes: '' },
                     { size: '205/45R17', notes: '' },
@@ -1567,11 +1622,6 @@
                     { size: '225/50R17', notes: '' },
                     { size: '245/40R17', notes: '' },
                     { size: '245/45R17', notes: '' },
-                  ]
-                },
-                {
-                  label: 'R18',
-                  entries: [
                     { size: '215/40R18', notes: '' },
                     { size: '215/45R18', notes: '' },
                     { size: '225/40R18', notes: '' },
@@ -1580,11 +1630,6 @@
                     { size: '235/40R18', notes: '' },
                     { size: '245/35R18', notes: '' },
                     { size: '245/40R18', notes: '' },
-                  ]
-                },
-                {
-                  label: 'R19-R20',
-                  entries: [
                     { size: '225/35R19', notes: '' },
                     { size: '235/35R19', notes: '' },
                     { size: '235/40R19', notes: '' },
@@ -1598,25 +1643,54 @@
                     { size: '255/35R20', notes: '' },
                   ]
                 },
-              ]
-            },
-            // ===== PILOT SPORT 4 SUV - Max Performance SUV =====
-            {
-              name: 'PILOT SPORT 4 SUV',
-              desc: 'Max Performance SUV - Presisi & Keamanan',
-              subCategories: [
                 {
-                  label: 'R18',
+                  label: '4/4S',
+                  entries: [
+                    { size: '205/50R17', notes: 'PS4' },
+                    { size: '225/45R17 ZP', notes: 'PS4 Runflat' },
+                    { size: '235/45R17', notes: 'PS4' },
+                    { size: '255/40R17', notes: 'PS4' },
+                    { size: '215/35R18', notes: 'PS4S' },
+                    { size: '225/40R18', notes: 'PS4S' },
+                    { size: '225/40R18 ZP', notes: 'PS4 Runflat' },
+                    { size: '225/45R18', notes: 'PS4' },
+                    { size: '235/40R18', notes: 'PS4' },
+                    { size: '245/40R18', notes: 'PS4' },
+                    { size: '255/35R18', notes: 'PS4' },
+                    { size: '255/40R18', notes: 'PS4' },
+                    { size: '265/35R18', notes: 'PS4' },
+                    { size: '235/35R19', notes: 'PS4S' },
+                    { size: '245/35R19', notes: 'PS4S' },
+                    { size: '255/35R19', notes: 'PS4S' },
+                    { size: '265/35R19', notes: 'PS4S' },
+                    { size: '275/35R19', notes: 'PS4S' },
+                    { size: '285/35R19', notes: 'PS4S' },
+                    { size: '245/35R20', notes: 'PS4S' },
+                    { size: '255/35R20', notes: 'PS4S' },
+                    { size: '265/35R20', notes: 'PS4S' },
+                    { size: '275/30R20', notes: 'PS4' },
+                    { size: '275/35R20', notes: 'PS4' },
+                    { size: '285/35R20', notes: 'PS4' },
+                    { size: '255/30R21', notes: 'PS4S' },
+                    { size: '255/35R21', notes: 'PS4S' },
+                    { size: '265/35R21', notes: 'PS4S' },
+                    { size: '275/30R21', notes: 'PS4S' },
+                    { size: '275/35R21', notes: 'PS4S' },
+                    { size: '285/30R21', notes: 'PS4S' },
+                    { size: '295/30R21', notes: 'PS4S' },
+                    { size: '255/30R22', notes: 'PS4S' },
+                    { size: '285/30R22', notes: 'PS4S' },
+                    { size: '285/35R22', notes: 'PS4S' },
+                    { size: '315/30R22', notes: 'PS4S' },
+                  ]
+                },
+                {
+                  label: '4 SUV',
                   entries: [
                     { size: '225/60R18', notes: '' },
                     { size: '235/50R18', notes: 'EMT' },
                     { size: '235/60R18', notes: '' },
                     { size: '255/55R18', notes: '' },
-                  ]
-                },
-                {
-                  label: 'R19',
-                  entries: [
                     { size: '225/55R19', notes: '' },
                     { size: '235/45R19', notes: 'EMT' },
                     { size: '235/55R19', notes: 'EMT · Standard' },
@@ -1627,11 +1701,6 @@
                     { size: '255/55R19', notes: '' },
                     { size: '265/50R19', notes: '' },
                     { size: '275/55R19', notes: '' },
-                  ]
-                },
-                {
-                  label: 'R20',
-                  entries: [
                     { size: '235/55R20', notes: '' },
                     { size: '245/45R20', notes: '' },
                     { size: '255/45R20', notes: '' },
@@ -1647,11 +1716,6 @@
                     { size: '285/50R20', notes: '' },
                     { size: '295/40R20', notes: '' },
                     { size: '305/40R20', notes: '' },
-                  ]
-                },
-                {
-                  label: 'R21',
-                  entries: [
                     { size: '235/50R21', notes: '' },
                     { size: '235/45R21', notes: '' },
                     { size: '245/45R21', notes: '' },
@@ -1667,11 +1731,6 @@
                     { size: '315/35R21', notes: '' },
                     { size: '315/40R21', notes: '' },
                     { size: '325/30R21', notes: '' },
-                  ]
-                },
-                {
-                  label: 'R22-R23',
-                  entries: [
                     { size: '275/40R22', notes: '' },
                     { size: '285/40R22', notes: '' },
                     { size: '285/45R22', notes: '' },
@@ -1680,182 +1739,8 @@
                     { size: '295/35R23', notes: '' },
                   ]
                 },
-              ]
-            },
-            // ===== PILOT SPORT 4/4S - Max Performance =====
-            {
-              name: 'PILOT SPORT 4/4S',
-              desc: 'Max Performance - Track & Street DNA',
-              subCategories: [
                 {
-                  label: 'R17-R18',
-                  entries: [
-                    { size: '205/50R17', notes: 'PS4' },
-                    { size: '225/45R17 ZP', notes: 'PS4 Runflat' },
-                    { size: '235/45R17', notes: 'PS4' },
-                    { size: '255/40R17', notes: 'PS4' },
-                    { size: '215/35R18', notes: 'PS4S' },
-                    { size: '225/40R18', notes: 'PS4S' },
-                    { size: '225/40R18 ZP', notes: 'PS4 Runflat' },
-                    { size: '225/45R18', notes: 'PS4' },
-                    { size: '235/40R18', notes: 'PS4' },
-                    { size: '245/40R18', notes: 'PS4' },
-                    { size: '255/35R18', notes: 'PS4' },
-                    { size: '255/40R18', notes: 'PS4' },
-                    { size: '265/35R18', notes: 'PS4' },
-                  ]
-                },
-                {
-                  label: 'R19-R20',
-                  entries: [
-                    { size: '235/35R19', notes: 'PS4S' },
-                    { size: '245/35R19', notes: 'PS4S' },
-                    { size: '255/35R19', notes: 'PS4S' },
-                    { size: '265/35R19', notes: 'PS4S' },
-                    { size: '275/35R19', notes: 'PS4S' },
-                    { size: '285/35R19', notes: 'PS4S' },
-                    { size: '245/35R20', notes: 'PS4S' },
-                    { size: '255/35R20', notes: 'PS4S' },
-                    { size: '265/35R20', notes: 'PS4S' },
-                    { size: '275/30R20', notes: 'PS4' },
-                    { size: '275/35R20', notes: 'PS4' },
-                    { size: '285/35R20', notes: 'PS4' },
-                  ]
-                },
-                {
-                  label: 'R21-R22',
-                  entries: [
-                    { size: '255/30R21', notes: 'PS4S' },
-                    { size: '255/35R21', notes: 'PS4S' },
-                    { size: '265/35R21', notes: 'PS4S' },
-                    { size: '275/30R21', notes: 'PS4S' },
-                    { size: '275/35R21', notes: 'PS4S' },
-                    { size: '285/30R21', notes: 'PS4S' },
-                    { size: '295/30R21', notes: 'PS4S' },
-                    { size: '255/30R22', notes: 'PS4S' },
-                    { size: '285/30R22', notes: 'PS4S' },
-                    { size: '285/35R22', notes: 'PS4S' },
-                    { size: '315/30R22', notes: 'PS4S' },
-                  ]
-                },
-              ]
-            },
-            // ===== PRIMACY SUV+ - Premium SUV Touring =====
-            {
-              name: 'PRIMACY SUV+',
-              desc: 'Premium SUV Touring - Kenyamanan & Keamanan',
-              subCategories: [
-                {
-                  label: 'R17-R18',
-                  entries: [
-                    { size: '215/60R17', notes: '' },
-                    { size: '225/65R17', notes: '' },
-                    { size: '235/60R17', notes: '' },
-                    { size: '235/65R17', notes: '' },
-                    { size: '265/65R17', notes: '' },
-                    { size: '215/50R18', notes: '' },
-                    { size: '225/55R18', notes: '' },
-                    { size: '225/60R18', notes: '' },
-                    { size: '235/50R18', notes: '' },
-                    { size: '235/55R18', notes: '' },
-                    { size: '235/60R18', notes: '' },
-                    { size: '265/60R18', notes: '' },
-                    { size: '285/60R18', notes: '' },
-                  ]
-                },
-                {
-                  label: 'R19-R20',
-                  entries: [
-                    { size: '225/55R19', notes: '' },
-                    { size: '235/55R19', notes: '' },
-                    { size: '235/55R20', notes: '' },
-                    { size: '245/50R20', notes: '' },
-                  ]
-                },
-              ]
-            },
-            // ===== LATITUDE SPORT 3 - SUV Performance =====
-            {
-              name: 'LATITUDE SPORT 3',
-              desc: 'SUV Performance - Stabilitas Tinggi',
-              subCategories: [
-                {
-                  label: 'R18',
-                  entries: [
-                    { size: '235/55R18', notes: '' },
-                    { size: '235/60R18', notes: '' },
-                    { size: '255/55R18', notes: 'ZP' },
-                  ]
-                },
-                {
-                  label: 'R19',
-                  entries: [
-                    { size: '235/55R19', notes: '' },
-                    { size: '245/50R19', notes: 'ZP' },
-                    { size: '255/50R19', notes: 'EMT · Standard' },
-                    { size: '275/50R19', notes: '' },
-                    { size: '275/55R19', notes: '' },
-                  ]
-                },
-                {
-                  label: 'R20',
-                  entries: [
-                    { size: '235/55R20', notes: '' },
-                    { size: '245/45R20', notes: 'ZP' },
-                    { size: '255/45R20', notes: '' },
-                    { size: '265/45R20', notes: '' },
-                    { size: '275/40R20', notes: 'ZP' },
-                    { size: '275/45R20', notes: '' },
-                    { size: '275/50R20', notes: '' },
-                    { size: '285/40R20', notes: '' },
-                    { size: '285/45R20', notes: '' },
-                    { size: '295/40R20', notes: '' },
-                  ]
-                },
-                {
-                  label: 'R21',
-                  entries: [
-                    { size: '265/40R21', notes: '' },
-                    { size: '285/40R21', notes: '' },
-                    { size: '295/35R21', notes: '' },
-                  ]
-                },
-              ]
-            },
-            // ===== LATITUDE SPORT - SUV Premium =====
-            {
-              name: 'LATITUDE SPORT',
-              desc: 'SUV Premium - Stabilitas Maksimal',
-              subCategories: [
-                {
-                  label: 'R19',
-                  entries: [
-                    { size: '275/55R19', notes: '' },
-                  ]
-                },
-              ]
-            },
-            // ===== LATITUDE TOUR HP - SUV Touring =====
-            {
-              name: 'LATITUDE TOUR HP',
-              desc: 'SUV Touring - Kenyamanan Jarak Jauh',
-              subCategories: [
-                {
-                  label: 'R19',
-                  entries: [
-                    { size: '235/55R19', notes: '' },
-                    { size: '255/50R19', notes: '' },
-                  ]
-                },
-              ]
-            },
-            // ===== PILOT SPORT CUP 2 - Track Performance =====
-            {
-              name: 'PILOT SPORT CUP 2',
-              desc: 'Track Performance - Sirkus & Sport',
-              subCategories: [
-                {
-                  label: 'R18-R20',
+                  label: 'CUP 2',
                   entries: [
                     { size: '225/40R18', notes: '' },
                     { size: '235/35R19', notes: '' },
@@ -1869,24 +1754,12 @@
                     { size: '295/30R20', notes: '' },
                   ]
                 },
-              ]
-            },
-            // ===== PILOT SUPER SPORT - Ultra High Performance =====
-            {
-              name: 'PILOT SUPER SPORT',
-              desc: 'Ultra High Performance - Sport Ekstrem',
-              subCategories: [
                 {
-                  label: 'R18',
+                  label: 'SUPER SPORT',
                   entries: [
                     { size: '245/35R18', notes: '' },
                     { size: '255/40R18', notes: '' },
                     { size: '275/40R18', notes: '' },
-                  ]
-                },
-                {
-                  label: 'R19',
-                  entries: [
                     { size: '225/40R19', notes: '' },
                     { size: '245/35R19', notes: '' },
                     { size: '255/35R19', notes: '' },
@@ -1895,11 +1768,6 @@
                     { size: '265/40R19', notes: '' },
                     { size: '275/35R19', notes: '' },
                     { size: '285/40R19', notes: '' },
-                  ]
-                },
-                {
-                  label: 'R20',
-                  entries: [
                     { size: '245/40R20', notes: '' },
                     { size: '255/35R20', notes: '' },
                     { size: '255/40R20', notes: '' },
@@ -1908,102 +1776,78 @@
                     { size: '285/30R20', notes: '' },
                     { size: '295/30R20', notes: '' },
                     { size: '295/35R20', notes: '' },
-                  ]
-                },
-                {
-                  label: 'R21',
-                  entries: [
                     { size: '245/40R21', notes: 'ZP' },
                     { size: '285/35R21', notes: '' },
                     { size: '325/30R21', notes: '' },
                   ]
                 },
-              ]
-            },
-            // ===== PILOT SPORT EV - Electric Vehicle =====
-            {
-              name: 'PILOT SPORT EV',
-              desc: 'Electric Vehicle - Silent & Efficient',
-              subCategories: [
                 {
-                  label: 'R19',
+                  label: 'EV',
                   entries: [
                     { size: '255/45R19', notes: '' },
-                  ]
-                },
-                {
-                  label: 'R20',
-                  entries: [
                     { size: '245/45R20', notes: '' },
                     { size: '255/45R20', notes: '' },
-                  ]
-                },
-                {
-                  label: 'R21',
-                  entries: [
                     { size: '255/50R21', notes: '' },
                   ]
                 },
-              ]
-            },
-            // ===== PILOT SPORT 3 - Premium Sport =====
-            {
-              name: 'PILOT SPORT 3',
-              desc: 'Premium Sport - Handling Presisi',
-              subCategories: [
                 {
-                  label: 'R19-R20',
+                  label: '3',
                   entries: [
                     { size: '245/45R19', notes: '' },
                     { size: '275/45R19', notes: '' },
                     { size: '285/35R20', notes: '' },
                   ]
                 },
-              ]
-            },
-            // ===== PILOT SPORT 2 - Sport Classic =====
-            {
-              name: 'PILOT SPORT 2',
-              desc: 'Sport Classic - Legenda Performa',
-              subCategories: [
                 {
-                  label: 'R19',
+                  label: '2',
                   entries: [
                     { size: '245/35R19', notes: '' },
                   ]
                 },
               ]
             },
-            // ===== PRIMACY 3 (ZP) - Runflat Comfort =====
+            // ===== LATITUDE — SUV Touring & Performance =====
             {
-              name: 'PRIMACY 3 (ZP)',
-              desc: 'Runflat Comfort - Aman & Nyaman',
+              name: 'LATITUDE',
+              desc: 'SUV Touring & Performance — Stabil & Nyaman',
               subCategories: [
                 {
-                  label: 'Runflat ZP',
+                  label: 'SPORT 3',
                   entries: [
-                    { size: '205/55R17 ZP', notes: 'Runflat' },
-                    { size: '225/50R17 ZP', notes: 'Runflat' },
-                    { size: '225/55R17 ZP', notes: 'Runflat' },
-                    { size: '225/45R18 ZP', notes: 'Runflat' },
+                    { size: '235/55R18', notes: '' },
+                    { size: '235/60R18', notes: '' },
+                    { size: '255/55R18', notes: 'ZP' },
+                    { size: '235/55R19', notes: '' },
+                    { size: '245/50R19', notes: 'ZP' },
+                    { size: '255/50R19', notes: 'EMT · Standard' },
+                    { size: '275/50R19', notes: '' },
+                    { size: '275/55R19', notes: '' },
+                    { size: '235/55R20', notes: '' },
+                    { size: '245/45R20', notes: 'ZP' },
+                    { size: '255/45R20', notes: '' },
+                    { size: '265/45R20', notes: '' },
+                    { size: '275/40R20', notes: 'ZP' },
+                    { size: '275/45R20', notes: '' },
+                    { size: '275/50R20', notes: '' },
+                    { size: '285/40R20', notes: '' },
+                    { size: '285/45R20', notes: '' },
+                    { size: '295/40R20', notes: '' },
+                    { size: '265/40R21', notes: '' },
+                    { size: '285/40R21', notes: '' },
+                    { size: '295/35R21', notes: '' },
                   ]
                 },
-              ]
-            },
-            // ===== E PRIMACY - Electric Vehicle =====
-            {
-              name: 'E PRIMACY',
-              desc: 'Electric Vehicle - Silent & Efficient',
-              subCategories: [
                 {
-                  label: 'R18-R20',
+                  label: 'SPORT',
                   entries: [
-                    { size: '235/45R18', notes: 'EV' },
-                    { size: '235/60R18', notes: 'EV' },
-                    { size: '235/50R19', notes: 'EV' },
-                    { size: '235/55R19', notes: 'EV' },
-                    { size: '245/45R20', notes: 'EV' },
-                    { size: '275/50R20', notes: 'EV' },
+                    { size: '275/55R19', notes: '' },
+                  ]
+                },
+                {
+                  label: 'TOUR HP',
+                  entries: [
+                    { size: '235/55R19', notes: '' },
+                    { size: '255/50R19', notes: '' },
                   ]
                 },
               ]
@@ -2321,96 +2165,49 @@
                 },
               ]
             },
-            // ===== TERAMAX A/T M — All-Terrain =====
+            // ===== TERAMAX — All-Terrain & Mud-Terrain =====
             {
-              name: 'TERAMAX A/T M',
-              desc: 'All-Terrain — Traksi Tangguh Segala Medan',
+              name: 'TERAMAX',
+              desc: 'Off-Road — All-Terrain & Mud-Terrain',
               subCategories: [
                 {
-                  label: 'R20 — Large SUV',
+                  label: 'A/T M',
                   entries: [
                     { size: '265/50R20', notes: '' },
                     { size: '275/55R20', notes: '' },
                     { size: '285/50R20', notes: '' },
-                  ]
-                },
-                {
-                  label: 'R18 — Medium & Large SUV',
-                  entries: [
                     { size: '265/60R18', notes: '' },
                     { size: '285/60R18', notes: '' },
-                  ]
-                },
-                {
-                  label: 'R17 — SUV & 4x4',
-                  entries: [
                     { size: '255/65R17', notes: '' },
                     { size: '265/65R17', notes: '' },
                     { size: '275/65R17', notes: '' },
                     { size: 'LT265/70R17', notes: '' },
                     { size: 'LT285/70R17', notes: '' },
-                  ]
-                },
-                {
-                  label: 'R16 — SUV & 4x4',
-                  entries: [
                     { size: '245/70R16', notes: '' },
                     { size: '265/70R16', notes: '' },
                     { size: '275/70R16', notes: '' },
                     { size: '225/75R16', notes: '' },
-                  ]
-                },
-                {
-                  label: 'R15 — Compact 4x4',
-                  entries: [
                     { size: '205/70R15', notes: '' },
                     { size: '235/70R15', notes: '' },
                     { size: '265/70R15', notes: '' },
                   ]
                 },
-              ]
-            },
-            // ===== TERAMAX M/T — Mud-Terrain =====
-            {
-              name: 'TERAMAX M/T',
-              desc: 'Mud-Terrain — Off-Road Ekstrem & Medan Berat',
-              subCategories: [
                 {
-                  label: 'R18 — Large Off-Road',
+                  label: 'M/T',
                   entries: [
                     { size: 'LT265/60R18', notes: '' },
                     { size: 'LT265/65R18', notes: '' },
                     { size: 'LT245/70R18', notes: '' },
-                  ]
-                },
-                {
-                  label: 'R17 — Medium Off-Road',
-                  entries: [
                     { size: 'LT265/65R17', notes: '' },
                     { size: 'LT225/70R17', notes: '' },
                     { size: 'LT265/70R17', notes: '' },
                     { size: 'LT285/70R17', notes: '' },
-                  ]
-                },
-                {
-                  label: 'R16 — Medium Off-Road',
-                  entries: [
                     { size: 'LT245/75R16', notes: '' },
                     { size: 'LT265/75R16', notes: '' },
-                  ]
-                },
-                {
-                  label: 'R15 — Compact Off-Road',
-                  entries: [
                     { size: '30X9.50R15', notes: '' },
                     { size: '31X10.50R15', notes: '' },
                     { size: 'LT215/75R15', notes: '' },
                     { size: 'LT235/75R15', notes: '' },
-                  ]
-                },
-                {
-                  label: 'R14 & R13 — Mini Off-Road',
-                  entries: [
                     { size: '27X8.50R14', notes: '' },
                     { size: '26X7.5R13', notes: '' },
                   ]
