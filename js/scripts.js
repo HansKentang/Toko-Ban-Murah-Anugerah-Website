@@ -4,6 +4,21 @@
 
 document.addEventListener('DOMContentLoaded', function () {
 
+  // --- Hide pages from navigation based on admin setting ---
+  try {
+    var hidden = [];
+    try { hidden = JSON.parse(window.name || '[]'); } catch(e) {}
+    if (hidden.length === 0) { try { hidden = JSON.parse(localStorage.getItem('tb_hidden') || '[]'); } catch(e) {} }
+    if (hidden.length > 0) {
+      var map = { koleksi:'koleksi.html', layanan:'layanan.html', promo:'promo.html', lokasi:'lokasi.html', kontak:'kontak.html' };
+      var sel = [];
+      hidden.forEach(function(id) { if (map[id]) sel.push('a[href="' + map[id] + '"]'); });
+      if (sel.length > 0) {
+        document.querySelectorAll(sel.join(',')).forEach(function(el) { el.style.display = 'none'; });
+      }
+    }
+  } catch(e) {}
+
   // --- Navigation Drawer ---
   const drawerToggle = document.getElementById('drawer-toggle');
   const drawerClose = document.getElementById('drawer-close');
