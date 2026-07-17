@@ -101,6 +101,9 @@
     .brand-grid-visible .brand-box:nth-child(8) { animation-delay: 0.42s; }
     .brand-grid-visible .brand-box:nth-child(9) { animation-delay: 0.48s; }
     .brand-grid-visible .brand-box:nth-child(10) { animation-delay: 0.54s; }
+    .brand-grid-visible .brand-box:nth-child(11) { animation-delay: 0.60s; }
+    .brand-grid-visible .brand-box:nth-child(12) { animation-delay: 0.66s; }
+    .brand-grid-visible .brand-box:nth-child(13) { animation-delay: 0.72s; }
 
     /* === View Transitions === */
     .view-state { transition: opacity 0.3s ease, transform 0.3s ease; }
@@ -451,7 +454,7 @@
           <img src="images/logo.png" alt="Toko Ban Murah Anugerah" class="h-16 w-16 md:h-20 md:w-20 rounded-full object-cover border-2 border-secondary-container/50 shadow-lg">
           <div class="inline-flex items-center gap-2 bg-primary-container text-primary-fixed font-[600] text-[12px] leading-[16px] px-4 py-1.5 rounded-full uppercase tracking-wider">
             <span class="material-symbols-outlined text-[16px]">inventory_2</span>
-            11 Merek Ternama
+            13 Merek Ternama
           </div>
         </div>
         <h1 class="font-black text-[36px] md:text-[48px] lg:text-[56px] leading-[1.1] text-on-primary">
@@ -492,6 +495,8 @@
         <button class="brand-box" data-brand="delium"><span class="hint-dot"></span><span class="inline-flex items-center justify-center bg-neutral-800 rounded-lg w-full h-full max-w-[85%] max-h-[70%]"><img src="images/delium-logo.png" alt="Delium" loading="lazy" class="max-w-full max-h-full object-contain"></span></button>
         <button class="brand-box" data-brand="blackhawk"><span class="hint-dot"></span><span class="inline-flex items-center justify-center bg-neutral-800 rounded-lg w-full h-full max-w-[85%] max-h-[70%]"><img src="images/blackhawk-logo.png" alt="Blackhawk" loading="lazy" class="max-w-full max-h-full object-contain"></span></button>
         <button class="brand-box" data-brand="accelera"><span class="hint-dot"></span><span class="inline-flex items-center justify-center bg-neutral-800 rounded-lg w-full h-full max-w-[85%] max-h-[70%]"><img src="images/accelera-logo.png" alt="Accelera" loading="lazy" class="max-w-full max-h-full object-contain"></span></button>
+        <button class="brand-box" data-brand="goodyear"><span class="hint-dot"></span><img src="images/goodyear-logo.png" alt="Goodyear" loading="lazy"></button>
+        <button class="brand-box" data-brand="yokohama"><span class="hint-dot"></span><img src="images/yokohama-logo.png" alt="Yokohama" loading="lazy"></button>
       </div>
     </div>
 
@@ -799,6 +804,32 @@
           },
           'Swallow': {
             'HS': { '*': 'images/swallow-hs-231.jpg' },
+          },
+          'Goodyear': {
+            'ASSURANCE DURAPLUS': { '*': 'images/tires/goodyear-assurance-duraplus.svg' },
+            'ASSURANCE DURAPLUS 2': { '*': 'images/tires/goodyear-assurance-duraplus.svg' },
+            'ASSURANCE TRIPLEMAX': { '*': 'images/tires/goodyear-assurance-triplemax.svg' },
+            'ASSURANCE TRIPLEMAX 2': { '*': 'images/tires/goodyear-assurance-triplemax.svg' },
+            'ASSURANCE MAXGUARD': { '*': 'images/tires/goodyear-assurance-maxguard.svg' },
+            'ASSURANCE COMFORTRED': { '*': 'images/tires/goodyear-assurance-comfortred.svg' },
+            'ASSURANCE MAXGUARD SUV': { '*': 'images/tires/goodyear-assurance-maxguard-suv.svg' },
+            'EAGLE F1 ASYMMETRIC 6': { '*': 'images/tires/goodyear-eagle-f1-asymmetric6.svg' },
+            'EAGLE F1 ASYMMETRIC 6 SUV': { '*': 'images/tires/goodyear-eagle-f1-asymmetric6.svg' },
+            'EFFICIENTGRIP PERFORMANCE SUV': { '*': 'images/tires/goodyear-efficientgrip-suv.svg' },
+            'WRANGLER DT': { '*': 'images/tires/goodyear-wrangler-dt.svg' },
+          },
+          'Yokohama': {
+            'ADVAN': { '*': 'images/tires/yokohama-advan.svg' },
+            'ADVAN dB': { '*': 'images/tires/yokohama-advan-db.svg' },
+            'ADVAN SPORT': { '*': 'images/tires/yokohama-advan-sport.svg' },
+            'BluEarth': { '*': 'images/tires/yokohama-bluearth.svg' },
+            'ASPEC & AVID GT': { '*': 'images/tires/yokohama-aspec.svg' },
+            'C.Drive': { '*': 'images/tires/yokohama-cdrive.svg' },
+            'GEOLANDAR': { '*': 'images/tires/yokohama-geolandar.svg' },
+            'Yokohama dB': { '*': 'images/tires/yokohama-db.svg' },
+            'ADVAN / GEOLANDAR SUV': { '*': 'images/tires/yokohama-geolandar.svg' },
+            'ADVAN SUV & GEOLANDAR LT': { '*': 'images/tires/yokohama-geolandar.svg' },
+            'TEMPORARY SPARE': { '*': 'images/tires/yokohama-temporary-spare.svg' },
           },
         };
         var brandMap = imageMap[brandName];
