@@ -483,7 +483,7 @@
 
     <!-- ===== VIEW: 3x3 GRID ===== -->
     <div id="view-grid" class="view-state fade-in">
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4 brand-grid-visible" id="brand-box-grid">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 brand-grid-visible" id="brand-box-grid">
         <button class="brand-box" data-brand="bridgestone"><span class="hint-dot"></span><img src="images/bridgestone-logo.svg" alt="Bridgestone" loading="lazy"></button>
         <button class="brand-box" data-brand="dunlop"><span class="hint-dot"></span><img src="images/dunlop-logo.svg" alt="Dunlop" loading="lazy"></button>
         <button class="brand-box" data-brand="gtradial"><span class="hint-dot"></span><img src="images/gtradial-logo.svg" alt="GT Radial" loading="lazy"></button>
@@ -806,37 +806,41 @@
             'HS': { '*': 'images/swallow-hs-231.jpg' },
           },
           'Goodyear': {
-            'ASSURANCE DURAPLUS': { '*': 'images/tires/goodyear-assurance-duraplus.svg' },
-            'ASSURANCE DURAPLUS 2': { '*': 'images/tires/goodyear-assurance-duraplus.svg' },
-            'ASSURANCE TRIPLEMAX': { '*': 'images/tires/goodyear-assurance-triplemax.svg' },
-            'ASSURANCE TRIPLEMAX 2': { '*': 'images/tires/goodyear-assurance-triplemax.svg' },
-            'ASSURANCE MAXGUARD': { '*': 'images/tires/goodyear-assurance-maxguard.svg' },
-            'ASSURANCE COMFORTRED': { '*': 'images/tires/goodyear-assurance-comfortred.svg' },
-            'ASSURANCE MAXGUARD SUV': { '*': 'images/tires/goodyear-assurance-maxguard-suv.svg' },
-            'EAGLE F1 ASYMMETRIC 6': { '*': 'images/tires/goodyear-eagle-f1-asymmetric6.svg' },
-            'EAGLE F1 ASYMMETRIC 6 SUV': { '*': 'images/tires/goodyear-eagle-f1-asymmetric6.svg' },
-            'EFFICIENTGRIP PERFORMANCE SUV': { '*': 'images/tires/goodyear-efficientgrip-suv.svg' },
-            'WRANGLER DT': { '*': 'images/tires/goodyear-wrangler-dt.svg' },
+            'ASSURANCE DURAPLUS': { '*': 'images/tires/goodyear-assurance-duraplus.png' },
+            'ASSURANCE DURAPLUS 2': { '*': 'images/tires/goodyear-assurance-duraplus-2.png' },
+            'ASSURANCE TRIPLEMAX': { '*': 'images/tires/goodyear-assurance-triplemax.png' },
+            'ASSURANCE TRIPLEMAX 2': { '*': 'images/tires/goodyear-assurance-triplemax-2.png' },
+            'ASSURANCE MAXGUARD': { '*': 'images/tires/goodyear-assurance-maxguard.png' },
+            'ASSURANCE COMFORTRED': { '*': 'images/tires/goodyear-assurance-comfortred.png' },
+            'ASSURANCE MAXGUARD SUV': { '*': 'images/tires/goodyear-assurance-maxguard-suv.png' },
+            'EAGLE F1 ASYMMETRIC 6': { '*': 'images/tires/goodyear-eagle-f1-asymmetric6.png' },
+            'EAGLE F1 ASYMMETRIC 6 SUV': { '*': 'images/tires/goodyear-eagle-f1-asymmetric6-suv.png' },
+            'EFFICIENTGRIP PERFORMANCE SUV': { '*': 'images/tires/goodyear-efficientgrip-performance-suv.png' },
+            'WRANGLER DT': { '*': 'images/tires/goodyear-wrangler-dt.png' },
           },
           'Yokohama': {
-            'ADVAN': { '*': 'images/tires/yokohama-advan.svg' },
-            'ADVAN dB': { '*': 'images/tires/yokohama-advan-db.svg' },
-            'ADVAN SPORT': { '*': 'images/tires/yokohama-advan-sport.svg' },
-            'BluEarth': { '*': 'images/tires/yokohama-bluearth.svg' },
-            'ASPEC & AVID GT': { '*': 'images/tires/yokohama-aspec.svg' },
-            'C.Drive': { '*': 'images/tires/yokohama-cdrive.svg' },
-            'GEOLANDAR': { '*': 'images/tires/yokohama-geolandar.svg' },
-            'Yokohama dB': { '*': 'images/tires/yokohama-db.svg' },
-            'ADVAN / GEOLANDAR SUV': { '*': 'images/tires/yokohama-geolandar.svg' },
-            'ADVAN SUV & GEOLANDAR LT': { '*': 'images/tires/yokohama-geolandar.svg' },
-            'TEMPORARY SPARE': { '*': 'images/tires/yokohama-temporary-spare.svg' },
+            'ADVAN': { '*': 'images/tires/yokohama-advan.png' },
+            'ADVAN dB': { '*': 'images/tires/yokohama-advan-db.png' },
+            'ADVAN SPORT': { '*': 'images/tires/yokohama-advan-sport.png' },
+            'BluEarth': { '*': 'images/tires/yokohama-bluearth.jpg' },
+            'ASPEC & AVID GT': { '*': 'images/tires/yokohama-advan.png' },
+            'C.Drive': { '*': 'images/tires/yokohama-bluearth.jpg' },
+            'GEOLANDAR': { '*': 'images/tires/yokohama-geolandar.jpg' },
+            'Yokohama dB': { '*': 'images/tires/yokohama-advan-db.png' },
+            'ADVAN / GEOLANDAR SUV': { '*': 'images/tires/yokohama-geolandar-suv.png' },
+            'ADVAN SUV & GEOLANDAR LT': { '*': 'images/tires/yokohama-geolandar.jpg' },
+            'TEMPORARY SPARE': { '*': 'images/tires/yokohama-advan.png' },
           },
         };
         var brandMap = imageMap[brandName];
         if (brandMap) {
           var modelMap = brandMap[modelName];
           if (modelMap) {
-            if (modelMap['*']) return modelMap['*'];
+            if (modelMap['*']) {
+              var result = modelMap['*'];
+              if (brandName === 'Goodyear' || brandName === 'Yokohama') console.log('getModelImage OK:', brandName, modelName, result);
+              return result;
+            }
             var specific = modelMap[categoryLabel];
             if (specific) return specific;
             var keys = Object.keys(modelMap);
@@ -844,6 +848,7 @@
           }
         }
         var imgName = modelName.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+$/, '') + '.svg';
+        if (brandName === 'Goodyear' || brandName === 'Yokohama') console.log('getModelImage FALLBACK:', brandName, modelName, imgName);
         return 'images/tires/' + imgName;
       }
 
