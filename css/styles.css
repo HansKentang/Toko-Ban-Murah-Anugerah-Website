@@ -25,12 +25,54 @@
 }
 
 /* --- Base --- */
+html {
+  scroll-behavior: smooth;
+}
 body {
   font-family: 'Inter', system-ui, sans-serif;
   background-color: #fcf9f8;
   color: #1c1b1b;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: #003c17;
+  color: #ffffff;
+}
+
+/* --- Focus-visible for accessibility --- */
+:focus-visible {
+  outline: 2px solid #003c17;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* --- Global Scrollbar --- */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f0eded;
+}
+::-webkit-scrollbar-thumb {
+  background: #c0c9bd;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a0a99d;
+}
+
+/* --- Image loading fade-in --- */
+img {
+  transition: opacity 0.3s ease;
+}
+img[loading="lazy"] {
+  opacity: 0;
+}
+img[loading="lazy"]:not([src=""]) {
+  opacity: 1;
 }
 
 /* --- Scrollbar Hide --- */
@@ -68,6 +110,9 @@ body {
 }
 
 /* --- Card Hover --- */
+.card-hover {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+}
 .card-hover:hover {
   transform: translateY(-4px);
   box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.1);
