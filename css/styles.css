@@ -118,6 +118,35 @@ img[loading="lazy"]:not([src=""]) {
   box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.1);
 }
 
+/* --- Consistent Form Inputs --- */
+input, select, textarea, button {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: #003c17;
+  box-shadow: 0 0 0 3px rgba(0, 60, 23, 0.12);
+}
+
+/* --- Button Press & Active States --- */
+button:active, .btn-press:active {
+  transform: scale(0.96);
+}
+
+/* --- Section Spacing Consistency --- */
+.section-padding {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+}
+
 /* --- Tire Texture Background --- */
 .tire-texture-bg {
   background-image: linear-gradient(rgba(0, 60, 23, 0.88), rgba(0, 60, 23, 0.7)),
